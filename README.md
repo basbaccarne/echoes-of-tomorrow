@@ -11,6 +11,11 @@ e.g.:
 * Dystopia Totem: Harsh metals, fractured design, flickering lights, industrial droning ambient audio.
 * Resilience Totem: Reclaimed materials, adaptive design, warm lighting, layered textures of hope and struggle.
 
+### Set-up (3 seperate totems):
+* Retro telephone horn
+* Raspberry pi server
+* Avatar
+
 ☎️ The Conversational Horns
 Old-fashioned telephone receiver horns protrude from each totem. When lifted, they allow you to ask questions to the future.
 Visitors can pose questions such as “What is work like in your world?” or “How do you care for the planet?”
@@ -30,3 +35,16 @@ Visitors can explore data-driven scenarios, policy pathways, and personal storie
 As visitors exit, they are invited to contribute to a living archive of questions and reflections, either digitally or via physical postcards.
 
 Echoes of Tomorrow turns abstract futures thinking into visceral, personal experience. By enabling direct dialogue with imagined future beings, the installation cultivates empathy, critical foresight, and agency. It asks visitors not only to listen—but to consider which future they want to help create.
+
+## Subchallenges
+### Telephone interaction
+Most retro style (landline, POTS [plain old telephone system]) telehone use a RJ11 connection to manage calling, voltages, audio, etc.     
+In this case we have four options.
+1. **USB telephone**. These are more expensive and do not always work with raspi.
+2. Build our **own enclose** and embed speaker and microphone
+3. Hack into the speaker lines and microphone lines by **tapping into tthe wires** that come directly from the peripherals
+4. Use a **FXO (Foreign Exchange Office) modem** that works over the RJ11 line and manages power, signals, pick-up detection, ...    
+
+Option 2 looks most interesting.   
+
+* First experiments: [simple landline telehone](https://www.bol.com/be/nl/p/alcatel-t06-analoge-telefoon-zwart/9200000078556199/?bltgh=p3SP3cacIqewf-bT8EBMCg.4_14.15.ProductTitle) with the [Seeed Studio ReSpeaker 2 HAT](https://wiki.seeedstudio.com/ReSpeaker_2_Mics_Pi_HAT/)
