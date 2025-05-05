@@ -1,6 +1,6 @@
 # Echoes of Tomorrow
 Echoes of Tomorrow is an installation developed for the [Comon](https://comon.gent/) expo at [De Krook](https://dekrook.be/).   
-*Tinkered with ❤ by Bas Baccarne*
+*Tinkered with ❤ by Bas Baccarne and ...*
  
 ## Project Description:
 Echoes of Tomorrow is an immersive, interactive installation that invites visitors to step into a dialogue with the future—literally. Grounded in the methodologies of Futures Research and speculative design, this experiential piece uses a powerful metaphorical and physical system to make possible futures tangible, audible, and emotionally resonant.   
