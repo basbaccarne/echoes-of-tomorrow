@@ -51,12 +51,12 @@ In this case we have four options.
 Option 2 looks most interesting.   
 
 * First experiments: [simple landline telehone](https://www.bol.com/be/nl/p/alcatel-t06-analoge-telefoon-zwart/9200000078556199/?bltgh=p3SP3cacIqewf-bT8EBMCg.4_14.15.ProductTitle) with the [Seeed Studio ReSpeaker 2 HAT](https://wiki.seeedstudio.com/ReSpeaker_2_Mics_Pi_HAT/)
-* This is a rather hard path, instead: we'll work with the respeaker directly:
-  recording:
+* This is a rather hard path, instead: we'll work with the respeaker directly:   
+  recording:   
   ```console
-  python3 recording_examples/record.py 2>/dev/null
-  ```
+   python3 recording_examples/record.py 2>/dev/null
+  ```   
   play
   ```console
- aplay output.wav
+  aplay output.wav
   ```
