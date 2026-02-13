@@ -39,8 +39,9 @@ At the heart of the installation stand three totemic structures, each representi
 * 💬 Test: RAG system
 
 ### Text to speech (TTS)
-* test: piper (```nl_NL-mls_5809-low``` and ```nl_NL-mls-medium``` are good voices)
-* test: Hume AI
+* ✔️ test: [piper](/tests/TTS/readme.md)
+* ✔️ test: [Hume AI](/tests/TTS/readme.md)
+* ✔️ test: [Edge TTS](/tests/TTS/readme.md)
 
 ### Send audio (speaker)
 * Test: USB speaker

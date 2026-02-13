@@ -22,8 +22,25 @@ test
 echo "Hallo, dit is een test van de Nederlandse stem synthese." | ./piper --model voices/nl_NL-mls_5809-low.onnx --output_file test.wav
 ```
 
+[testcode](/tests/TTS/piper.py)
+
 # Text to speech with hume AI
 No Dutch support (yet?)
 ```bash
 pip install hume
 ```
+
+[testcode](/tests/TTS/hume_test.py)
+
+# Text to speech with edge TTS
+```bash
+# install
+pip install TTS
+# Get list of voices
+edge-tts --list-voices | grep nl
+# run scipt
+python3 edgetts_test.py
+# play outcome
+ffplay tts_output.mp3
+```
+[testcode](/tests/TTS/edgetts_test.py)
