@@ -13,17 +13,17 @@ At the heart of the installation stand three totemic structures, each representi
 
 - [Echoes of Tomorrow](#echoes-of-tomorrow)
   - [Project Description](#project-description)
-  - [Hack zone](#hack-zone)
-    - [Capture microphone input (mic)](#capture-microphone-input-mic)
-    - [Speech to text (STT)](#speech-to-text-stt)
-    - [Integration layer](#integration-layer)
-    - [Interpretation (LLM)](#interpretation-llm)
-    - [Text to speech (TTS)](#text-to-speech-tts)
-    - [Send audio (speaker)](#send-audio-speaker)
-    - [General remarks](#general-remarks)
-  - [Build zone](#build-zone)
-    - [Key Components & Features:](#key-components--features)
-    - [Set-up (3 seperate totems):](#set-up-3-seperate-totems)
+- [Hack zone](#hack-zone)
+  - [Capture microphone input (mic)](#capture-microphone-input-mic)
+  - [Speech to text (STT)](#speech-to-text-stt)
+  - [Integration layer](#integration-layer)
+  - [Interpretation (LLM)](#interpretation-llm)
+  - [Text to speech (TTS)](#text-to-speech-tts)
+  - [Send audio (speaker)](#send-audio-speaker)
+  - [General remarks](#general-remarks)
+- [Build zone](#build-zone)
+  - [Key Components & Features:](#key-components--features)
+  - [Set-up (3 seperate totems):](#set-up-3-seperate-totems)
 
 <!-- /code_chunk_output -->
 
@@ -31,11 +31,11 @@ At the heart of the installation stand three totemic structures, each representi
 
 ---
 
-## Hack zone
+# Hack zone
 
 * [General set-up](https://www.figma.com/board/wxgd1HG60FEPWjULjJxW3G/Untitled?node-id=0-1&t=mSymsbc2NLRJAKZq-1)
 
-### Capture microphone input (mic)
+## Capture microphone input (mic)
 
 **Hardware**
 * ❌ Test: [Element 14 Wolfson Audio Card](/tests/mic/wolfson.md) (old raspis)
@@ -48,31 +48,31 @@ At the heart of the installation stand three totemic structures, each representi
 **Software**
 * ✔️ Test: [python audio capture](/tests/mic/python_record.py)
 
-### Speech to text (STT)
+## Speech to text (STT)
 * ✔️ Test: [faster-whisper](/tests/STT/readme.md)
 
-### Integration layer
+## Integration layer
 * ✍🏻 Test: [n8n](/tests/integration/readme.md)
 
-### Interpretation (LLM)
+## Interpretation (LLM)
 * ✔️ Test: [Ollama](/tests/LLM/readme.md) - local but slowish
 * ✔️ Test: [ChocoLlama](/tests/LLM/readme.md) - local, Flemish, bit realy slow
 * ✔️ Test: [OpenAI API](/tests/LLM/readme.md) - quick, but cloud-based & maga-support
 * 💬 Test: RAG system
 
-### Text to speech (TTS)
+## Text to speech (TTS)
 * ✔️ test: [piper](/tests/TTS/readme.md)
 * ✔️ test: [Hume AI](/tests/TTS/readme.md)
 * ✔️ test: [Edge TTS](/tests/TTS/readme.md)
 
-### Send audio (speaker)
+## Send audio (speaker)
 * ❌ Test: Respeaker 2 (depricated old raspis)
 * ❌ Test: USB speaker (aborted, the other solutions are good enough and smaller)   
 * ✔️ Test: [USB sound card](/tests/speaker/usb_sound_card.md)
 * ✔️ Test: [Google Voice HAT](/tests/speaker/voice_hat.md)
 * 💬 Test: I²S DAC pre-amp (e.g. ADA3006)
 
-### General remarks
+## General remarks
 **Latency challenge**
 * Nvidia Jetson Orin Nano kan dit sneller maken (, maar duur > €500)
 * Een lokale server kan dit sneller maken
@@ -85,13 +85,13 @@ At the heart of the installation stand three totemic structures, each representi
 
 
 ---
-## Build zone
+# Build zone
 1. Initialize Raspberry Pi & ```sudo apt update && sudo apt upgrade -y```
 2. ...
 
 
 ---
-### Key Components & Features:
+## Key Components & Features:
 🔮 The Totems of Time: Each totem is sculptural and symbolic, representing its future through material, color, and embedded media.   
 
 e.g.:
@@ -99,7 +99,7 @@ e.g.:
 * ```Dystopia Totem```: Harsh metals, fractured design, flickering lights, industrial droning ambient audio.
 * ```Resilience Totem```: Reclaimed materials, adaptive design, warm lighting, layered textures of hope and struggle.
 
-### Set-up (3 seperate totems):
+## Set-up (3 seperate totems):
 (example)   
 
 ☎️ The Conversational Horns
