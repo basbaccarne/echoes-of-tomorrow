@@ -18,10 +18,10 @@ At the heart of the installation stand three totemic structures, each representi
 **Hardware**
 * ❌ Test: [Element 14 Wolfson Audio Card](/tests/mic/wolfson.md) (old raspis)
 * ❌ Test: [Respeaker 2](/tests/mic/respeaker.md) (depricated old raspis)
-* ✔️ Test: [Google Voice HAT](/tests/mic/voice_hat.md) (with button and speaker)
+* ❌ Test: USB microphone  (aborted, the other solutions are good enough and smaller)
+✔️ Test: [Google Voice HAT](/tests/mic/voice_hat.md) (with button and speaker)
 * ✍🏻 Test: [USB sound card](/tests/mic/usb%20_sound_card.md)
 * 💬 Test: I²S microphone (e.g. INMP441)
-* 💬 Test: USB microphone   
 
 **Software**
 * ✔️ Test: [python audio capture](/tests/mic/python_record.py)
@@ -44,15 +44,20 @@ At the heart of the installation stand three totemic structures, each representi
 * ✔️ test: [Edge TTS](/tests/TTS/readme.md)
 
 ### Send audio (speaker)
-* Test: USB speaker
-* Test: USB sound card
-* Test: Respeaker 2
-* Test: Voice HAT
-* Test: I²S DAC pre-amp (e.g. ADA3006)
+* ❌ Test: Respeaker 2 (depricated old raspis)
+* ❌ Test: USB speaker (aborted, the other solutions are good enough and smaller)
+* ✔️ Test: [USB sound card](/tests/speaker/usb_sound_card.md)
+* ✔️ Test: [Google Voice HAT](/tests/speaker/voice_hat.md)
+* 💬 Test: I²S DAC pre-amp (e.g. ADA3006)
 
 ### General remarks
+**Latency challenge**
+* Nvidia Jetson Orin Nano kan dit sneller maken (, maar duur > €500)
+* Een lokale server kan dit sneller maken
+* Een cloud serverice kan dit sneller maken
+
+**Other things to think of**
 * Dutch plosives (“p”, “t”, “k”) clip easily → lower mic gain
-* Use a slightly slower TTS speed for public settings
 * Avoid long responses
 
 ---
