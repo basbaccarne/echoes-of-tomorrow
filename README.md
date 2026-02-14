@@ -13,7 +13,6 @@ At the heart of the installation stand three totemic structures, each representi
 * [General set-up](https://www.figma.com/board/wxgd1HG60FEPWjULjJxW3G/Untitled?node-id=0-1&t=mSymsbc2NLRJAKZq-1)
 
 ### Capture microphone input (mic)
-[Interesting read](https://medium.com/@martin.hodges/setting-up-a-mems-i2s-microphone-on-a-raspberry-pi-306248961043)   
 
 **Hardware**
 * ❌ Test: [Element 14 Wolfson Audio Card](/tests/mic/wolfson.md) (old raspis)
@@ -59,6 +58,8 @@ At the heart of the installation stand three totemic structures, each representi
 **Other things to think of**
 * Dutch plosives (“p”, “t”, “k”) clip easily → lower mic gain
 * Avoid long responses
+* [Interesting read](https://medium.com/@martin.hodges/setting-up-a-mems-i2s-microphone-on-a-raspberry-pi-306248961043)   
+
 
 ---
 
