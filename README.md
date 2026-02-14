@@ -6,6 +6,29 @@ Echoes of Tomorrow is an installation developed for the [Comon](https://comon.ge
 Echoes of Tomorrow is an immersive, interactive installation that invites visitors to step into a dialogue with the future—literally. Grounded in the methodologies of Futures Research and speculative design, this experiential piece uses a powerful metaphorical and physical system to make possible futures tangible, audible, and emotionally resonant.   
 At the heart of the installation stand three totemic structures, each representing a distinct future scenario. These futures are not predictions, but provocations—embodied visions of what could emerge based on the interplay of current social, environmental, and technological trends. Each totem channels a unique persona, brought to life through scripted AI-generated voice interactions, audio design, and environmental cues.
 
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Echoes of Tomorrow](#echoes-of-tomorrow)
+  - [Project Description](#project-description)
+  - [Hack zone](#hack-zone)
+    - [Capture microphone input (mic)](#capture-microphone-input-mic)
+    - [Speech to text (STT)](#speech-to-text-stt)
+    - [Integration layer](#integration-layer)
+    - [Interpretation (LLM)](#interpretation-llm)
+    - [Text to speech (TTS)](#text-to-speech-tts)
+    - [Send audio (speaker)](#send-audio-speaker)
+    - [General remarks](#general-remarks)
+  - [Build zone](#build-zone)
+    - [Key Components & Features:](#key-components--features)
+    - [Set-up (3 seperate totems):](#set-up-3-seperate-totems)
+
+<!-- /code_chunk_output -->
+
+
+
 ---
 
 ## Hack zone
@@ -62,7 +85,12 @@ At the heart of the installation stand three totemic structures, each representi
 
 
 ---
+## Build zone
+1. Initialize Raspberry Pi & ```sudo apt update && sudo apt upgrade -y```
+2. ...
 
+
+---
 ### Key Components & Features:
 🔮 The Totems of Time: Each totem is sculptural and symbolic, representing its future through material, color, and embedded media.   
 
