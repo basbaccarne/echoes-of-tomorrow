@@ -19,7 +19,7 @@ At the heart of the installation stand three totemic structures, each representi
 * ❌ Test: [Element 14 Wolfson Audio Card](/tests/mic/wolfson.md) (old raspis)
 * ❌ Test: [Respeaker 2](/tests/mic/respeaker.md) (depricated old raspis)
 * ❌ Test: USB microphone  (aborted, the other solutions are good enough and smaller)
-✔️ Test: [Google Voice HAT](/tests/mic/voice_hat.md) (with button and speaker)
+* ✔️ Test: [Google Voice HAT](/tests/mic/voice_hat.md) (with button and speaker)
 * ✍🏻 Test: [USB sound card](/tests/mic/usb%20_sound_card.md)
 * 💬 Test: I²S microphone (e.g. INMP441)
 
@@ -45,7 +45,7 @@ At the heart of the installation stand three totemic structures, each representi
 
 ### Send audio (speaker)
 * ❌ Test: Respeaker 2 (depricated old raspis)
-* ❌ Test: USB speaker (aborted, the other solutions are good enough and smaller)
+* ❌ Test: USB speaker (aborted, the other solutions are good enough and smaller)   
 * ✔️ Test: [USB sound card](/tests/speaker/usb_sound_card.md)
 * ✔️ Test: [Google Voice HAT](/tests/speaker/voice_hat.md)
 * 💬 Test: I²S DAC pre-amp (e.g. ADA3006)
