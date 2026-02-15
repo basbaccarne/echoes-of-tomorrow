@@ -20,7 +20,7 @@ At the heart of the installation stand three totemic structures, each representi
 * ❌ Test: USB microphone  (aborted, the other solutions are good enough and smaller)
 * ✔️ Test: [Google Voice HAT](/tests/mic/voice_hat.md) (with button and speaker)
 * ✔️ Test: [USB sound card](/tests/mic/usb%20_sound_card.md)
-* ✔️ Test: I²S microphone (e.g. INMP441)
+* ✔️ Test: [I²S microphone](/tests/mic/I2S.md) (e.g. INMP441)
 
 **Software**
 * ✔️ Test: [python audio capture](/tests/mic/python_record.py)
@@ -47,7 +47,7 @@ At the heart of the installation stand three totemic structures, each representi
 * ❌ Test: USB speaker (aborted, the other solutions are good enough and smaller)   
 * ✔️ Test: [USB sound card](/tests/speaker/usb_sound_card.md)
 * ✔️ Test: [Google Voice HAT](/tests/speaker/voice_hat.md)
-* ✔️ Test: I²S DAC pre-amp (e.g. ADA3006)
+* ✔️ Test: [I²S DAC pre-amp](/tests/speaker/I2S.md) (e.g. ADA3006)
 
 ## General remarks
 **Latency challenge**
