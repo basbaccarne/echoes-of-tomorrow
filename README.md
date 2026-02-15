@@ -20,7 +20,7 @@ At the heart of the installation stand three totemic structures, each representi
 * ❌ Test: USB microphone  (aborted, the other solutions are good enough and smaller)
 * ✔️ Test: [Google Voice HAT](/tests/mic/voice_hat.md) (with button and speaker)
 * ✔️ Test: [USB sound card](/tests/mic/usb%20_sound_card.md)
-* 💬 Test: I²S microphone (e.g. INMP441)
+* ✔️ Test: I²S microphone (e.g. INMP441)
 
 **Software**
 * ✔️ Test: [python audio capture](/tests/mic/python_record.py)
@@ -47,7 +47,7 @@ At the heart of the installation stand three totemic structures, each representi
 * ❌ Test: USB speaker (aborted, the other solutions are good enough and smaller)   
 * ✔️ Test: [USB sound card](/tests/speaker/usb_sound_card.md)
 * ✔️ Test: [Google Voice HAT](/tests/speaker/voice_hat.md)
-* 💬 Test: I²S DAC pre-amp (e.g. ADA3006)
+* ✔️ Test: I²S DAC pre-amp (e.g. ADA3006)
 
 ## General remarks
 **Latency challenge**
@@ -64,7 +64,10 @@ At the heart of the installation stand three totemic structures, each representi
 ---
 # Build zone
 1. Initialize Raspberry Pi & ```sudo apt update && sudo apt upgrade -y```
-2. ...
+2. Installations - ```sudo apt install git -y```
+3. Get the main repo - ```git clone https://github.com/basbaccarne/echoes-of-tomorrow```
+4. Install dependencies - ...
+
 
 
 ---
@@ -77,7 +80,7 @@ e.g.:
 * ```Resilience Totem```: Reclaimed materials, adaptive design, warm lighting, layered textures of hope and struggle.
 
 ## Set-up (3 seperate totems):
-(example)   
+(examples)   
 
 ☎️ The Conversational Horns
 Old-fashioned telephone receiver horns protrude from each totem. When lifted, they allow you to ask questions to the future.
