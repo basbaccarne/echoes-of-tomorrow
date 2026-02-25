@@ -7,7 +7,7 @@ def run():
 
     if not played:
         pygame.mixer.init()
-        pygame.mixer.music.load("welcome.wav")
+        pygame.mixer.music.load("/audio/welcome.wav")
         pygame.mixer.music.play()
         played = True
         print("Playing welcome audio")
