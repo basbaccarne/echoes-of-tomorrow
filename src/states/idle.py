@@ -5,14 +5,12 @@ button_horn = Button(4)
 debounce = 0.3
 
 def run():
-    # wait for release event
     if button_horn.is_pressed:
         while button_horn.is_pressed:
             time.sleep(0.01)
 
-        print("Button 4 released → switching state")
+        print("Button 4 released → play welcome")
         time.sleep(debounce)
-
-        return "nextstate"   # <-- name of next state module (states/nextstate.py)
+        return "play_welcome"
 
     return None

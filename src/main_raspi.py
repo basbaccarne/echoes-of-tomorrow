@@ -2,11 +2,15 @@ import importlib
 import time
 
 state = "idle"
+loaded_state = None
 
 while True:
     try:
-        module = importlib.import_module(f"states.{state}")
-        importlib.reload(module)
+        # load and reload only when state changes
+        if loaded_state != state:
+            module = importlib.import_module(f"states.{state}")
+            importlib.reload(module)
+            loaded_state = state
 
         next_state = module.run()
 
