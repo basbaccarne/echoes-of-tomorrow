@@ -4,15 +4,18 @@ import time
 state = "idle"
 
 while True:
-    # dynamically load the current state module
-    module = importlib.import_module(f"states.{state}")
+    try:
+        module = importlib.import_module(f"states.{state}")
+        importlib.reload(module)
 
-    # run the state
-    next_state = module.run()
+        next_state = module.run()
 
-    # if state returns a new name → switch
-    if next_state:
-        print(f"Switching to state: {next_state}")
-        state = next_state
+        if next_state:
+            print(f"Switching to state: {next_state}")
+            state = next_state
+
+    except Exception as e:
+        print(f"Error in state {state}: {e}")
+        state = "idle"
 
     time.sleep(0.01)
