@@ -1,0 +1,6 @@
+[rpiaudio]
+send_audio.receiver = "10.29.198.247"
+send_audio.listen_dir = "/Users/verpla38/recordings"
+send_audio.processed_dir = "/Users/verpla38/processed"
+send_audio.wait_time = 5
+send_audio.play_dir = "/Users/verpla38/play"

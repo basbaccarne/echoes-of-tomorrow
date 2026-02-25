@@ -1,0 +1,4 @@
+RECEIVER_IP=10.29.198.247
+WAV_FILE=piano.wav
+
+scp $WAV_FILE pi@$RECEIVER_IP:~/receive
