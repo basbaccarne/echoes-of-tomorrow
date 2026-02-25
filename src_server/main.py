@@ -1,9 +1,10 @@
-# main state machine of the raspi
+# main state machine of the server
+# quickest hack is to run this script for each pi on a different port
+
 import importlib
 import time
-from gpiozero import Device
 
-state = "idle"
+state = "waiting_for_receive"
 loaded_state = None
 
 try:
@@ -24,13 +25,9 @@ try:
 
         except Exception as e:
             print(f"Error in state {state}: {e}")
-            state = "idle"
+            state = "waiting_for_receive"
 
         time.sleep(0.01)
 
 except KeyboardInterrupt:
     print("Program stopped by user")
-
-finally:
-    Device.close_all()
-    print("GPIO cleaned up")
