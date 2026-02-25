@@ -1,23 +1,30 @@
 import os
-import pygame
+import subprocess
+
+played = False
 
 def run():
     global played
 
     if not played:
-        pygame.mixer.init()
-
-        # build absolute path relative to this file (src/main.py)
-        base_dir = os.path.dirname(os.path.dirname(__file__))  # src -> project root
+        # build absolute path to audio file
+        base_dir = os.path.dirname(os.path.dirname(__file__))
         audio_path = os.path.join(base_dir, "audio", "welcome.wav")
 
-        pygame.mixer.music.load(audio_path)
-        pygame.mixer.music.play()
+        print(f"Playing via aplay: {audio_path}")
+
+        try:
+            subprocess.run([
+                "aplay",
+                "-D", "plughw:2,0",
+                audio_path
+            ], check=True)
+        except subprocess.CalledProcessError as e:
+            print(f"aplay error: {e}")
+            return "idle"  # fallback
+
         played = True
 
-        print(f"Playing: {audio_path}")
-
-    if not pygame.mixer.music.get_busy():
-        return "recording"
-
-    return None
+    # since aplay is blocking, we are already finished
+    print("Welcome finished → recording")
+    return "recording"
