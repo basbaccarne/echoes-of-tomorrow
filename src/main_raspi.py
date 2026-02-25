@@ -3,12 +3,14 @@ from gpiozero import Button
 import time
 
 # GPIO pin 4 is verbonden met de telefoonknop
-button = Button(4)
+button_horn = Button(4)
+button_hashtag = Button(3)
 debounce = 0.3
 
 
 class State(Enum):
     IDLE = "idle"
+    PRELISTENING = "pre-listening"
     LISTENING = "listening"
     PROCESSING = "processing"
     SPEAKING = "speaking"
@@ -31,6 +33,9 @@ class PhoneStateMachine:
         while True:
             if self.state == State.IDLE:
                 self.handle_idle()
+                
+            elif self.state == State.PRELISTENING:
+                self.handle_prelistening()
             
             elif self.state == State.LISTENING:
                 self.handle_listening()
@@ -52,6 +57,14 @@ class PhoneStateMachine:
         if self.detect_phone_pickup():
             self.transition(State.LISTENING)
     
+    def handle_prelistening(self):
+        """Wacht op stilte"""
+        print("👂 Pre-listening: waiting for silence...")
+        time.sleep(2)
+        
+        # Simuleer: stilte gedetecteerd
+        self.transition(State.LISTENING)
+    
     def handle_listening(self):
         """Neem audio op"""
         print("🎤 Recording audio...")
@@ -61,6 +74,15 @@ class PhoneStateMachine:
         self.transcript = "Wat zijn de toekomstbeelden?"
         
         self.transition(State.PROCESSING)
+        
+        
+    def handle_processing(self):
+        print(f"🧠 Processing: '{self.transcript}'")
+        # Simuleer processing
+        time.sleep(2)
+        self.response = "De toekomstbeelden gaan over groene mobiliteit en circulaire economie."
+        
+        self.transition(State.SPEAKING)
     
     def handle_processing(self):
         """STT → RAG → LLM"""
@@ -85,9 +107,9 @@ class PhoneStateMachine:
     def detect_phone_pickup(self):
         """Detecteer of telefoon is opgenomen"""
         # Was button net ingedrukt?
-        if button.is_pressed:
+        if button_horn.is_pressed:
             # Wacht op release
-            while button.is_pressed:
+            while button_horn.is_pressed:
                 time.sleep(0.01)
             print("Button released - phone picked up")
             time.sleep(debounce)
