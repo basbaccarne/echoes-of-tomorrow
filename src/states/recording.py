@@ -1,30 +1,33 @@
-import sounddevice as sd
-import numpy as np
-import wavio
+import subprocess
+import os
 from hardware import button_stop
 
-fs = 44100
-recording = []
+process = None
 
 def run():
-    global recording
+    global process
 
-    print("Recording chunk...")
+    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    audio_path = os.path.join(base_dir, "audio", "recorded.wav")
 
-    data = sd.rec(int(0.5 * fs), samplerate=fs, channels=1)
-    sd.wait()
-    recording.append(data)
+    # start recording if not already
+    if process is None:
+        print(f"Recording to: {audio_path}")
+        process = subprocess.Popen([
+            "arecord",
+            "-D", "plughw:2,0",
+            "-f", "cd",
+            "-t", "wav",
+            audio_path
+        ])
+        print("Recording started")
 
+    # stop on button press
     if button_stop.is_pressed:
-        print("Button 3 pressed → stop recording")
-        save()
-        return "idle"
+        print("Button 3 pressed → stopping recording")
+        process.terminate()
+        process.wait()
+        process = None
+        return "waiting"
 
     return None
-
-
-def save():
-    if recording:
-        audio = np.concatenate(recording)
-        wavio.write("recorded.wav", audio, fs, sampwidth=2)
-        print("Recording saved")
