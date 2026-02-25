@@ -1,5 +1,11 @@
 from enum import Enum
+from gpiozero import Button
 import time
+
+# GPIO pin 4 is verbonden met de telefoonknop
+button = Button(4)
+debounce = 0.3
+
 
 class State(Enum):
     IDLE = "idle"
@@ -78,8 +84,10 @@ class PhoneStateMachine:
     
     def detect_phone_pickup(self):
         """Detecteer of telefoon is opgenomen"""
-        # Placeholder - implementeer later
-        return True
+        if button.is_pressed:
+            print("Button pressed")
+            sleep(debounce)
+            return True
 
 # Run
 if __name__ == "__main__":
