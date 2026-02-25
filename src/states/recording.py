@@ -24,10 +24,11 @@ def run():
 
     # stop on button press
     if button_stop.is_pressed:
-        print("Button 3 pressed → stopping recording")
         process.terminate()
         process.wait()
         process = None
+        # go to the next state once the recording is stored
+        print("Hashtag button pressed → Recording stopped → waiting for processing)
         return "waiting"
 
     return None

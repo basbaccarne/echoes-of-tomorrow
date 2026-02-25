@@ -1,3 +1,5 @@
+# this code now just plays the recorded file and then goes back to idle, waiting for the next interaction. The processing and upload will be handled separately in the background while we're in the waiting state.
+# needs to be replaced with sending
 import os
 import subprocess
 

@@ -18,6 +18,6 @@ def run():
         print(f"aplay error: {e}")
         return "idle"  # fallback
 
-    # audio finished → next state
-    print("Welcome finished → recording")
+    # aplay holds the script until playback finishes, so we can directly return the next state afterwards
+    print("Welcome message finished → recording voice")
     return "recording"

@@ -4,11 +4,13 @@ import time
 debounce = 0.3
 
 def run():
+    # after release 
     if button_horn.is_pressed:
         while button_horn.is_pressed:
             time.sleep(0.01)
-
-        print("Button 4 released → play welcome")
+            
+        # go to the next state (play welcome)
+        print("The horn has been picked up → play welcome message")
         time.sleep(debounce)
         return "play_welcome"
 
