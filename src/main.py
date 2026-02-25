@@ -8,11 +8,13 @@ loaded_state = None
 try:
     while True:
         try:
+            # load module only when state changes
             if loaded_state != state:
                 module = importlib.import_module(f"states.{state}")
                 importlib.reload(module)
                 loaded_state = state
 
+            # run state (module always exists after load)
             next_state = module.run()
 
             if next_state:

@@ -1,7 +1,6 @@
-from gpiozero import Button
+from hardware import button_horn
 import time
 
-button_horn = Button(4)
 debounce = 0.3
 
 def run():

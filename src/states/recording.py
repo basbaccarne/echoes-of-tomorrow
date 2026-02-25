@@ -1,9 +1,8 @@
 import sounddevice as sd
 import numpy as np
 import wavio
-from gpiozero import Button
+from hardware import button_stop
 
-button_stop = Button(3)
 fs = 44100
 recording = []
 
