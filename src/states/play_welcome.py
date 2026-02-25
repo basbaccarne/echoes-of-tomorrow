@@ -7,8 +7,14 @@ def run():
     global played
 
     if not played:
-        # build absolute path to audio file
-        base_dir = os.path.dirname(os.path.dirname(__file__))
+        # go up from:
+        # src/states/play_welcome.py
+        # -> src/states
+        # -> src
+        # -> project root
+        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+
+        # audio at: /home/pi/echoes-of-tomorrow/audio/welcome.wav
         audio_path = os.path.join(base_dir, "audio", "welcome.wav")
 
         print(f"Playing via aplay: {audio_path}")
@@ -21,10 +27,9 @@ def run():
             ], check=True)
         except subprocess.CalledProcessError as e:
             print(f"aplay error: {e}")
-            return "idle"  # fallback
+            return "idle"  # fallback to safe state
 
         played = True
 
-    # since aplay is blocking, we are already finished
     print("Welcome finished → recording")
     return "recording"
