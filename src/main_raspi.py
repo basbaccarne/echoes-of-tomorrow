@@ -84,9 +84,13 @@ class PhoneStateMachine:
     
     def detect_phone_pickup(self):
         """Detecteer of telefoon is opgenomen"""
+        # Was button net ingedrukt?
         if button.is_pressed:
-            print("Button pressed")
-            timesleep(debounce)
+            # Wacht op release
+            while button.is_pressed:
+                time.sleep(0.01)
+            print("Button released - phone picked up")
+            time.sleep(debounce)
             return True
 
 # Run
