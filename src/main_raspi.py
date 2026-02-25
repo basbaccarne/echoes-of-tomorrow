@@ -86,7 +86,7 @@ class PhoneStateMachine:
         """Detecteer of telefoon is opgenomen"""
         if button.is_pressed:
             print("Button pressed")
-            sleep(debounce)
+            timesleep(debounce)
             return True
 
 # Run
