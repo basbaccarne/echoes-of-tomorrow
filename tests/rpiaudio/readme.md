@@ -19,7 +19,6 @@ __Important Assumptions:__
 
 In the config.toml file (in the parent directory), of course!
 
-
 # Setup
 1. use raspberry pi imager to write image to RPI10 with headless setup
     - hostname: rpiaudio01
@@ -33,7 +32,7 @@ In the config.toml file (in the parent directory), of course!
    * play: responses received from the LLM server, to be played ASAP, and then moved to processed
 4. if you don’t have a ssh key yet (typically not the case):
     - generate one using ```ssh-keygen``` command (all on default is ok)
-    - send the key to the receiving using ```ssh-id-copy pi@<RECEIVER_IP>```
+    - send the key to the receiving using ```ssh-copy-id pi@<RECEIVER_IP>```
     - When asked, provide the super secret password for the server user, and from now on you shouldn’t have to provide the password anymore
 5. run script from github repo echoes-of-tomorrow within folder tests/rpiaudio
     - installation: you only need to run this command: ```pip install toml```

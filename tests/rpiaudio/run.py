@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 import toml
 
-if __name__ == "__main__":
+def run_audio():
     # load configuration
     toml_config = toml.load("../config.toml")["rpiaudio"]["run"]
     #print("toml_config", toml_config)
@@ -33,6 +33,11 @@ if __name__ == "__main__":
             print(f"Found {len(to_be_played)} files to play.")
             play_file = PLAY_DIR / to_be_played[0]  # Play the first file in the list
             print(f"Playing file: {play_file}")
-            os.system(f"aplay {play_file}")  # Play the audio file
-            os.system(f"mv {play_file} {PROCESSED_DIR}")  # Move played file to processed directory
+            if os.system(f"aplay {play_file}"):  # Play the audio file
+                os.system(f"mv {play_file} {PROCESSED_DIR}")  # Move played file to processed directory
+            else:
+                print(f"Failed to play {str(play_file)}")
+
+if __name__ == "__main__":
+    run_audio()
             
