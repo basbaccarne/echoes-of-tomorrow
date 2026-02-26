@@ -26,6 +26,7 @@ At the heart of the installation stand three totemic structures, each representi
 | server | 1 ||
 | USB or 3.5mm jack telephone |4| |
 | (if 3.5 mm) jack to usb dongle|4||
+| Grove 6-position DIP switch | | |
 
 ## General remarks
 **Latency challenge**
