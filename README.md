@@ -24,6 +24,8 @@ At the heart of the installation stand three totemic structures, each representi
 | router | 1 | |
 | USB WiFi dongle server | 1 ||
 | server | 1 ||
+| USB or 3.5mm jack telephone |4| |
+| (if 3.5 mm) jack to usb dongle|4||
 
 ## General remarks
 **Latency challenge**
