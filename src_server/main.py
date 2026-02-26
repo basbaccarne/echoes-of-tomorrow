@@ -20,7 +20,7 @@ try:
             next_state = module.run()
 
             if next_state:
-                print(f"Switching to state: {next_state}")
+                print(f"\nSwitching to state: {next_state}")
                 state = next_state
 
         except Exception as e:
