@@ -6,6 +6,8 @@ import os
 import yaml
 from pathlib import Path
 import socket
+import datetime
+
 
 # Directories
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,7 +34,8 @@ class UploadHandler(BaseHTTPRequestHandler):
         with open(filepath, "wb") as f:
             f.write(data)
 
-        print(f"\n📩 Whoop, I received: {filepath}")        
+        print(f"\n⏱️  [{(datetime.datetime.now().strftime('%H:%M:%S'))}]")    
+        print(f"📩 Whoop, I received: {filepath}")        
         self.send_response(200)
         self.end_headers()
         self.wfile.write(b"OK")
