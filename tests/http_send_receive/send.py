@@ -20,4 +20,4 @@ def send_wav(filepath, server_ip, port=8765):
         print(f"Upload failed: {response.status_code}")
 
 # Call after recording finishes
-send_wav("/home/pi/recordings/output.wav", server_ip="192.168.1.xxx")
+send_wav("/home/pi/echosoftechoes-of-tomorrow/tests/http_send_receive/sample_question.wav", server_ip="192.168.1.xxx")
