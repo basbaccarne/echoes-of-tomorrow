@@ -61,25 +61,26 @@ At the heart of the installation stand three totemic structures, each representi
 # Build zone server
 1. Get the main repo - ```git clone https://github.com/basbaccarne/echoes-of-tomorrow```
 
-# State machine path Pi side
+# State machine (pi & server)
 
 ```mermaid
-graph TD;
-    IDLE-->|horn button release| PLAY_WELCOME;
-    PLAY_WELCOME-->|end of audiofile|RECORDING;
-    RECORDING-->|hashtag button press|SENDING;
-    SENDING-->|send complete|WAITING;
-    WAITING-->|file detected|RESPONDING;
-    RESPONDING-->|end of audiofile|IDLE;
-```
-# State machine path server side
-```mermaid
-graph TD;
-    WAITING_FOR_RECEIVE-->|http request complete| STT;
-    STT-->|analysis ready|n8n;
-    n8n-->|response received|TTS;
-    TTS-->|wav generated|SENDING;
-    SENDING-->|transfer complete|WAITING_FOR_RECEIVE;
+graph TD;    
+    classDef pi fill:#BCCCE0, stroke-width:0px
+    classDef server fill:#BF98A0, stroke-width:0px
+    IDLE:::pi-->|horn button release| PLAY_WELCOME:::pi;
+    PLAY_WELCOME:::pi-->|end of audiofile|RECORDING:::pi;
+    RECORDING:::pi-->|hashtag button press|SENDING:::pi;
+    SENDING:::pi-->|send|WAITING:::pi;
+    SENDING:::pi-->WAITING_FOR_RECEIVE:::server;
+    WAITING:::pi-->|file detected|RESPONDING:::pi;
+    RESPONDING:::pi-->|end of audiofile|IDLE:::pi;
+
+    WAITING_FOR_RECEIVE:::server-->|http request complete| STT:::server;
+    STT:::server-->|analysis ready|n8n:::server;
+    n8n:::server-->|response received|TTS:::server;
+    TTS:::server-->|wav generated|SENDINGBACK:::server;
+    SENDINGBACK-->WAITING:::pi;
+    SENDINGBACK:::server-->|transfer complete|WAITING_FOR_RECEIVE:::server;
 ```
 
 # Tests
