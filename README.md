@@ -1,6 +1,6 @@
 # Echoes of Tomorrow
 Echoes of Tomorrow is an installation developed for the [Comon](https://comon.gent/) expo at [De Krook](https://dekrook.be/).   
-*Tinkered with* ❤ *by Bas Baccarne, Ben Robaeyst, ...*
+*Tinkered with* ❤ *by Bas Baccarne, Ben Robaeyst, Tim Theys, Fran Burger, Julien Verplancke, ......*
  
 ## Project Description
 Echoes of Tomorrow is an immersive, interactive installation that invites visitors to step into a dialogue with the future—literally. Grounded in the methodologies of Futures Research and speculative design, this experiential piece uses a powerful metaphorical and physical system to make possible futures tangible, audible, and emotionally resonant.   
@@ -12,6 +12,75 @@ At the heart of the installation stand three totemic structures, each representi
 
 * [General set-up](https://www.figma.com/board/wxgd1HG60FEPWjULjJxW3G/Untitled?node-id=0-1&t=mSymsbc2NLRJAKZq-1)
 
+# Bill of materials
+| part  | count  | price per part|
+|---|---|---|
+|  raspberry pi 4B |  4 | €80 |
+| voeding raspi | 4 | |
+| SD kaartje 16gb | 4 |
+| light sprint button | 4 | |
+| big surface button | 4 | |
+| led ring | 4 ||
+| router | 1 | |
+| USB WiFi dongle server | 1 ||
+| server | 1 ||
+
+## General remarks
+**Latency challenge**
+* Nvidia Jetson Orin Nano kan dit sneller maken (, maar duur > €500)
+* Een lokale server kan dit sneller maken
+* Een cloud serverice kan dit sneller maken
+
+**Other things to think of**
+* Dutch plosives (“p”, “t”, “k”) clip easily → lower mic gain
+* Avoid long responses
+* [Interesting read](https://medium.com/@martin.hodges/setting-up-a-mems-i2s-microphone-on-a-raspberry-pi-306248961043)   
+
+
+---
+# Build zone pi
+**wiring**
+* Connect horn button to ``GPIO4`` and ``GROUND``
+* Connect hashtag button to ``GPIO3`` and ``GROUND``
+* Connect USB telephone to USB
+* Attach power
+* Configure SD card
+
+**software**
+1. Initialize Raspberry Pi & ```sudo apt update && sudo apt upgrade -y```
+2. Installations - ```sudo apt install git -y```
+3. Get the main repo - ```git clone https://github.com/basbaccarne/echoes-of-tomorrow```
+4. Install dependencies - ...
+5. Set ID
+6. Set service
+7. Switch to offline network comon
+
+
+# Build zone server
+1. Get the main repo - ```git clone https://github.com/basbaccarne/echoes-of-tomorrow```
+
+# State machine path Pi side
+
+```mermaid
+graph TD;
+    IDLE-->|horn button release| PLAY_WELCOME;
+    PLAY_WELCOME-->|end of audiofile|RECORDING;
+    RECORDING-->|hashtag button press|SENDING;
+    SENDING-->|send complete|WAITING;
+    WAITING-->|file detected|RESPONDING;
+    RESPONDING-->|end of audiofile|IDLE;
+```
+# State machine path server side
+```mermaid
+graph TD;
+    WAITING_FOR_RECEIVE-->|http request complete| STT;
+    STT-->|analysis ready|n8n;
+    n8n-->|response received|TTS;
+    TTS-->|wav generated|SENDING;
+    SENDING-->|transfer complete|WAITING_FOR_RECEIVE;
+```
+
+# Tests
 ## Capture microphone input (mic)
 
 **Hardware**
@@ -48,56 +117,3 @@ At the heart of the installation stand three totemic structures, each representi
 * ✔️ Test: [USB sound card](/tests/speaker/usb_sound_card.md)
 * ✔️ Test: [Google Voice HAT](/tests/speaker/voice_hat.md)
 * ✔️ Test: [I²S DAC pre-amp](/tests/speaker/I2S.md) (e.g. ADA3006)
-
-## General remarks
-**Latency challenge**
-* Nvidia Jetson Orin Nano kan dit sneller maken (, maar duur > €500)
-* Een lokale server kan dit sneller maken
-* Een cloud serverice kan dit sneller maken
-
-**Other things to think of**
-* Dutch plosives (“p”, “t”, “k”) clip easily → lower mic gain
-* Avoid long responses
-* [Interesting read](https://medium.com/@martin.hodges/setting-up-a-mems-i2s-microphone-on-a-raspberry-pi-306248961043)   
-
-
----
-# Build zone
-1. Initialize Raspberry Pi & ```sudo apt update && sudo apt upgrade -y```
-2. Installations - ```sudo apt install git -y```
-3. Get the main repo - ```git clone https://github.com/basbaccarne/echoes-of-tomorrow```
-4. Install dependencies - ...
-
-
-
----
-## Key Components & Features:
-🔮 The Totems of Time: Each totem is sculptural and symbolic, representing its future through material, color, and embedded media.   
-
-e.g.:
-* ```Utopia Totem```: Bioluminescent materials, soft glowing light, natural forms, harmonious soundscape.
-* ```Dystopia Totem```: Harsh metals, fractured design, flickering lights, industrial droning ambient audio.
-* ```Resilience Totem```: Reclaimed materials, adaptive design, warm lighting, layered textures of hope and struggle.
-
-## Set-up (3 seperate totems):
-(examples)   
-
-☎️ The Conversational Horns
-Old-fashioned telephone receiver horns protrude from each totem. When lifted, they allow you to ask questions to the future.
-Visitors can pose questions such as “What is work like in your world?” or “How do you care for the planet?”
-Responses are generated through pre-written narratives powered by Futures Foresight techniques and character-driven voice AI, giving each persona a unique tone, worldview, and emotional cadence.
-
-💬 The Personas
-e.g.
-Aurora (Utopia): A poet-ecologist from a post-scarcity society focused on harmony, sustainability, and collective wellbeing.
-Rex (Dystopia): A weary scavenger-survivor in a fractured world dominated by surveillance, climate collapse, and scarcity.
-Sol (Resilience): A community leader in a transitional, adaptive society where local systems, mutual aid, and innovation help people endure and thrive amid ongoing challenges.
-
-🌐 Interactive Futures Table (optional)
-A digital tabletop adjacent to the totems allows deeper engagement:
-Visitors can explore data-driven scenarios, policy pathways, and personal stories associated with each future.
-
-📜 The Futures Journal
-As visitors exit, they are invited to contribute to a living archive of questions and reflections, either digitally or via physical postcards.
-
-Echoes of Tomorrow turns abstract futures thinking into visceral, personal experience. By enabling direct dialogue with imagined future beings, the installation cultivates empathy, critical foresight, and agency. It asks visitors not only to listen—but to consider which future they want to help create.
