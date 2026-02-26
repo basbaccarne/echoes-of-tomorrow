@@ -1,2 +1,2 @@
-server: 10.63.235.205
-version: 1.0
+server__ip: 10.63.235.205
+audio_path: c:/echoes-of-tomorrow/audio_files

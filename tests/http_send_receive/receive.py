@@ -1,5 +1,4 @@
 # receiver.py
-# receiver.py
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import os
 import socket

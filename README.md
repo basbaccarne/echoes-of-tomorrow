@@ -52,7 +52,7 @@ At the heart of the installation stand three totemic structures, each representi
 1. Initialize Raspberry Pi & ```sudo apt update && sudo apt upgrade -y```
 2. Software Installations - ```sudo apt install git -y```
 3. Get the main repo - ```git clone https://github.com/basbaccarne/echoes-of-tomorrow```
-4. Install python libraries - ...
+4. Install python libraries - ```pip install pyyaml```
 5. Set ID
 6. Set service
 7. Switch to offline network comon
