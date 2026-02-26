@@ -1,6 +1,7 @@
 # Main state machine of the raspi telephone module
 # The state machine checks the system global variable state and runs the associated script
 # The state scripts can update the state variable to transition to the next state
+# General parameters are stored in config.yaml and imported by the state scripts as needed
 
 # Libraries
 import importlib
