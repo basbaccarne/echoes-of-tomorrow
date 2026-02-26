@@ -46,13 +46,13 @@ At the heart of the installation stand three totemic structures, each representi
 * Connect hashtag button to ``GPIO3`` and ``GROUND``
 * Connect USB telephone to USB
 * Attach power
-* Configure SD card
+* Configure SD card (pi OS lite is fine)
 
 **software**
 1. Initialize Raspberry Pi & ```sudo apt update && sudo apt upgrade -y```
-2. Installations - ```sudo apt install git -y```
+2. Software Installations - ```sudo apt install git -y```
 3. Get the main repo - ```git clone https://github.com/basbaccarne/echoes-of-tomorrow```
-4. Install dependencies - ...
+4. Install python libraries - ...
 5. Set ID
 6. Set service
 7. Switch to offline network comon
