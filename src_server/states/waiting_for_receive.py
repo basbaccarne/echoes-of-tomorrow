@@ -1,20 +1,24 @@
+# script that waits for the audio file to be sent from the client, then saves it and moves to the next state (STT)
+
+# Libraries
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import os
 import yaml
 from pathlib import Path
 import socket
 
+# Directories
 BASE_DIR = Path(__file__).resolve().parent.parent
 CONFIG_PATH = BASE_DIR / "config.yaml"
 
+# Settings
 with open(CONFIG_PATH, "r") as f:
     config = yaml.safe_load(f)
-
 SAVE_DIR = config["audio_path"]
 os.makedirs(SAVE_DIR, exist_ok=True)
 
-file_received = False  # ← state flag
-
+# State variable
+file_received = False
 
 class UploadHandler(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -28,29 +32,30 @@ class UploadHandler(BaseHTTPRequestHandler):
         with open(filepath, "wb") as f:
             f.write(data)
 
-        print(f"\n📩 Received: {filepath}")
-        
+        print(f"\n📩 Whoop, I received: {filepath}")        
         self.send_response(200)
         self.end_headers()
         self.wfile.write(b"OK")
 
-        # print("Audio file received → processing (speech to text)")
-        file_received = True  # ← set flag
-
+        file_received = True
 
 def run():
     global file_received
 
-    PORT = 8765
+    # Start server
+    PORT = config["port"]
     server = HTTPServer(("0.0.0.0", PORT), UploadHandler)
-    server.timeout = 0.1  # ← IMPORTANT
+    server.timeout = 0.1 
     print("--------------------------------------------")
     print(f"📍 Server IP: {socket.gethostbyname(socket.gethostname())}")
-    print(f"👂 Is there anybody out there? I'm listening on port {PORT}...")
+    print(f"🎯 I'm the python handler for booth {config["booth_id"]}, so I'm listening on port {PORT} ...")
+    print(f"👂 Is there anybody out there?")
 
+    # Hold the line until the file is received
     while not file_received:
-        server.handle_request()  # ← non-blocking
+        server.handle_request()
 
-    file_received = False  # reset for next time
+    # Clean up and move to next state
+    file_received = False 
     server.server_close()
     return "stt"
