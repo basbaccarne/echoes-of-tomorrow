@@ -13,6 +13,7 @@
 # Libraries
 import importlib
 import time
+import socket
 from gpiozero import Device
 from states.shared import SharedState
 
@@ -22,6 +23,23 @@ from states.shared import SharedState
 # Global "state" variable and loaded state to track which module is currently loaded
 state = "idle"
 loaded_state = None
+
+print("☎️ Raspberry Pi Telephone Module")
+print(f"IP address: {get_ip()}")
+print(f"Starting state machine in state: {state}")
+
+# function to get the ip address
+def get_ip():
+    try:
+        # This does not actually connect to the internet,
+        # it just determines the active network interface
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception:
+        return "No network connection"
 
 # Main loop to continuously check the state and run the corresponding module
 try:
