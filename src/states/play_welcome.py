@@ -1,5 +1,6 @@
 import os
 import subprocess
+from states.shared import SharedState
 
 def run():
     # build absolute path (project root)
