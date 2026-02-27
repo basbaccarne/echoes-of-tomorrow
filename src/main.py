@@ -38,10 +38,11 @@ def get_ip():
         return "No network connection"
     
 # opening statements
+print("\n-------------------------------")
 print("☎️ Raspberry Pi Telephone Module")
 print(f"IP address: {get_ip()}")
 print(f"Starting state machine in state: {state}")
-print("Waiting for the horn to be picked up, loopking forward to this conversation ...\n")
+print("Waiting for the horn to be picked up, looking forward to this conversation ...\n")
 
 # Main loop to continuously check the state and run the corresponding module
 try:
@@ -57,7 +58,7 @@ try:
             next_state = module.run()
 
             if next_state:
-                print(f"Switching to state: {next_state}")
+                print(f"\nSwitching to state: {next_state}")
                 state = next_state
 
         except Exception as e:

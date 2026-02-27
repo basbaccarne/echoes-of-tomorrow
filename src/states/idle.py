@@ -10,7 +10,7 @@ def run():
             time.sleep(0.01)
             
         # go to the next state (play welcome)
-        print("The horn has been picked up → play welcome message")
+        print("\n📞 The horn has been picked up → let the librarian respond 👴")
         time.sleep(debounce)
         return "play_welcome"
 
