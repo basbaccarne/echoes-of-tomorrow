@@ -58,31 +58,32 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 # State machine (pi & server)
 
 ```mermaid
-graph LR
-    classDef pi fill:#BCCCE0,stroke-width:0px,rx:12,ry:12
-    classDef server fill:#BF98A0,stroke-width:0px,rx:12,ry:12
+flowchart TB
+    classDef pi     fill:#BCCCE0,stroke-width:0
+    classDef server fill:#BF98A0,stroke-width:0
 
-    subgraph Raspberry Pi
-        direction LR
-        IDLE:::pi -->|horn release| PLAY_WELCOME:::pi
-        PLAY_WELCOME -->|audio done| RECORDING:::pi
-        RECORDING -->|hashtag press| SENDING:::pi
-        SENDING --> WAITING:::pi
-        WAITING -->|file detected| RESPONDING:::pi
-        RESPONDING -->|audio done| IDLE
+    subgraph Pi ["Raspberry Pi"]
+        direction TB
+        IDLE:::pi-->|horn release| PLAY_WELCOME:::pi
+        PLAY_WELCOME     -->|audio done| RECORDING:::pi
+        RECORDING        -->|# press| SENDING:::pi
+        SENDING          --> WAITING:::pi
+        WAITING          -->|file detected| RESPONDING:::pi
+        RESPONDING:::pi  -->|audio done| IDLE
     end
 
-    subgraph Server
-        direction LR
-        WAITING_FOR_RECEIVE:::server -->|http complete| STT:::server
-        STT -->|analysis ready| n8n:::server
-        n8n -->|response| TTS:::server
-        TTS -->|wav generated| SENDINGBACK:::server
-        SENDINGBACK --> WAITING_FOR_RECEIVE
+    subgraph Srv ["Server"]
+        direction TB
+        RECEIVE:::server -->|http complete| STT:::server
+        STT              -->|transcribed| N8N:::server
+        N8N              -->|response| TTS:::server
+        TTS              -->|wav ready| SEND_BACK:::server
+        SEND_BACK        --> RECEIVE
     end
 
-    SENDING --> WAITING_FOR_RECEIVE
-    SENDINGBACK --> WAITING
+    SENDING   -->|upload| RECEIVE
+    SEND_BACK -->|deliver| WAITING
+
 ```
 
 # File structure on the server
