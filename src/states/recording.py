@@ -12,7 +12,7 @@ def run():
 
     # start recording if not already
     if process is None:
-        print(f"Recording to: {audio_path}")
+        print(f"n🎤 Recording to: {audio_path}")
         process = subprocess.Popen([
             "arecord",
             "-D", "plughw:2,0",

@@ -18,7 +18,7 @@ from gpiozero import Device
 from states.shared import SharedState
 
 # detect DIP position and write to shared state (then all states can access it using SharedState.booth_id)
-# SharedState.booth_id = detected_id
+SharedState.booth_id = 0
 
 # Global "state" variable and loaded state to track which module is currently loaded
 state = "idle"
@@ -41,6 +41,7 @@ def get_ip():
 print("\n-------------------------------")
 print("☎️ Raspberry Pi Telephone Module")
 print(f"IP address: {get_ip()}")
+print(f'This device is set to booth ID: {SharedState.booth_id}')
 print(f"Starting state machine in state: {state}")
 print("Waiting for the horn to be picked up, looking forward to this conversation ...\n")
 

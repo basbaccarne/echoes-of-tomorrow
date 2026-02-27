@@ -4,9 +4,10 @@ import subprocess
 def run():
     # build absolute path (project root)
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-    audio_path = os.path.join(base_dir, "audio", "welcome.wav")
+    audio_path = os.path.join(base_dir, "audio", f"welcome_{SharedState.booth_id}.wav")
 
     print(f"\n🗣️ Playing: {audio_path}")
+    print("ALSA message:")
 
     try:
         subprocess.run([
