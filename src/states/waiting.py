@@ -6,7 +6,7 @@ from states.shared import SharedState
 
 def run():
     
-     print("\n⏳   Sending the question to the librarian for processing and response generation")
+    print("\n⏳   Sending the question to the librarian for processing and response generation")
     
     # play prerecorded response
     # hhtp send
