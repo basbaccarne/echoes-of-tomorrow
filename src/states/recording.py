@@ -9,7 +9,7 @@ def run():
     global process
 
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-    audio_path = os.path.join(base_dir, "audio", f"recorded_{SharedState.booth_id}.wav")
+    audio_path = os.path.join(base_dir, "audio", f"question_{SharedState.booth_id}.wav")
 
     # start recording if not already
     if process is None:
@@ -31,7 +31,7 @@ def run():
         process.wait()
         process = None
         # go to the next state once the recording is stored
-        print("🛑 Hashtag button pressed → Recording stopped.")
+        print("🛑   Hashtag button pressed → Recording stopped.")
         return "waiting"
 
     return None

@@ -13,7 +13,9 @@ def run():
         print("No waiting file found")
         return "idle"
 
-    print(f"Playing waiting file: {audio_path}")
+    print(f"\n⏳ Playing the waiting librarian while processing the question")
+    # print(f"Playing waiting file: {audio_path}")
+    print("ALSA message:")
 
     try:
         subprocess.run([
@@ -25,5 +27,10 @@ def run():
         print(f"aplay error: {e}")
         return "idle"
 
-    print("Playback finished → idle")
+    print("Playback finished → idle\n")
+    print("--------------------------------\n")
+    print(f'This device is still set to booth ID: {SharedState.booth_id}')
+    print(f"Going back to state: idle")
+    print("Waiting for the horn to be picked up, looking forward to this conversation ...\n")
+    
     return "idle"
