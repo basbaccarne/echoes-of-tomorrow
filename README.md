@@ -25,7 +25,7 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 | USB WiFi dongle server | 1 | €10 | ✔ grotron |
 | Flat arcade button | 4 | €1,5 | IDE lab |
 | Server | 1 | -- | laptop emu of desktop IDE lab|
-| 3.5mm jack telephone horn | 4 | -- | IDE lab |
+| 3.5mm jack telephone horn | 4 | -- | IDE lab + webshop tbd |
 | 3.5 mm jack to usb dongle|4| €9 | ✔ amazon |
 | [or] USB telephone horn |4| €20 | webshop tbd |
 
