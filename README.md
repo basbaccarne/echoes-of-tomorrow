@@ -1,10 +1,9 @@
 # Echoes of Tomorrow
 Echoes of Tomorrow is an installation developed for the [Comon](https://comon.gent/) expo at [De Krook](https://dekrook.be/).   
-*Tinkered with* ❤ *by Bas Baccarne, Ben Robaeyst, Tim Theys, Fran Burger, Julien Verplancke, ......*
+*Tinkered with* ❤ *by Bas Baccarne, Ben Robaeyst, Tim Theys, Fran Burger, Julien Verplanken, Yannick Christiaens, Jeroen Bourgonjon, Wanda Gaertner, Stephanie Van Hove, Azra Verlee, Axel Kiekens, Morgane Spanhove & Flo Van Hove*.
  
 ## Project Description
-Echoes of Tomorrow is an immersive, interactive installation that invites visitors to step into a dialogue with the future—literally. Grounded in the methodologies of Futures Research and speculative design, this experiential piece uses a powerful metaphorical and physical system to make possible futures tangible, audible, and emotionally resonant.   
-At the heart of the installation stand three totemic structures, each representing a distinct future scenario. These futures are not predictions, but provocations—embodied visions of what could emerge based on the interplay of current social, environmental, and technological trends. Each totem channels a unique persona, brought to life through scripted AI-generated voice interactions, audio design, and environmental cues.
+Echoes of Tomorrow is an immersive, interactive installation that invites visitors to step into a dialogue with the future—literally. Grounded in the methodologies of Futures Research and speculative design, this experiential piece uses a powerful metaphorical and physical system to make possible futures tangible, audible, and emotionally resonant. At the heart of the installation stand four telephone boots, each representing a distinct future scenario. These futures are not predictions, but provocations—embodied visions of what could emerge based on the interplay of current social, environmental, and technological trends. Each totem channels a unique persona, brought to life through scripted AI-generated voice interactions, audio design, and environmental cues.
 
 ---
 
@@ -15,30 +14,21 @@ At the heart of the installation stand three totemic structures, each representi
 # Bill of materials
 | part  | count  | price per part|
 |---|---|---|
-|  raspberry pi 4B |  4 | €80 |
-| voeding raspi | 4 | |
-| SD kaartje 16gb | 4 |
-| light sprint button | 4 | |
-| big surface button | 4 | |
-| led ring | 4 ||
-| router | 1 | |
-| USB WiFi dongle server | 1 ||
-| server | 1 ||
-| USB or 3.5mm jack telephone |4| |
-| (if 3.5 mm) jack to usb dongle|4||
-| Grove 6-position DIP switch | | |
+| raspberry pi 4B |  4 | €80 |
+| voeding raspi | 4 | €13 |
+| SD kaartje SANDISK MicroSDXC Ultra 32gb | 4 | €10 |
+| Microswitch eindstop | 4 | €3 |
+| Flat arcade button | 4 | €1,5 |
+| led ring | 4 | €20 |
+| router | 1 | €60 |
+| USB WiFi dongle server | 1 | €10 |
+| server | 1 | laptop dennis|
+| USB or 3.5mm jack telephone horn |4| €20 |
+| (if 3.5 mm) jack to usb dongle|4| €9 |
+| [Grove 6-position DIP switch](https://www.kiwi-electronics.com/nl/grove-6-position-dip-switch-20587?search=grove%206-position%20DIP%20switch) |4 | €5,43|
 
-## General remarks
-**Latency challenge**
-* Nvidia Jetson Orin Nano kan dit sneller maken (, maar duur > €500)
-* Een lokale server kan dit sneller maken
-* Een cloud serverice kan dit sneller maken
-
-**Other things to think of**
-* Dutch plosives (“p”, “t”, “k”) clip easily → lower mic gain
-* Avoid long responses
-* [Interesting read](https://medium.com/@martin.hodges/setting-up-a-mems-i2s-microphone-on-a-raspberry-pi-306248961043)   
-
+# 3D model
+* [Fusion link](https://a360.co/4aQVtJP)
 
 ---
 # Build zone pi
@@ -121,3 +111,14 @@ graph TD;
 * ✔️ Test: [USB sound card](/tests/speaker/usb_sound_card.md)
 * ✔️ Test: [Google Voice HAT](/tests/speaker/voice_hat.md)
 * ✔️ Test: [I²S DAC pre-amp](/tests/speaker/I2S.md) (e.g. ADA3006)
+
+## General remarks
+**Latency challenge**
+* Nvidia Jetson Orin Nano kan dit sneller maken (, maar duur > €500)
+* Een lokale server kan dit sneller maken
+* Een cloud serverice kan dit sneller maken
+
+**Other things to think of**
+* Dutch plosives (“p”, “t”, “k”) clip easily → lower mic gain
+* Avoid long responses
+* [Interesting read](https://medium.com/@martin.hodges/setting-up-a-mems-i2s-microphone-on-a-raspberry-pi-306248961043)   
