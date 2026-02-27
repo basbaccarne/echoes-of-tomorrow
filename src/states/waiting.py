@@ -5,6 +5,13 @@ import subprocess
 from states.shared import SharedState
 
 def run():
+    
+     print("\n⏳   Sending the question to the librarian for processing and response generation")
+    
+    # play prerecorded response
+    # hhtp send
+    # stop prerecorded response once the response is ready and then play the response
+    
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
     # use the code below to playback the recording
     # audio_path = os.path.join(base_dir, "audio", f"question_{SharedState.booth_id}.wav")
@@ -28,9 +35,6 @@ def run():
         print(f"aplay error: {e}")
         return "idle"
 
-    print("\n--------------------------------\n")
-    print(f"Going back to the idle state.")
-    print(f'This device is still set to booth ID: {SharedState.booth_id}')
-    print("👂   Waiting for the horn to be picked up, looking forward to the next conversation ...")
+    print("response ready, playing the response and going back to idle")
     
-    return "idle"
+    return "response"
