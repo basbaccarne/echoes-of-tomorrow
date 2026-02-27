@@ -1,8 +1,8 @@
 from gpiozero import Button
 import time
 
-button_horn = Button(4)
-button_hashtag = Button(3)
+button_horn = Button(17)
+button_hashtag = Button(27)
 
 debounce = 0.3
 

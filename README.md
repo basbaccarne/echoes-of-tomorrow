@@ -36,10 +36,11 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 ---
 # Build zone pi
 **wiring**
-* Connect **horn button** to ``GPIO4`` and ``GROUND``
-* Connect **hashtag button** to ``GPIO3`` and ``GROUND``
-* Connect **DIP switch** to ... ```GPIO17```
-* Connect **LED ring** to ```5V``` (red) ```ground``` (black) and ```GPIO2``` (yellow)
+* Connect **DIP switch** to ```3.3V```(red), ```ground```(black), ```SDA/GPIO2```(white), and ```SCL/GPIO3```(yellow)
+* Connect **LED ring** to ```5V``` (red) ```ground``` (black) and ```GPIO4``` (yellow)
+* Connect **horn button** to ``GPIO17`` and ``GROUND``
+* Connect **hashtag button** to ``GPIO27`` and ``GROUND``
+
 * Connect **USB telephone** to ```USB```
 * Attach power
 * Configure SD card (pi OS lite is fine)
