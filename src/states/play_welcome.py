@@ -22,5 +22,5 @@ def run():
         return "idle"  # fallback
 
     # aplay holds the script until playback finishes, so we can directly return the next state afterwards
-    print("\nWelcome message finished")
+    print("\nWelcome message finished.")
     return "recording"

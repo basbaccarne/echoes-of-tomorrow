@@ -14,7 +14,7 @@ def run():
     # start recording if not already
     if process is None:
         print(f"\n🎤 Recording the question in file {audio_path}")
-        print("Press the #️⃣ button to stop the recording.")
+        print("Press the #️⃣-button to stop the recording.")
         print("ALSA message:")
         process = subprocess.Popen([
             "arecord",
@@ -31,7 +31,7 @@ def run():
         process.wait()
         process = None
         # go to the next state once the recording is stored
-        print("Hashtag button pressed → Recording stopped → waiting for processing")
+        print("🛑 Hashtag button pressed → Recording stopped.")
         return "waiting"
 
     return None

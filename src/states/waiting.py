@@ -2,16 +2,18 @@
 # needs to be replaced with sending
 import os
 import subprocess
+from states.shared import SharedState
 
 def run():
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-    audio_path = os.path.join(base_dir, "audio", "recorded.wav")
+    # audio_path = os.path.join(base_dir, "audio", f"recorded_{SharedState.booth_id}.wav")
+    audio_path = os.path.join(base_dir, "audio", f"waiting_{SharedState.booth_id}.wav")
 
     if not os.path.exists(audio_path):
-        print("No recording found")
+        print("No waiting file found")
         return "idle"
 
-    print(f"Playing recorded file: {audio_path}")
+    print(f"Playing waiting file: {audio_path}")
 
     try:
         subprocess.run([
