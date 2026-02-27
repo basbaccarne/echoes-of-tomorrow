@@ -24,10 +24,6 @@ from states.shared import SharedState
 state = "idle"
 loaded_state = None
 
-print("☎️ Raspberry Pi Telephone Module")
-print(f"IP address: {get_ip()}")
-print(f"Starting state machine in state: {state}")
-
 # function to get the ip address
 def get_ip():
     try:
@@ -40,6 +36,11 @@ def get_ip():
         return ip
     except Exception:
         return "No network connection"
+    
+# opening statements
+print("☎️ Raspberry Pi Telephone Module")
+print(f"IP address: {get_ip()}")
+print(f"Starting state machine in state: {state}")
 
 # Main loop to continuously check the state and run the corresponding module
 try:
