@@ -1,5 +1,5 @@
 from gpiozero import Button
 
 # created only once
-button_horn = Button(4)
-button_stop = Button(3)
+button_horn = Button(17)
+button_stop = Button(27)
