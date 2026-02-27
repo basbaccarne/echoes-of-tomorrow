@@ -1,4 +1,9 @@
 server__ip: 10.63.235.205
 audio_path: c:/echoes-of-tomorrow/audio_files
-booth_id: 1
+booth_id: 0
 port: 8765
+booth_ip:
+  0: 10.63.235.165
+  1: 10.63.235.166
+  2: 10.63.235.165
+  3: 10.63.235.165

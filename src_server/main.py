@@ -7,9 +7,10 @@ import time
 
 state = "waiting_for_receive"
 # for testing: uncomment the line below and change with the state you want to start from
-# state = "stt"
+# state = "tts"
 
 loaded_state = None
+last_sender_ip = None
 
 try:
     while True:
@@ -23,8 +24,8 @@ try:
             # run state (module always exists after load)
             next_state = module.run()
 
-            if next_state:
-                print(f"\nSwitching to state: {next_state}")
+            if next_state and next_state != state:
+                print(f"\n➡️  Switching to state: {next_state}")
                 state = next_state
 
         except Exception as e:

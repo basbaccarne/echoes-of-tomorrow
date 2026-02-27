@@ -46,7 +46,7 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 1. Initialize Raspberry Pi & ```sudo apt update && sudo apt upgrade -y```
 2. Software Installations - ```sudo apt install git -y```
 3. Get the main repo - ```git clone https://github.com/basbaccarne/echoes-of-tomorrow```
-4. Install python libraries - ```pip install pyyaml```
+4. Install python libraries - ```pip install pyyaml requests```
 5. Set ID
 6. Set service
 7. Switch to offline network comon
@@ -83,6 +83,32 @@ graph LR
 
     SENDING --> WAITING_FOR_RECEIVE
     SENDINGBACK --> WAITING
+```
+
+# File structure on the server
+```
+c:/
+    echoes-of-tomorrow/
+        audio_files/
+            question_0.wav
+            question_0.txt
+            reponse_0.txt
+            response_0.wav
+
+            question_1.wav
+            question_1.txt
+            reponse_1.txt
+            response_1.wav
+
+            question_2.wav
+            question_2.txt
+            reponse_2.txt
+            response_2.wav
+
+            question_3.wav
+            question_3.txt
+            reponse_3.txt
+            response_3.wav
 ```
 
 # Tests
