@@ -6,7 +6,8 @@ from states.shared import SharedState
 
 def run():
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-    # audio_path = os.path.join(base_dir, "audio", f"recorded_{SharedState.booth_id}.wav")
+    # use the code below to playback the recording
+    # audio_path = os.path.join(base_dir, "audio", f"question_{SharedState.booth_id}.wav")
     audio_path = os.path.join(base_dir, "audio", f"waiting_{SharedState.booth_id}.wav")
 
     if not os.path.exists(audio_path):
