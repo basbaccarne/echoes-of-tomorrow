@@ -41,6 +41,7 @@ def get_ip():
 print("☎️ Raspberry Pi Telephone Module")
 print(f"IP address: {get_ip()}")
 print(f"Starting state machine in state: {state}")
+print("Waiting for the horn to be picked up, loopking forward to this conversation ...")
 
 # Main loop to continuously check the state and run the corresponding module
 try:
