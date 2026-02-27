@@ -8,11 +8,13 @@ def run():
     global process
 
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-    audio_path = os.path.join(base_dir, "audio", "recorded.wav")
+    audio_path = os.path.join(base_dir, "audio", f"recorded_{SharedState.booth_id}.wav")
 
     # start recording if not already
     if process is None:
-        print(f"n🎤 Recording to: {audio_path}")
+        print(f"\n🎤 Recording the question in file {audio_path}")
+        print("Press the #️⃣ button to stop the recording.")
+        print("ALSA message:")
         process = subprocess.Popen([
             "arecord",
             "-D", "plughw:2,0",
@@ -20,7 +22,7 @@ def run():
             "-t", "wav",
             audio_path
         ])
-        print("Recording started")
+        # print("Recording started")
 
     # stop on button press
     if button_stop.is_pressed:
