@@ -6,7 +6,7 @@ def run():
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
     audio_path = os.path.join(base_dir, "audio", "welcome.wav")
 
-    print(f"Playing via aplay: {audio_path}")
+    print(f"\n🗣️ Playing: {audio_path}")
 
     try:
         subprocess.run([
@@ -19,5 +19,5 @@ def run():
         return "idle"  # fallback
 
     # aplay holds the script until playback finishes, so we can directly return the next state afterwards
-    print("Welcome message finished → recording voice")
+    print("\nWelcome message finished → recording voice after the beep")
     return "recording"

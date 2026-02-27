@@ -28,7 +28,7 @@ def run():
         process.wait()
         process = None
         # go to the next state once the recording is stored
-        print("Hashtag button pressed → Recording stopped → waiting for processing)
+        print("Hashtag button pressed → Recording stopped → waiting for processing")
         return "waiting"
 
     return None
