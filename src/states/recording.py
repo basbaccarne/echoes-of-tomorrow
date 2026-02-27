@@ -13,8 +13,8 @@ def run():
 
     # start recording if not already
     if process is None:
-        print(f"\n🎤 Recording the question in file {audio_path}")
-        print("Press the #️⃣-button to stop the recording.")
+        print(f"\n🎤   Recording the question in file {audio_path}")
+        print("Press the #️⃣   button to stop the recording.")
         print("ALSA message:")
         process = subprocess.Popen([
             "arecord",

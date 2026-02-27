@@ -13,7 +13,7 @@ def run():
         print("No waiting file found")
         return "idle"
 
-    print(f"\n⏳ Playing the waiting librarian while processing the question")
+    print(f"\n⏳   Playing the waiting librarian while processing the question")
     # print(f"Playing waiting file: {audio_path}")
     print("ALSA message:")
 
@@ -27,10 +27,9 @@ def run():
         print(f"aplay error: {e}")
         return "idle"
 
-    print("Playback finished → idle\n")
-    print("--------------------------------\n")
+    print("\n--------------------------------\n")
+    print(f"Going back to the idle state.")
     print(f'This device is still set to booth ID: {SharedState.booth_id}')
-    print(f"Going back to state: idle")
-    print("Waiting for the horn to be picked up, looking forward to this conversation ...\n")
+    print("👂   Waiting for the horn to be picked up, looking forward to the next conversation ...")
     
     return "idle"
