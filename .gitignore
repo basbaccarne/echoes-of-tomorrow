@@ -1,3 +1,6 @@
 secrets.yaml
 src_server/states/__pycache__/sending.cpython-314.pyc
 src_server/states/__pycache__/tts.cpython-314.pyc
+src_server/states/__pycache__/n8n.cpython-314.pyc
+.gitignore
+src_server/states/__pycache__/stt.cpython-314.pyc
