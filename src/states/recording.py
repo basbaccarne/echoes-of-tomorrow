@@ -1,6 +1,7 @@
 import subprocess
 import os
 from hardware import button_stop
+from states.shared import SharedState
 
 process = None
 

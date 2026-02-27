@@ -7,7 +7,8 @@ def run():
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
     audio_path = os.path.join(base_dir, "audio", f"welcome_{SharedState.booth_id}.wav")
 
-    print(f"\n🗣️ Playing the welcome message of the librarian 👴: {audio_path}")
+    print(f"\n🗣️ Playing the welcome message of the librarian 👴")
+    # print(f"Playing audio file: {audio_path}")
     print("ALSA message:")
 
     try:
