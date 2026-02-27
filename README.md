@@ -12,20 +12,23 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 * [General set-up](https://www.figma.com/board/wxgd1HG60FEPWjULjJxW3G/Untitled?node-id=0-1&t=mSymsbc2NLRJAKZq-1)
 
 # Bill of materials
-| part  | count  | price per part|
-|---|---|---|
-| raspberry pi 4B |  4 | €80 |
-| voeding raspi | 4 | €13 |
-| SD kaartje SANDISK MicroSDXC Ultra 32gb | 4 | €10 |
-| Microswitch eindstop | 4 | €3 |
-| Flat arcade button | 4 | €1,5 |
-| led ring | 4 | €20 |
-| router | 1 | €60 |
-| USB WiFi dongle server | 1 | €10 |
-| server | 1 | laptop dennis|
-| USB or 3.5mm jack telephone horn |4| €20 |
-| (if 3.5 mm) jack to usb dongle|4| €9 |
-| [Grove 6-position DIP switch](https://www.kiwi-electronics.com/nl/grove-6-position-dip-switch-20587?search=grove%206-position%20DIP%20switch) |4 | €5,43|
+| part  | count  | price per part| source |
+|---|---|---| ---|
+| [Raspberry pi4 4GB](https://www.kiwi-electronics.com/nl/raspberry-pi-4-model-b-4gb-4268) |  4 | €80 | kiwi |
+| [Voeding raspi 27w usb-c](https://www.kiwi-electronics.com/nl/raspberry-pi-27w-usb-c-power-supply-zwart-eu-11582) | 4 | €13 | kiwi |
+| [Raspberry pi active cooler](https://www.kiwi-electronics.com/nl/raspberry-pi-active-cooler-11585) | 4 | €5,5 | kiwi |
+| [Microswitch](https://www.kiwi-electronics.com/nl/mini-microschakelaar-spdt-offset-lever-2-pack-2499)| 4 | €3 | kiwi |
+| [Grove 6-position DIP switch](https://www.kiwi-electronics.com/nl/grove-6-position-dip-switch-20587?search=grove%206-position%20DIP%20switch) |4 | €5,43| kiwi |
+| [Led ring](https://www.kiwi-electronics.com/nl/grove-rgb-led-ring-16-ws2813-mini-10313)| 4 | €13 | kiwi |
+| SD kaartje 32gb (snel) | 4 | €10 | gotron |
+| Router | 1 | €60 | ✔ gotron | 
+| USB WiFi dongle server | 1 | €10 | ✔ grotron |
+| Flat arcade button | 4 | €1,5 | IDE lab |
+| Server | 1 | -- | laptop emu of desktop IDE lab|
+| 3.5mm jack telephone horn | 4 | -- | IDE lab |
+| 3.5 mm jack to usb dongle|4| €9 | ✔ amazon |
+| [or] USB telephone horn |4| €20 | webshop tbd |
+
 
 # 3D model
 * [Fusion link](https://a360.co/4aQVtJP)
