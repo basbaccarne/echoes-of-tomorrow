@@ -39,7 +39,7 @@ def get_ip():
     
 # opening statements
 print("\n-------------------------------")
-print("☎️ Raspberry Pi Telephone Module")
+print("☎️   Raspberry Pi Telephone Module")
 print(f"IP address: {get_ip()}")
 print(f'This device is set to booth ID: {SharedState.booth_id}')
 print(f"Starting state machine in state: {state}")
