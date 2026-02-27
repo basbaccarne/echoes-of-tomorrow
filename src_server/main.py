@@ -4,6 +4,9 @@
 
 # run using "python main.py --booth-id=0" (or 1, 2, 3)
 
+# static config is stored in config.yaml
+# dynamic config is stored in states/shared.py (SharedState class)
+
 import importlib
 import time
 import argparse

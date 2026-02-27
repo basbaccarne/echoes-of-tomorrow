@@ -7,6 +7,9 @@
 # and use that to send and receive on a different port of the server and name audio files differently, 
 # so we can run 4 parallel state machines on the same server for 4 different pis
 
+# static config is stored in config.yaml
+# dynamic config is stored in states/shared.py (SharedState class)
+
 # Libraries
 import importlib
 import time
