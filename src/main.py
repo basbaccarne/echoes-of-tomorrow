@@ -3,6 +3,10 @@
 # The state scripts can update the state variable to transition to the next state
 # General parameters are stored in config.yaml and imported by the state scripts as needed
 
+# to do: add a DIP switch to set the pi in mode 0, 1, 2 or 3 
+# and use that to send and receive on a different port of the server and name audio files differently, 
+# so we can run 4 parallel state machines on the same server for 4 different pis
+
 # Libraries
 import importlib
 import time

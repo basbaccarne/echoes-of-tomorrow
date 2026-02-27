@@ -1,10 +1,14 @@
 # main state machine of the server
 # quickest hack is to run this script for each pi on a different port
+# to each pi sends to another port, so we can run 4 paralllel state machines on the same server
 
 import importlib
 import time
 
 state = "waiting_for_receive"
+# for testing: uncomment the line below and change with the state you want to start from
+# state = "stt"
+
 loaded_state = None
 
 try:
