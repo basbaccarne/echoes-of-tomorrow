@@ -26,7 +26,7 @@ def run():
     # store in audio_files/response_0.wav (where 0 is the booth id, to be set in config.yaml)
     
     time.sleep(5)  # simulate processing time
-    c
+    
     audio_path = SAVE_DIR
     print(f"The WAV file should be stored as: response_{SharedState.booth_id}.wav")
     print(f"in directory: {audio_path}")
