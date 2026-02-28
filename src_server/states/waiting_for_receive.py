@@ -7,7 +7,7 @@ import yaml
 from pathlib import Path
 import socket
 import datetime
-
+from states.shared import SharedState
 
 # Directories
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +25,7 @@ file_received = False
 class UploadHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         global file_received
-
-        filename = self.headers.get("X-Filename", "recording.wav")
+        filename = self.headers.get("X-Filename", f"recording_{SharedState.booth_id}.wav")
         length = int(self.headers["Content-Length"])
         data = self.rfile.read(length)
 
@@ -51,7 +50,7 @@ def run():
     server.timeout = 0.1 
     print("--------------------------------------------")
     print(f"📍 Server IP: {socket.gethostbyname(socket.gethostname())}")
-    print(f"🎯 I'm the python handler for booth {config["booth_id"]}, so I'm listening on port {PORT} ...")
+    print(f"🎯 I'm the python handler for booth {SharedState.booth_id}, so I'm listening on port {PORT} ...")
     print(f"👂 Is there anybody out there?")
 
     # Hold the line until the file is received

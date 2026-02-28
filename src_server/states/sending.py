@@ -4,6 +4,7 @@ import requests
 import os
 from pathlib import Path
 import yaml
+from states.shared import SharedState
 
 # Directories
 BASE_DIR = Path(__file__).resolve().parent.parent
