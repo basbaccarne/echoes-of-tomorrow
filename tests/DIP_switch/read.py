@@ -30,13 +30,9 @@ def send_command(cmd, read_bytes=8):
     except OSError as e:
         return None
 
-# Try every possible command byte 0x00 to 0x10
-for cmd in range(0x00, 0x11):
-    time.sleep(0.1)  # let bus recover between attempts
+for cmd in [0x01, 0x02]:
+    time.sleep(0.1)
     resp = send_command(cmd)
-    if resp and resp != [0xff]*8 and resp != [0x00]*8:
-        print(f"cmd 0x{cmd:02X}: {[hex(b) for b in resp]}")
-    elif resp is None:
-        print(f"cmd 0x{cmd:02X}: ERROR")
-    else:
-        print(f"cmd 0x{cmd:02X}: {[hex(b) for b in resp]}")
+    print(f"cmd 0x{cmd:02X}: {[hex(b) for b in resp] if resp else 'ERROR'}")
+    if resp:
+        print(f"         binary: {[bin(b) for b in resp]}")
