@@ -21,27 +21,13 @@ ADDR = 0x03
 # bytes 4-9: one byte per switch (6 switches)
 # For each switch byte: bit 0 = raw status (0=ON, 1=OFF)
 
-def read_switches():
-    try:
-        # Read 10 bytes with no register (pure sequential read)
-        msg = smbus2.i2c_msg.read(ADDR, 10)
-        bus.i2c_rdwr(msg)
-        data = list(msg)
-        return data
-    except OSError as e:
-        print(f"ERROR: {e}")
-        return None
-
+import smbus2, time
+bus = smbus2.SMBus(1)
 while True:
-    data = read_switches()
-    if data:
-        print(f"raw: {[hex(b) for b in data]}")
-        # Event header is bytes 0-3
-        has_event = (data[0] | data[1]<<8 | data[2]<<16 | data[3]<<24) & 0x80000000
-        print(f"has_event: {bool(has_event)}")
-        # Switch states are bytes 4-9
-        print("─" * 30)
-        for i in range(6):
-            state = "ON " if not (data[4+i] & 0x01) else "OFF"
-            print(f"  Switch {i+1}: {state}  (raw byte: {hex(data[4+i])})")
-    time.sleep(1)
+    try:
+        msg = smbus2.i2c_msg.read(0x03, 10)
+        bus.i2c_rdwr(msg)
+        print([hex(b) for b in msg])
+    except:
+        print("ERROR")
+    time.sleep(0.5)
