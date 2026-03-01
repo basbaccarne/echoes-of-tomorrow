@@ -76,10 +76,11 @@ def run():
 
     server = HTTPServer(("0.0.0.0", PORT), UploadHandler)
     server.timeout = 0.1
+    port = config["unique_port"].get(SharedState.booth_id, PORT)
 
     print("\n--------------------------------------------")
     print(f"📍 Server IP: {get_local_ip()}")
-    print(f"🎯 I'm the python handler for booth {SharedState.booth_id}, listening on port {PORT}...")
+    print(f"🎯 I'm the python handler for booth {SharedState.booth_id}, listening on port {port}...")
     print("👂 Is there anybody out there?")
 
     # Wait until file is received
