@@ -15,10 +15,11 @@ import importlib
 import time
 import socket
 from gpiozero import Device
+from read_booth_id import read_booth_id
 from states.shared import SharedState
 
 # detect DIP position and write to shared state (then all states can access it using SharedState.booth_id)
-SharedState.booth_id = 0
+SharedState.booth_id = read_booth_id()
 
 # Global "state" variable and loaded state to track which module is currently loaded
 state = "idle"
