@@ -99,7 +99,7 @@ flowchart TB
 
 # File structure on the server
 ```
-c:/
+/home/
     echoes-of-tomorrow/
         audio_files/
             question_0.wav
