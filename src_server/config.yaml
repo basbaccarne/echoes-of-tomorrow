@@ -1,7 +1,12 @@
 server__ip: 10.63.235.205
 audio_path: c:/echoes-of-tomorrow/audio_files
 booth_id: 0
-port: 8765
+port: 8765 # to be omitted onde unique ports are implemented
+unique_port:
+  0: 8765
+  1: 8766
+  2: 8767
+  3: 8768
 booth_ip:
   0: 10.63.235.165
   1: 10.63.235.166

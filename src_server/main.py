@@ -22,7 +22,7 @@ SharedState.booth_id = args.booth_id
 print("Server started")
 print(f"🆔 Booth ID for this instance is set to: {SharedState.booth_id}")
 
-state = "stt"
+state = "waiting_for_receive"
 # for testing: uncomment the line below and change with the state you want to start from
 # state = "tts"
 
