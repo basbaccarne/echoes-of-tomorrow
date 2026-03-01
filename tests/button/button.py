@@ -1,6 +1,10 @@
 from gpiozero import Button
 import time
 
+# Connect button_horn to GPIO17 and GROUND
+# Connect button_hashtag  to GPIO27 and GROUND
+
+
 button_horn = Button(17)
 button_hashtag = Button(27)
 

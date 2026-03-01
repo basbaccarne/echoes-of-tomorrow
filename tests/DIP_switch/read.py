@@ -1,47 +1,50 @@
-# The Grove DIP switch is a static switch meant to configure things
-
+# The Grove DIP switch is a static switch meant to configure thing
 # Connection: power (3.3 or 5V), ground, sca, sdl (I²C)
-
 # The module’s default I²C address is 0x03
 
 # check if I²C is enabled on pi: sudo raspi-config 
     # > Interface Options → I2C → Enable (reboot if changed)
-    
-# to check if the device is detected: sudo i2cdetect -y 1
-    # should show 0x03 in the table
-    
-# pip3 install smbus2
 
-#!/usr/bin/env python3
-import smbus2
+# install grove libraries: sudo pip3 install grove.py (you'll need pip)
+
+from grove.factory import Factory
+from grove.button import Button
 import time
 
-I2C_ADDR = 0x03  # default address
-bus = smbus2.SMBus(1)  # I2C bus 1 on most Pis
+# create the multi switch (I2C device index 0)
+switch = Factory.getButton("I2C", 0)
 
-def read_dip():
-    try:
-        # Some devices require a simple byte read:
-        value = bus.read_byte(I2C_ADDR)
-        # 'value' now has six bits (bit0..bit5) corresponding to switches
-        return value
-    except Exception as e:
-        print("I2C read error:", e)
-        return None
+def on_event(index, event, tm):
+    # only react when level changes (ON/OFF)
+    if event & Button.EV_LEVEL_CHANGED:
+        print_dip_state()
 
-def print_state(val):
-    if val is None:
-        return
+def print_dip_state():
+    bits = 0
     states = []
-    for i in range(6):
-        # bit 0 = switch 1, bit 1 = switch 2, etc.
-        state = 'ON' if (val & (1 << i)) == 0 else 'OFF'
-        states.append(f"SW{i+1}:{state}")
-    print(" ".join(states))
 
-if __name__ == "__main__":
+    # read 6 switches
+    for i in range(6):
+        # RAW_STATUS == HIGH means OFF in DIP logic
+        if switch.btn.status(i) == Button.EV_RAW_STATUS:
+            states.append(f"SW{i+1}:ON")
+            bits |= (1 << i)
+        else:
+            states.append(f"SW{i+1}:OFF")
+
+    print(" ".join(states), "-> value:", bits)
+
+# attach event handler
+switch.on_event(on_event)
+
+print("🎛️ DIP test running — toggle switches now")
+print("Ctrl+C to stop\n")
+
+# initial read
+print_dip_state()
+
+try:
     while True:
-        dip = read_dip()
-        print_state(dip)
-        time.sleep(1)
-    
+        time.sleep(0.1)
+except KeyboardInterrupt:
+    print("\nstopped")
