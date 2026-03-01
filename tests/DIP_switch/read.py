@@ -7,44 +7,24 @@
 
 # install grove libraries: sudo pip3 install grove.py (you'll need pip)
 
-from grove.factory import Factory
-from grove.button import Button
+import smbus2
 import time
 
-# create the multi switch (I2C device index 0)
-switch = Factory.getButton("I2C", 0)
+bus = smbus2.SMBus(1)
+ADDR = 0x03
 
-def on_event(index, event, tm):
-    # only react when level changes (ON/OFF)
-    if event & Button.EV_LEVEL_CHANGED:
-        print_dip_state()
+# The device returns 2 bytes; byte 0 is the switch bitmask
+# Bit = 0 means ON (pulled low), 1 means OFF
 
-def print_dip_state():
-    bits = 0
-    states = []
-
-    # read 6 switches
-    for i in range(6):
-        # RAW_STATUS == HIGH means OFF in DIP logic
-        if switch.btn.status(i) == Button.EV_RAW_STATUS:
-            states.append(f"SW{i+1}:ON")
-            bits |= (1 << i)
-        else:
-            states.append(f"SW{i+1}:OFF")
-
-    print(" ".join(states), "-> value:", bits)
-
-# attach event handler
-switch.on_event(on_event)
-
-print("🎛️ DIP test running — toggle switches now")
-print("Ctrl+C to stop\n")
-
-# initial read
-print_dip_state()
-
-try:
-    while True:
-        time.sleep(0.1)
-except KeyboardInterrupt:
-    print("\nstopped")
+while True:
+    try:
+        data = bus.read_i2c_block_data(ADDR, 0, 2)
+        switches = data[0]
+        print("─" * 30)
+        for i in range(6):
+            state = "ON " if not (switches & (1 << i)) else "OFF"
+            print(f"  Switch {i+1}: {state}")
+        time.sleep(0.5)
+    except Exception as e:
+        print(f"Error: {e}")
+        time.sleep(1)
