@@ -100,6 +100,7 @@ flowchart TB
 # File structure on the server
 ```
 /home/
+  /io/
     echoes-of-tomorrow/
         audio_files/
             question_0.wav
