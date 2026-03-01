@@ -26,16 +26,11 @@ file_received = False
 
 
 # -----------------------------
-# Get local network IP
+# Get server IP
 # -----------------------------
 def get_local_ip():
-    """
-    Returns the IP address used for outgoing network traffic.
-    This avoids the 127.0.1.1 hostname issue on Linux.
-    """
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
-        # No real connection is made; this just selects the correct interface
         s.connect(("8.8.8.8", 80))
         ip = s.getsockname()[0]
     except Exception:
@@ -74,14 +69,6 @@ class UploadHandler(BaseHTTPRequestHandler):
 
         file_received = True
 
-    # Optional: silence default HTTP logging
-    def log_message(self, format, *args):
-        return
-
-
-# -----------------------------
-# State Runner
-# -----------------------------
 def run():
     global file_received
 
