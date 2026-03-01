@@ -8,14 +8,16 @@
 # you should see the device at address 0x03 using sudo i2cdetect -y -a 1
 
 import smbus2
+import time
 
 bus = smbus2.SMBus(1)
 ADDR = 0x03
 
-# No register — just read a raw byte directly
-for _ in range(10):
+# Single careful read with recovery time between attempts
+for i in range(5):
     try:
         result = bus.read_byte(ADDR)
-        print(f"raw byte: 0x{result:02X} = {result:08b}")
+        print(f"read {i}: 0x{result:02X} = {result:08b}")
     except OSError as e:
-        print(f"ERROR: {e}")
+        print(f"read {i}: ERROR - {e}")
+    time.sleep(1)  # give the chip a full second to recover
