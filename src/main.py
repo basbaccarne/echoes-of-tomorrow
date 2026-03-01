@@ -14,7 +14,6 @@
 import importlib
 import time
 import socket
-from gpiozero import Device
 from read_booth_id import read_booth_id
 from states.shared import SharedState
 from led_controller import LEDController
@@ -84,5 +83,4 @@ except KeyboardInterrupt:
 # Clean up GPIO pin usage on exit
 finally:
     led.stop()
-    Device.close_all()
     print("GPIO cleaned up")
