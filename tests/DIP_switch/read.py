@@ -24,17 +24,14 @@ def read():
         write = smbus2.i2c_msg.write(ADDR, [0x01])
         bus.i2c_rdwr(write)
         time.sleep(0.01)
-        read = smbus2.i2c_msg.read(ADDR, 8)
-        bus.i2c_rdwr(read)
-        data = list(read)
+        r = smbus2.i2c_msg.read(ADDR, 16)  # read 16 bytes instead of 8
+        bus.i2c_rdwr(r)
+        data = list(r)
         print(f"raw: {[hex(b) for b in data]}")
-        print(f"bin: {[bin(b) for b in data]}")
-        print()
         return data
     except OSError as e:
         print(f"ERROR: {e}")
 
-print("Reading continuously - flip switches one at a time:")
 while True:
     read()
     time.sleep(1)
