@@ -5,7 +5,7 @@ from states.shared import SharedState
 def run():
         
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-    audio_path = os.path.join(base_dir, "audio", f"response_{SharedState.booth_id}.wav")
+    audio_path = os.path.join(base_dir, "audio_files", f"response_{SharedState.booth_id}.wav")
     print(f"\n⏳   Checking for the response file at {audio_path}")
 
     if not os.path.exists(audio_path):

@@ -5,7 +5,7 @@ from states.shared import SharedState
 def run():
     # build absolute path (project root)
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-    audio_path = os.path.join(base_dir, "audio", f"welcome_{SharedState.booth_id}.wav")
+    audio_path = os.path.join(base_dir, "audio_files", f"welcome_{SharedState.booth_id}.wav")
 
     print(f"\n🗣️   Playing the welcome message of the librarian 👴")
     # print(f"Playing audio file: {audio_path}")

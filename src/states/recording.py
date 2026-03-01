@@ -9,7 +9,7 @@ def run():
     global process
 
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-    audio_path = os.path.join(base_dir, "audio", f"question_{SharedState.booth_id}.wav")
+    audio_path = os.path.join(base_dir, "audio_files", f"question_{SharedState.booth_id}.wav")
 
     # start recording if not already
     if process is None:
