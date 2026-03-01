@@ -28,7 +28,7 @@ def run():
     try:
         subprocess.run([
             "aplay",
-            "-D", "plughw:2,0",
+            "-D", "plughw:1,0",
             audio_path
         ], check=True)
     except subprocess.CalledProcessError as e:
