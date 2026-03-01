@@ -20,7 +20,7 @@ SEND_DIR = config["audio_path"]
 filename = f"response_{config['booth_id']}.wav"
 filepath = os.path.join(SEND_DIR, filename)
 
-port = config["port"]
+port = config["unique_port"].get(SharedState.booth_id, PORT)
 booth_ip = config["booth_ip"].get(config["booth_id"])
 
 
