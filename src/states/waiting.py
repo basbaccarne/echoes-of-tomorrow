@@ -4,7 +4,6 @@
 # Falls back to idle if the horn is replaced at any point.
 
 import os
-import pathlib
 import time
 import threading
 import urllib.request
@@ -27,15 +26,13 @@ _response_path = None   # set by the HTTP handler when response arrives
 _server        = None   # HTTPServer instance, kept so we can shut it down
 _ready         = False  # horn debounce flag
 
-# audio files
-audio_path = os.path.join("/home/pi/echoes-of-tomorrow", "audio_files", f"question_{booth_id}.wav")
-
 def run():
     global _response_path, _server, _ready
 
     booth_id   = SharedState.booth_id
     port       = UNIQUE_PORTS.get(booth_id, 8765)
-    audio_path = os.path.join(base_dir, "audio_files", f"question_{booth_id}.wav")
+    audio_path = os.path.join("/home/pi/echoes-of-tomorrow", "audio_files", f"question_{booth_id}.wav")
+
 
     # ── Step 1: upload question and start listener (runs once) ───────────────
     if _server is None and _response_path is None:
@@ -43,7 +40,7 @@ def run():
         _upload(audio_path, SERVER_IP, port)
 
         print(f"👂   Listening for response on port {port} ...")
-        _server = _start_listener(port)
+        _server = _start_listener(port, booth_id)
         time.sleep(0.3)   # horn debounce
         _ready = True
 
@@ -84,17 +81,16 @@ def _upload(audio_path, server_ip, port):
         print(f"   Upload error: {e}")
 
 
-def _start_listener(port):
-    """Start a one-shot HTTP server in a background thread."""
+def _start_listener(port, booth_id):
+    audio_dir = "/home/pi/echoes-of-tomorrow/audio_files"
 
     class ResponseHandler(BaseHTTPRequestHandler):
         def do_POST(self):
             global _response_path
-            filename = self.headers.get("X-Filename", "response.wav")
-            length   = int(self.headers["Content-Length"])
-            data     = self.rfile.read(length)
+            length    = int(self.headers["Content-Length"])
+            data      = self.rfile.read(length)
 
-            save_path = os.path.join(base_dir, "audio_files", filename)
+            save_path = os.path.join(audio_dir, f"response_{booth_id}.wav")
             with open(save_path, "wb") as f:
                 f.write(data)
 
@@ -102,16 +98,15 @@ def _start_listener(port):
             self.end_headers()
             self.wfile.write(b"OK")
 
-            _response_path = save_path  # signal the main loop
+            _response_path = save_path
 
         def log_message(self, format, *args):
-            pass  # suppress default HTTP log noise
+            pass
 
     server = HTTPServer(("0.0.0.0", port), ResponseHandler)
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     return server
-
 
 def _cleanup():
     """Shut down the listener and reset module state."""
