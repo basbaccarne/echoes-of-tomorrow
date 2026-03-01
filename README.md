@@ -98,6 +98,13 @@ flowchart TB
 
 ```
 
+# led ring animations
+* **idle**: slow amber breathe, very dim. The booth feels alive but dormant, like embers.
+* **play_welcome**: a gold comet chases around the ring. Looping and directional, it creates a sense of something arriving.
+* **recording**: all 16 LEDs glow red at the start, then drain away one by one over exactly 20 seconds. No numbers needed — the user can feel the time running out.
+* **waiting**: an orange spinner with a fading trail. Continuous loop, unhurried, something is happening behind the scenes.
+* **response**: soft cream pulse. Gentle and warm, like candlelight, so it doesn't compete with the audio playback.
+
 # File structure on the server
 ```
 /home/

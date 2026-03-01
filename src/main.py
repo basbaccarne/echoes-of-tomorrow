@@ -17,9 +17,15 @@ import socket
 from gpiozero import Device
 from read_booth_id import read_booth_id
 from states.shared import SharedState
+from led_controller import LEDController
 
 # detect DIP position and write to shared state (then all states can access it using SharedState.booth_id)
 SharedState.booth_id = read_booth_id()
+
+# initiate led animations
+led = LEDController()
+led.start()
+led.set_state("idle")  # set initial animation
 
 # Global "state" variable and loaded state to track which module is currently loaded
 state = "idle"
@@ -62,6 +68,7 @@ try:
             if next_state:
                 print(f"\nSwitching to state: {next_state}")
                 state = next_state
+                led.set_state(state)
 
         except Exception as e:
             print(f"Error in state {state}: {e}")
@@ -76,5 +83,6 @@ except KeyboardInterrupt:
 
 # Clean up GPIO pin usage on exit
 finally:
+    led.stop()
     Device.close_all()
     print("GPIO cleaned up")
