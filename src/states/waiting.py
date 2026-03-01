@@ -15,7 +15,7 @@ from states.shared import SharedState
 # ── Load config ──────────────────────────────────────────────────────────────
 base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
-with open(os.path.join(base_dir, "config.yaml"), "r") as f:
+with open(os.path.join(base_dir, "/echoes-of-tomorrow/src/config.yaml"), "r") as f:
     config = yaml.safe_load(f)
 
 SERVER_IP    = config["serverip"]
