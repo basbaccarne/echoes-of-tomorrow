@@ -14,7 +14,7 @@ from hardware import button_horn
 from states.shared import SharedState
 
 # ── Load config ──────────────────────────────────────────────────────────────
-base_dir = str(pathlib.Path.home() / "echoes-of-tomorrow" / "src")
+base_dir = "/home/pi/echoes-of-tomorrow/src"
 
 with open(os.path.join(base_dir, "config.yaml"), "r") as f:
     config = yaml.safe_load(f)
