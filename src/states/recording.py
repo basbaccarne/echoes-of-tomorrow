@@ -18,7 +18,7 @@ def run():
         print("ALSA message:")
         process = subprocess.Popen([
             "arecord",
-            "-D", "plughw:1,0",
+            "-D", "plughw:0,0",
             "-f", "cd",
             "-t", "wav",
             audio_path
