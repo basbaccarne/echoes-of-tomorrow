@@ -71,12 +71,10 @@ class UploadHandler(BaseHTTPRequestHandler):
 
 def run():
     global file_received
-
-    PORT = config["port"]
-
-    server = HTTPServer(("0.0.0.0", PORT), UploadHandler)
+    
+    port = config["unique_port"].get(SharedState.booth_id, default_port)
+    server = HTTPServer(("0.0.0.0", port), UploadHandler)
     server.timeout = 0.1
-    port = config["unique_port"].get(SharedState.booth_id, PORT)
 
     print("\n--------------------------------------------")
     print(f"📍 Server IP: {get_local_ip()}")
