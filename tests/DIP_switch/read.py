@@ -19,20 +19,22 @@ import time
 bus = smbus2.SMBus(1)
 ADDR = 0x03
 
-def send_command(cmd, read_bytes=8):
+def read():
     try:
-        write = smbus2.i2c_msg.write(ADDR, [cmd])
+        write = smbus2.i2c_msg.write(ADDR, [0x01])
         bus.i2c_rdwr(write)
         time.sleep(0.01)
-        read = smbus2.i2c_msg.read(ADDR, read_bytes)
+        read = smbus2.i2c_msg.read(ADDR, 8)
         bus.i2c_rdwr(read)
-        return list(read)
+        data = list(read)
+        print(f"raw: {[hex(b) for b in data]}")
+        print(f"bin: {[bin(b) for b in data]}")
+        print()
+        return data
     except OSError as e:
-        return None
+        print(f"ERROR: {e}")
 
-for cmd in [0x01, 0x02]:
-    time.sleep(0.1)
-    resp = send_command(cmd)
-    print(f"cmd 0x{cmd:02X}: {[hex(b) for b in resp] if resp else 'ERROR'}")
-    if resp:
-        print(f"         binary: {[bin(b) for b in resp]}")
+print("Reading continuously - flip switches one at a time:")
+while True:
+    read()
+    time.sleep(1)
