@@ -12,10 +12,10 @@ import smbus2
 bus = smbus2.SMBus(1)
 ADDR = 0x03
 
-# Read raw bytes from several registers so we can see what's what
-for reg in range(0x00, 0x08):
+# No register — just read a raw byte directly
+for _ in range(10):
     try:
-        data = bus.read_i2c_block_data(ADDR, reg, 4)
-        print(f"reg 0x{reg:02X}: {[hex(b) for b in data]}")
+        result = bus.read_byte(ADDR)
+        print(f"raw byte: 0x{result:02X} = {result:08b}")
     except OSError as e:
-        print(f"reg 0x{reg:02X}: ERROR - {e}")
+        print(f"ERROR: {e}")
