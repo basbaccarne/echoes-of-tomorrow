@@ -20,6 +20,7 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 | [Grove 6-position DIP switch](https://www.kiwi-electronics.com/nl/grove-6-position-dip-switch-20587?search=grove%206-position%20DIP%20switch) |4 | €5,43| ✔ kiwi |
 | [Led ring](https://www.kiwi-electronics.com/nl/grove-rgb-led-ring-16-ws2813-mini-10313)| 4 | €13 | ✔ kiwi |
 | [Grove pi HAT](https://www.kiwi-electronics.com/nl/grove-base-hat-for-raspberry-pi-3930) | 4 | €10 | kiwi |
+| [Grove to female jumper](https://www.kiwi-electronics.com/nl/grove-4-pin-female-jumper-to-grove-4-pin-conversion-cable-5-pack-2065) | 4 | €4.10 | kiwi |
 | SD kaartje 32gb (snel) | 4 | €10 | gotron |
 | Router | 1 | €60 | ✔ gotron | 
 | USB WiFi dongle server | 1 | €10 | ✔ grotron |
@@ -37,7 +38,7 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 # Build zone pi
 **wiring**
 * Connect **DIP switch** to ```3.3V```(red), ```ground```(black), ```SDA/GPIO2```(white), and ```SCL/GPIO3```(yellow)
-* Connect **LED ring** to ```5V``` (red) ```ground``` (black) and ```GPIO4``` (yellow)
+* Connect **LED ring** to ```5V``` (red) ```ground``` (black) and ```Pin 12 (GPIO 18)``` (yellow)   
 * Connect **horn button** to ``GPIO17`` and ``GROUND``
 * Connect **hashtag button** to ``GPIO27`` and ``GROUND``
 * Connect **USB telephone** to ```USB```

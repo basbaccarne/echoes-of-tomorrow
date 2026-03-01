@@ -1,7 +1,7 @@
 """
 Grove LEd Ring (WS2813)
 -------------------------
-Wiring: Ring to 5V (red), ground (black) and GPIO4 (yellow)
+Wiring: Ring to 5V (red), ground (black) and Pin 12 (GPIO 18) (yellow)
 
 Setup: disable audio PWM (conflicts)
 sudo nano  /boot/firmware/config.txt
@@ -19,7 +19,7 @@ import board
 import neopixel
 
 # ── Config ──────────────────────────────────────────
-PIN        = board.D4   # GPIO 4
+PIN        = board.D18   # Pin 12 (GPIO 18)
 NUM_LEDS   = 16         # change to match your ring size
 BRIGHTNESS = 0.3        # 0.0 – 1.0  (start low to protect eyes!)
 ORDER      = neopixel.GRB
