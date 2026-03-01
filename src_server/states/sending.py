@@ -20,9 +20,9 @@ SEND_DIR = config["audio_path"]
 filename = f"response_{config['booth_id']}.wav"
 filepath = os.path.join(SEND_DIR, filename)
 
-port = config["unique_port"].get(SharedState.booth_id, PORT)
-booth_ip = config["booth_ip"].get(config["booth_id"])
-
+booth_id = SharedState.booth_id
+port = config["unique_port"].get(booth_id, 8765)
+booth_ip = config["booth_ip"].get(booth_id, "127.0.0.1")
 
 def run():
     # print info about file and destination (single log)
