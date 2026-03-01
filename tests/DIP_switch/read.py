@@ -22,12 +22,19 @@ ADDR = 0x03
 # For each switch byte: bit 0 = raw status (0=ON, 1=OFF)
 
 import smbus2, time
+
 bus = smbus2.SMBus(1)
+ADDR = 0x03
+
 while True:
     try:
-        msg = smbus2.i2c_msg.read(0x03, 10)
+        msg = smbus2.i2c_msg.read(ADDR, 10)
         bus.i2c_rdwr(msg)
-        print([hex(b) for b in msg])
-    except:
-        print("ERROR")
+        data = list(msg)
+        print("─" * 30)
+        for i in range(6):
+            state = "ON " if not (data[4+i] & 0x01) else "OFF"
+            print(f"  Switch {i+1}: {state}")
+    except OSError as e:
+        print(f"ERROR: {e}")
     time.sleep(0.5)
