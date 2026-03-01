@@ -4,6 +4,7 @@
 # Falls back to idle if the horn is replaced at any point.
 
 import os
+import pathlib
 import time
 import threading
 import urllib.request
@@ -13,7 +14,7 @@ from hardware import button_horn
 from states.shared import SharedState
 
 # ── Load config ──────────────────────────────────────────────────────────────
-base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+base_dir = str(pathlib.Path.home() / "echoes-of-tomorrow" / "src")
 
 with open(os.path.join(base_dir, "/echoes-of-tomorrow/src/config.yaml"), "r") as f:
     config = yaml.safe_load(f)
