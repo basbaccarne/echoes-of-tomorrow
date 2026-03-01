@@ -1,9 +1,10 @@
 import subprocess
 import os
-from hardware import button_stop
+from hardware import button_stop, button_horn
 from states.shared import SharedState
 
 process = None
+DEBOUNCE = 0.3
 
 def run():
     global process
@@ -13,6 +14,7 @@ def run():
 
     # start recording if not already
     if process is None:
+        time.sleep(DEBOUNCE)
         print(f"\n🎤   Recording the question in file {audio_path}")
         print("Press the #️⃣   button to stop the recording.")
         print("ALSA message:")
@@ -23,9 +25,16 @@ def run():
             "-t", "wav",
             audio_path
         ])
-        # print("Recording started")
 
-    # stop on button press
+    # horn put back → abort to idle
+    if button_horn.is_pressed:
+        process.terminate()
+        process.wait()
+        process = None
+        print("📵   Horn replaced during recording — returning to idle.")
+        return "idle"
+    
+    # stop recording on hashtag button press
     if button_stop.is_pressed:
         process.terminate()
         process.wait()
