@@ -12,6 +12,11 @@ Enable SPI (for WS2813 timing)
     > Interfacing Options  
     > SPI
 
+
+NOTE: This script must be run with sudo (e.g. `sudo python demo.py`).
+The rpi_ws281x library requires direct access to /dev/mem for PWM/DMA hardware
+control, which is a privileged operation protected by the OS.
+
 """
 
 import time
