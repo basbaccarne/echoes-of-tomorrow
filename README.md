@@ -19,6 +19,7 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 | [Microswitch](https://www.kiwi-electronics.com/nl/mini-microschakelaar-spdt-offset-lever-2-pack-2499)| 4 | €3 | ✔ kiwi |
 | [Grove 6-position DIP switch](https://www.kiwi-electronics.com/nl/grove-6-position-dip-switch-20587?search=grove%206-position%20DIP%20switch) |4 | €5,43| ✔ kiwi |
 | [Led ring](https://www.kiwi-electronics.com/nl/grove-rgb-led-ring-16-ws2813-mini-10313)| 4 | €13 | ✔ kiwi |
+| [Grove pi HAT](https://www.kiwi-electronics.com/nl/grove-base-hat-for-raspberry-pi-3930) | 4 | €10 | kiwi |
 | SD kaartje 32gb (snel) | 4 | €10 | gotron |
 | Router | 1 | €60 | ✔ gotron | 
 | USB WiFi dongle server | 1 | €10 | ✔ grotron |
