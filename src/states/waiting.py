@@ -27,6 +27,8 @@ _response_path = None   # set by the HTTP handler when response arrives
 _server        = None   # HTTPServer instance, kept so we can shut it down
 _ready         = False  # horn debounce flag
 
+# audio files
+audio_path = os.path.join("/home/pi/echoes-of-tomorrow", "audio_files", f"question_{booth_id}.wav")
 
 def run():
     global _response_path, _server, _ready
