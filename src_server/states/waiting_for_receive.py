@@ -71,8 +71,8 @@ class UploadHandler(BaseHTTPRequestHandler):
 
 def run():
     global file_received
-    
-    port = config["unique_port"].get(SharedState.booth_id, default_port)
+    booth_id = SharedState.booth_id
+    port = config["unique_port"].get(booth_id, 8765)
     server = HTTPServer(("0.0.0.0", port), UploadHandler)
     server.timeout = 0.1
 
