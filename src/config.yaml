@@ -1,3 +1,6 @@
-pieId: 1
 serverip: 10.63.235.157
-version: 1.0
+unique_port:
+  0: 8765
+  1: 8766
+  2: 8767
+  3: 8768
