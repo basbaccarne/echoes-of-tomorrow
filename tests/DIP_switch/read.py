@@ -26,15 +26,20 @@ import smbus2, time
 bus = smbus2.SMBus(1)
 ADDR = 0x03
 
+last = None
 while True:
     try:
         msg = smbus2.i2c_msg.read(ADDR, 10)
         bus.i2c_rdwr(msg)
         data = list(msg)
-        print("─" * 30)
-        for i in range(6):
-            state = "ON " if not (data[4+i] & 0x01) else "OFF"
-            print(f"  Switch {i+1}: {state}")
+        if data != last:
+            last = data
+            switch_bytes = data[4:10]
+            print(f"raw switch bytes: {[bin(b) for b in switch_bytes]}")
+            print("─" * 30)
+            for i in range(6):
+                state = "ON " if (data[4+i] & 0x01) else "OFF"
+                print(f"  Switch {i+1}: {state}")
     except OSError as e:
         print(f"ERROR: {e}")
-    time.sleep(0.5)
+    time.sleep(0.05)
