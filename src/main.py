@@ -78,9 +78,10 @@ try:
 
 # Allow graceful exit on Ctrl+C
 except KeyboardInterrupt:
-    print("Program stopped by user")
+    print("\n🛑   Program stopped by user")
 
 # Clean up GPIO pin usage on exit
 finally:
     led.stop()
-    print("GPIO cleaned up")
+    print("\n🧹   GPIO cleaned up. All set up for a new run!")
+    print("-------------------------------\n")
