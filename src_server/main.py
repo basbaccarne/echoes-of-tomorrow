@@ -19,7 +19,7 @@ args = parser.parse_args()
 
 # set shared state
 SharedState.booth_id = args.booth_id
-print("Server started")
+print("\nServer started")
 print(f"🆔 Booth ID for this instance is set to: {SharedState.booth_id}")
 
 state = "waiting_for_receive"
