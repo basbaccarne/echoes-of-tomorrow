@@ -14,17 +14,16 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 # Bill of materials
 | part  | count  | price per part| source |
 |---|---|---| ---|
-| [Raspberry pi4 4GB](https://www.kiwi-electronics.com/nl/raspberry-pi-4-model-b-4gb-4268) |  4 | €80 | kiwi |
-| [Voeding raspi 27w usb-c](https://www.kiwi-electronics.com/nl/raspberry-pi-27w-usb-c-power-supply-zwart-eu-11582) | 4 | €13 | kiwi |
-| [Raspberry pi active cooler](https://www.kiwi-electronics.com/nl/raspberry-pi-active-cooler-11585) | 4 | €5,5 | kiwi |
-| [Microswitch](https://www.kiwi-electronics.com/nl/mini-microschakelaar-spdt-offset-lever-2-pack-2499)| 4 | €3 | kiwi |
-| [Grove 6-position DIP switch](https://www.kiwi-electronics.com/nl/grove-6-position-dip-switch-20587?search=grove%206-position%20DIP%20switch) |4 | €5,43| kiwi |
-| [Led ring](https://www.kiwi-electronics.com/nl/grove-rgb-led-ring-16-ws2813-mini-10313)| 4 | €13 | kiwi |
+| [Raspberry pi4 4GB](https://www.kiwi-electronics.com/nl/raspberry-pi-4-model-b-4gb-4268) |  4 | €80 | ✔ kiwi |
+| [Voeding raspi 27w usb-c](https://www.kiwi-electronics.com/nl/raspberry-pi-27w-usb-c-power-supply-zwart-eu-11582) | 4 | €13 | ✔ kiwi |
+| [Microswitch](https://www.kiwi-electronics.com/nl/mini-microschakelaar-spdt-offset-lever-2-pack-2499)| 4 | €3 | ✔ kiwi |
+| [Grove 6-position DIP switch](https://www.kiwi-electronics.com/nl/grove-6-position-dip-switch-20587?search=grove%206-position%20DIP%20switch) |4 | €5,43| ✔ kiwi |
+| [Led ring](https://www.kiwi-electronics.com/nl/grove-rgb-led-ring-16-ws2813-mini-10313)| 4 | €13 | ✔ kiwi |
 | SD kaartje 32gb (snel) | 4 | €10 | gotron |
 | Router | 1 | €60 | ✔ gotron | 
 | USB WiFi dongle server | 1 | €10 | ✔ grotron |
 | Flat arcade button | 4 | €1,5 | IDE lab |
-| Server | 1 | -- | laptop emu of desktop IDE lab|
+| Server | 1 | -- | ✔ desktop IDE lab|
 | 3.5mm jack telephone horn | 4 | -- | IDE lab + webshop tbd |
 | 3.5 mm jack to usb dongle|4| €9 | ✔ amazon |
 | [or] USB telephone horn |4| €20 | webshop tbd |
