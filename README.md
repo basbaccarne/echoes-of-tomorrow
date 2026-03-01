@@ -51,7 +51,7 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 1. Initialize Raspberry Pi & ```sudo apt update && sudo apt upgrade -y```
 2. Software Installations - ```sudo apt install git i2c-tools python3-pip -y```
 3. Get the main repo - ```git clone https://github.com/basbaccarne/echoes-of-tomorrow```
-4. Install python libraries - ```pip install pyyaml requests```
+4. Install python libraries - ```pip install pyyaml requests rpi_ws281x adafruit-circuitpython-neopixel```
 5. Enable I²C in raspi-config
 6. Set ID
 7. Set service
