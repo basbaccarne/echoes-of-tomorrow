@@ -19,33 +19,24 @@ import time
 bus = smbus2.SMBus(1)
 ADDR = 0x03
 
-# Command IDs from the Arduino library source
-CMDID_GET_DEV_ID      = 0x00
-CMDID_GET_SWITCH_STATUS = 0x02  # returns 6 bytes, one per switch
-
-def send_command(cmd):
-    """Write a command byte, then read the response"""
+def send_command(cmd, read_bytes=8):
     try:
-        # Step 1: write the command
         write = smbus2.i2c_msg.write(ADDR, [cmd])
         bus.i2c_rdwr(write)
-        time.sleep(0.002)  # 2ms for chip to prepare response
-        # Step 2: read 8 bytes back
-        read = smbus2.i2c_msg.read(ADDR, 8)
+        time.sleep(0.01)
+        read = smbus2.i2c_msg.read(ADDR, read_bytes)
         bus.i2c_rdwr(read)
         return list(read)
     except OSError as e:
-        print(f"ERROR: {e}")
         return None
 
-print("-- Device ID --")
-resp = send_command(CMDID_GET_DEV_ID)
-print(f"raw: {[hex(b) for b in resp] if resp else 'failed'}")
-
-print("\n-- Switch status (all off) --")
-resp = send_command(CMDID_GET_SWITCH_STATUS)
-if resp:
-    print(f"raw: {[hex(b) for b in resp]}")
-    for i in range(6):
-        state = "ON" if not (resp[i] & 0x01) else "OFF"
-        print(f"  Switch {i+1}: {state}")
+# Try every possible command byte 0x00 to 0x10
+for cmd in range(0x00, 0x11):
+    time.sleep(0.1)  # let bus recover between attempts
+    resp = send_command(cmd)
+    if resp and resp != [0xff]*8 and resp != [0x00]*8:
+        print(f"cmd 0x{cmd:02X}: {[hex(b) for b in resp]}")
+    elif resp is None:
+        print(f"cmd 0x{cmd:02X}: ERROR")
+    else:
+        print(f"cmd 0x{cmd:02X}: {[hex(b) for b in resp]}")

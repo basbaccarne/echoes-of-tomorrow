@@ -40,7 +40,6 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 * Connect **LED ring** to ```5V``` (red) ```ground``` (black) and ```GPIO4``` (yellow)
 * Connect **horn button** to ``GPIO17`` and ``GROUND``
 * Connect **hashtag button** to ``GPIO27`` and ``GROUND``
-
 * Connect **USB telephone** to ```USB```
 * Attach power
 * Configure SD card (pi OS lite is fine)
