@@ -75,30 +75,43 @@ flowchart TB
     classDef pi     fill:#BCCCE0,stroke-width:0
     classDef server fill:#BF98A0,stroke-width:0
 
+    %% --- Explicit rounded node declarations ---
+    IDLE(IDLE):::pi
+    PLAY_WELCOME(PLAY_WELCOME):::pi
+    RECORDING(RECORDING):::pi
+    WAITING(WAITING):::pi
+    RESPONDING(RESPONDING):::pi
+
+    WAITING_FOR_RECEIVE(WAITING_FOR_RECEIVE):::server
+    STT(STT):::server
+    N8N(N8N):::server
+    TTS(TTS):::server
+    SENDING(SENDING):::server
+
     subgraph Pi ["Raspberry Pi"]
         direction TB
-        IDLE:::pi-->|horn release| PLAY_WELCOME:::pi
-        PLAY_WELCOME     -->|audio done| RECORDING:::pi
-        PLAY_WELCOME     -->|horn put down| IDLE
-        RECORDING        -->|# press| WAITING:::pi
-        RECORDING        -->| 20 seconds| WAITING:::pi
-        RECORDING        -->|horn put down| IDLE
-        WAITING          -->|file detected| RESPONDING:::pi
-        WAITING          -->|horn put down| IDLE
-        RESPONDING:::pi  -->|audio done| IDLE
-        RESPONDING       -->|horn put down| IDLE
+        IDLE -->|horn release| PLAY_WELCOME
+        PLAY_WELCOME -->|audio done| RECORDING
+        PLAY_WELCOME -->|horn put down| IDLE
+        RECORDING -->|# press| WAITING
+        RECORDING -->|20 seconds| WAITING
+        RECORDING -->|horn put down| IDLE
+        WAITING -->|http request complete| RESPONDING
+        WAITING -->|horn put down| IDLE
+        RESPONDING -->|audio done| IDLE
+        RESPONDING -->|horn put down| IDLE
     end
 
     subgraph Srv ["Server"]
         direction TB
-        WAITING_FOR_RECEIVE:::server -->|http request complete| STT:::server
-        STT              -->|whisper ready| N8N:::server
-        N8N              -->|llm ready| TTS:::server
-        TTS              -->|piper ready| SENDING:::server
-        SENDING          -->|upload complete|WAITING_FOR_RECEIVE
+        WAITING_FOR_RECEIVE -->|http request complete| STT
+        STT -->|whisper ready| N8N
+        N8N -->|llm ready| TTS
+        TTS -->|piper ready| SENDING
+        SENDING -->|upload complete| WAITING_FOR_RECEIVE
     end
 
-    WAITING   -->|upload| WAITING_FOR_RECEIVE
+    WAITING -->|upload| WAITING_FOR_RECEIVE
     SENDING -->|upload| WAITING
 
 ```
