@@ -79,23 +79,27 @@ flowchart TB
         direction TB
         IDLE:::pi-->|horn release| PLAY_WELCOME:::pi
         PLAY_WELCOME     -->|audio done| RECORDING:::pi
-        RECORDING        -->|# press| SENDING:::pi
-        SENDING          --> WAITING:::pi
+        PLAY_WELCOME     -->|horn put down| IDLE
+        RECORDING        -->|# press| WAITING:::pi
+        RECORDING        -->| 20 seconds| WAITING:::pi
+        RECORDING        -->|horn put down| IDLE
         WAITING          -->|file detected| RESPONDING:::pi
+        WAITING          -->|horn put down| IDLE
         RESPONDING:::pi  -->|audio done| IDLE
+        RESPONDING       -->|horn put down| IDLE
     end
 
     subgraph Srv ["Server"]
         direction TB
-        RECEIVE:::server -->|http complete| STT:::server
-        STT              -->|transcribed| N8N:::server
-        N8N              -->|response| TTS:::server
-        TTS              -->|wav ready| SEND_BACK:::server
-        SEND_BACK        --> RECEIVE
+        WAITING_FOR_RECEIVE:::server -->|http request complete| STT:::server
+        STT              -->|whisper ready| N8N:::server
+        N8N              -->|llm ready| TTS:::server
+        TTS              -->|piper ready| SENDING:::server
+        SENDING          -->|upload complete|WAITING_FOR_RECEIVE
     end
 
-    SENDING   -->|upload| RECEIVE
-    SEND_BACK -->|deliver| WAITING
+    WAITING   -->|upload| WAITING_FOR_RECEIVE
+    SENDING -->|upload| WAITING
 
 ```
 
