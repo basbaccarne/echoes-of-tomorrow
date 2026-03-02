@@ -37,6 +37,11 @@ Download & Install: Go to https://ollama.com/download/windows and install the Wi
 
 Pull the Model: Open a new PowerShell window and type `ollama run llama3.2` (This downloads a very capable, lightweight model that supports Dutch. Once it's done downloading, you can close the window.)
 
+For the reading documents in the RAG we will pull a second model better suited for this task, run `ollama pull nomic-embed-text` (also works for Dutch documents)
+
 ## Building the agent
 Type `http://localhost:5678` in your browser to open the visual n8n editor
+
+### Creating the RAG
+create file path: "C:\Users\XXX\.n8n-files\knowledge_base_echoes-of-tomorrow.txt". It is very important the folder is named exactly **.n8n-files** as n8n can only enter this folder. In this folder, save the knowledge base file (txt)
 
