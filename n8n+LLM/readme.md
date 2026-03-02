@@ -42,6 +42,6 @@ For the reading documents in the RAG we will pull a second model better suited f
 ## Building the agent
 Type `http://localhost:5678` in your browser to open the visual n8n editor
 
-### Creating the RAG
+### Creating the RAG -> to be completed
 create file path: "C:\Users\XXX\.n8n-files\knowledge_base_echoes-of-tomorrow.txt". It is very important the folder is named exactly **.n8n-files** as n8n can only enter this folder. In this folder, save the knowledge base file (txt)
 
