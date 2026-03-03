@@ -61,9 +61,10 @@ def wait_until_stable(path, check_interval=0.5, stable_time=1.5, timeout=30):
 
 
 class STTHandler(FileSystemEventHandler):
-    def __init__(self, model):
+    def __init__(self, model, outfolder):
         super().__init__()
         self.model = model
+        self.outfolder = outfolder
     
     def on_created(self, event):
         if event.is_directory:
@@ -82,7 +83,7 @@ class STTHandler(FileSystemEventHandler):
 
         self.process_audio(event.src_path)
 
-    def process_audio(self, path_in, path_out):
+    def process_audio(self, path_in):
         # Replace this with your STT logic
         print(f"Transcribing: {path_in}")
     
@@ -108,11 +109,13 @@ class STTHandler(FileSystemEventHandler):
         
         print("✓ Transcription complete!")
 
-        out_filename = Path(path_in).name.replace(".wav",".txt")
-        out_filename = path_out + out_filename
-        print(out_filename)
-        with open(out_filename, "x") as f:
+        # Build output file path
+        filename = os.path.splitext(os.path.basename(path_in))[0]
+        output_path = os.path.join(self.outfolder, f"{filename}.txt")
+
+        with open(output_path, "x", encoding="utf-8") as f:
             f.write(text)
+
         return text
 
 def start_stt_listener(folder_in, folder_out):
@@ -127,10 +130,10 @@ def start_stt_listener(folder_in, folder_out):
     print(f"✓ Model loaded in {load_time:.2f} seconds!")
 
 
-    handler = STTHandler(model)
+    handler = STTHandler(model, folder_out)
 
     observer = Observer()
-    observer.schedule(handler, folder_in, folder_out, recursive=False)
+    observer.schedule(handler, folder_in, recursive=False)
     observer.start()
 
     print("STT listener running...")
