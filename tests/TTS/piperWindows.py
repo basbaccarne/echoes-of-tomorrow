@@ -6,16 +6,18 @@ from piper import PiperVoice, SynthesisConfig
 
 TEXT_PATH = "./text_in/"
 AUDIO_PATH = "./audio_out/"
-
-
 voice = PiperVoice.load("./voices/nl_NL-mls_5809-low.onnx")
 
-def speak(text, output_filename, speed=1.0):
+def speak(input_path, speed=1.0):
 
     speed_inv = 1/speed
+    output_filename = Path(input_path).name.replace(".txt",".wav")
     OUTPUT_WAV = AUDIO_PATH + output_filename
 
-    #print(f"🔊 Speaking (speed {speed_inv}x): {text[:50]}...")
+    with open(input_path, 'r') as file:
+        txtinput = file.read().replace('\n', '')
+
+    print(f"🔊 Speaking (speed {speed_inv}x): {txtinput[:50]}...")
     t1 = time.time()
 
     syn_config = SynthesisConfig(
@@ -25,9 +27,6 @@ def speak(text, output_filename, speed=1.0):
         noise_w_scale=1.0,  # more speaking variation
         normalize_audio=False, # use raw audio from voice
     )
-
-    with open(text, 'r') as file:
-        txtinput = file.read().replace('\n', '')
 
     with wave.open(OUTPUT_WAV, "wb") as wav_file:
         voice.synthesize_wav(txtinput, wav_file, syn_config= syn_config)
@@ -40,8 +39,7 @@ def speak(text, output_filename, speed=1.0):
 
 #Test
 print("\n1. Normale snelheid:")
-#INPUT_TXT = "Welkom bij de bibliotheek. Ik kan je helpen met informatie over toekomstbeelden."
 INPUT_TXT = TEXT_PATH + "test.txt"
-speak(INPUT_TXT, "test.wav")
+speak(INPUT_TXT)
 
 
