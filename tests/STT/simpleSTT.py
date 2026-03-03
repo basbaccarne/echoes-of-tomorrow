@@ -2,10 +2,21 @@ from faster_whisper import WhisperModel
 import warnings
 import os
 import time
+import argparse
 
 # Onderdruk alle warnings
 warnings.filterwarnings("ignore")
 os.environ["OMP_NUM_THREADS"] = "4"
+
+folder = os.getcwd() + "\\audio_in"
+print(folder)
+audios = []
+
+for filename in os.listdir(folder):
+    if filename.endswith(".wav"):
+        filepath = os.path.join(folder, filename)
+        print("Processing:", filepath)
+        audios.append(filepath)
 
 print("Loading faster-whisper model...")
 load_start = time.time()
@@ -47,10 +58,16 @@ def transcribe_file(filename):
 # Use it
 print("="*50)
 total_start = time.time()
-text = transcribe_file("test.wav")
-total_time = time.time() - total_start
-print("="*50)
-print(f"Transcribed text:\n'{text}'")
-print("="*50)
-print(f"⏱️  Total time: {total_time:.2f} seconds")
-print("="*50)
+#print("Processing:", args.filename)
+i=0
+for file in audios:
+    text = transcribe_file(file)
+    total_time = time.time() - total_start
+    print("="*50)
+    print(f"Transcribed text:\n'{text}'")
+    print("="*50)
+    print(f"⏱️  Total time: {total_time:.2f} seconds")
+    print("="*50)
+    out_filename= str(i) + filename.strip(".wav") + ".txt"
+    f = open(".txt", "x")
+    i=i+1
