@@ -34,7 +34,7 @@ def run():
         ])
 
         while process.poll() is None:
-            if button_horn.is_pressed:   # horn put back down = on the hook
+            if button_horn.is_pressed:
                 print("Horn replaced during welcome — returning to idle.")
                 process.terminate()
                 return "idle"
