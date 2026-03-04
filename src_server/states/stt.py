@@ -69,7 +69,7 @@ def run():
     # get the WAV from audio_files/question_0.wav (where 0 is the booth id, to be set in config.yaml)
     # transform the WAV file to text
     # store in audio_files/question_0.txt (where 0 is the booth id, to be set in config.yaml)
-    input_path = os.path.join(SAVE_DIR, f"/question_{SharedState.booth_id}.wav")
+    input_path = os.path.join(audio_path, f"/question_{SharedState.booth_id}.wav")
     response = process_audio(input_path, model)
     #time.sleep(5)  # simulate processing time
     #response  = "this the the spoken word i tried to get from the audio, but it can be anything, it's just a placeholder for now"
