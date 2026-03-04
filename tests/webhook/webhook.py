@@ -14,4 +14,4 @@ def send_to_n8n(text, booth_id):
     print(f"✓ Sent to n8n (status {response.status_code})")
     return response.json()
 
-send_to_n8n("dit is een vraag", 0):
+send_to_n8n("dit is een vraag", 0)
