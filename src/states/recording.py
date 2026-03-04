@@ -5,12 +5,11 @@ from states.shared import SharedState
 import time
 
 process = None
-process_start_time = None
 DEBOUNCE = 0.3
-MAX_RECORDING_SECONDS = 20  # Auto-stop recording after this duration
+MAX_RECORDING_SECONDS = 20
 
 def run():
-    global process, process_start_time
+    global process
 
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
     audio_path = os.path.join(base_dir, "audio_files", f"question_{SharedState.booth_id}.wav")
@@ -28,14 +27,13 @@ def run():
             "-t", "wav",
             audio_path
         ])
-        process_start_time = time.time()
+        SharedState.recording_start_time = time.time()
 
     # horn put back → abort to idle
     if button_horn.is_pressed:
         process.terminate()
         process.wait()
         process = None
-        process_start_time = None
         print("📵   Horn replaced during recording — returning to idle.")
         return "idle"
 
@@ -44,16 +42,14 @@ def run():
         process.terminate()
         process.wait()
         process = None
-        process_start_time = None
         print("🛑   Hashtag button pressed → Recording stopped.")
         return "waiting"
 
     # auto-stop after MAX_RECORDING_SECONDS
-    if process_start_time and (time.time() - process_start_time) >= MAX_RECORDING_SECONDS:
+    if (time.time() - SharedState.recording_start_time) >= MAX_RECORDING_SECONDS:
         process.terminate()
         process.wait()
         process = None
-        process_start_time = None
         print(f"⏱️   Max recording time ({MAX_RECORDING_SECONDS}s) reached → Recording stopped.")
         return "waiting"
 
