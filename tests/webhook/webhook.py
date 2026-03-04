@@ -1,5 +1,7 @@
 import requests
 
+transcript = "This is a test transcript from the webhook test script."
+
 def send_to_n8n(text):
     url = "http://localhost:5678/webhook/dae1d29b-5725-47fc-a68b-cba9d669a981/chat"
     
