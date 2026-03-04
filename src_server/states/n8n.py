@@ -1,5 +1,6 @@
 import time
 import datetime
+import requests
 from states.shared import SharedState
 from pathlib import Path
 import yaml
@@ -15,30 +16,43 @@ with open(CONFIG_PATH, "r") as f:
 SAVE_DIR = config["audio_path"]
 os.makedirs(SAVE_DIR, exist_ok=True)
 
+
+def send_to_n8n(text):
+    url = "http://localhost:5678/webhook/dae1d29b-5725-47fc-a68b-cba9d669a981/chat"
+    payload = {"chatInput": text}
+    response = requests.post(url, json=payload, timeout=60)
+    response.raise_for_status()
+    print(f"✓ Sent to n8n (status {response.status_code})")
+    try:
+        data = response.json()
+        return data.get("output") or data.get("text") or data.get("message") or str(data)
+    except Exception:
+        return response.text
+
+
 def run():
-    
     print(f"Text file that needs to be added to the webhook is: question_{SharedState.booth_id}.txt")
-    audio_path = SAVE_DIR
-    print(f"in directory: {audio_path}")
+    print(f"in directory: {SAVE_DIR}")
 
-    # get the question text from audio_files/question_0.txt (where 0 is the booth id, to be set in config.yaml)
-    # send a webhook to n8n
-    # wait for the reponse (while loop)
-    # store in audio_files/response_0.txt (where 0 is the booth id, to be set in config.yaml)
+    # Read the transcript from the .txt file written by stt.py
+    input_path = os.path.join(SAVE_DIR, f"question_{SharedState.booth_id}.txt")
+    with open(input_path, "r", encoding="utf-8") as f:
+        question_text = f.read()
 
-    
-    time.sleep(5)  # simulate processing time
-    
-    response  = "this the reponse from n8n, but it can be anything, it's just a placeholder for now"
-    
-    audio_path = SAVE_DIR
-    
+    # Send to n8n and wait for response
+    response = send_to_n8n(question_text)
+
+    # Store response in .txt file
+    output_path = os.path.join(SAVE_DIR, f"response_{SharedState.booth_id}.txt")
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(response)
+
     print(f"The text file of the agent response needs to be stored in: response_{SharedState.booth_id}.txt")
-    print(f"in directory: {audio_path}")
+    print(f"in directory: {SAVE_DIR}")
 
-
-    print(f"\n⏱️  [{(datetime.datetime.now().strftime('%H:%M:%S'))}]") 
+    print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
     print("🤖 Agent response ready.")
     print(f"💬 Here's the reply: {response}")
     print("\nSending this text to the text to speech module...")
+
     return "tts"
