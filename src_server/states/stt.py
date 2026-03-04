@@ -17,6 +17,17 @@ with open(CONFIG_PATH, "r") as f:
 SAVE_DIR = config["audio_path"]
 os.makedirs(SAVE_DIR, exist_ok=True)
 
+#it would be good if the model only needs to be loaded once, not with every transcription.
+print("Loading faster-whisper model...")
+load_start = time.time()
+model = WhisperModel(
+    "small", 
+    device="cpu",
+    compute_type="int8"
+)
+load_time = time.time() - load_start
+print(f"✓ Model loaded in {load_time:.2f} seconds!")
+
 def process_audio(path_in, model):
     print(f"Transcribing: {path_in}")
 
@@ -44,32 +55,21 @@ def process_audio(path_in, model):
 
     # Build output file path
     filename = os.path.splitext(os.path.basename(path_in))[0]
-    path_out = os.path.join(path_in, f"{filename}.txt")
+    path_out = os.path.join(os.path.dirname(path_in), f"{filename}.txt")
 
-    with open(path_out, "x", encoding="utf-8") as f:
+    with open(path_out, "w", encoding="utf-8") as f:
         f.write(text)
 
     return text
 
 def run():
-    #it would be good if the model only needs to be loaded once, not with every transcription.
-    print("Loading faster-whisper model...")
-    load_start = time.time()
-    model = WhisperModel(
-        "small", 
-        device="cpu",
-        compute_type="int8"
-    )
-    load_time = time.time() - load_start
-    print(f"✓ Model loaded in {load_time:.2f} seconds!")
-    
     print(f"Audio file that needs to be transformed to text: question_{SharedState.booth_id}.wav")
     audio_path = SAVE_DIR
     print(f"in directory: {audio_path}")
     # get the WAV from audio_files/question_0.wav (where 0 is the booth id, to be set in config.yaml)
     # transform the WAV file to text
     # store in audio_files/question_0.txt (where 0 is the booth id, to be set in config.yaml)
-    input_path = SAVE_DIR + f"/question_{SharedState.booth_id}.txt"
+    input_path = os.path.join(SAVE_DIR, f"/question_{SharedState.booth_id}.wav")
     response = process_audio(input_path, model)
     #time.sleep(5)  # simulate processing time
     #response  = "this the the spoken word i tried to get from the audio, but it can be anything, it's just a placeholder for now"
