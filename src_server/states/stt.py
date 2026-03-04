@@ -44,7 +44,7 @@ def process_audio(path_in, model):
     dir_name = os.path.dirname(path_in)
     path_out = os.path.join(dir_name, f"{filename}.txt")
 
-    with open(path_out, "x", encoding="utf-8") as f:
+    with open(path_out, "w", encoding="utf-8") as f:
         f.write(text)
 
     return text
