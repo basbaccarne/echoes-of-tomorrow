@@ -11,6 +11,7 @@ import importlib
 import time
 import argparse
 from states.shared import SharedState
+from faster_whisper import WhisperModel
 
 # parse arguments
 parser = argparse.ArgumentParser()
@@ -19,6 +20,11 @@ args = parser.parse_args()
 
 # set shared state
 SharedState.booth_id = args.booth_id
+print("Loading faster-whisper model...")
+load_start = time.time()
+SharedState.whisper_model = WhisperModel("small", device="cpu", compute_type="int8")
+print(f"✓ Model loaded in {time.time() - load_start:.2f} seconds!")
+
 print("\nServer started")
 print(f"🆔 Booth ID for this instance is set to: {SharedState.booth_id}")
 

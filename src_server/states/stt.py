@@ -4,8 +4,6 @@ from states.shared import SharedState
 from pathlib import Path
 import yaml
 import os
-import warnings
-from faster_whisper import WhisperModel
 
 # Directories
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,11 +15,12 @@ with open(CONFIG_PATH, "r") as f:
 SAVE_DIR = config["audio_path"]
 os.makedirs(SAVE_DIR, exist_ok=True)
 
+
 def process_audio(path_in, model):
     print(f"Transcribing: {path_in}")
 
     transcribe_start = time.time()
-    
+
     segments, info = model.transcribe(
         path_in,
         language="nl",
@@ -29,56 +28,46 @@ def process_audio(path_in, model):
         vad_filter=False,
         without_timestamps=True
     )
-    
+
     print("Processing segments...")
     segments_list = list(segments)
-    
+
     transcribe_time = time.time() - transcribe_start
-    
     print(f"Found {len(segments_list)} segments")
     print(f"⏱️  Transcription took {transcribe_time:.2f} seconds")
-    
+
     text = " ".join([segment.text for segment in segments_list])
-    
     print("✓ Transcription complete!")
 
-    # Build output file path
+    # Write output .txt next to the input .wav
     filename = os.path.splitext(os.path.basename(path_in))[0]
-    path_out = os.path.join(path_in, f"{filename}.txt")
+    dir_name = os.path.dirname(path_in)
+    path_out = os.path.join(dir_name, f"{filename}.txt")
 
     with open(path_out, "x", encoding="utf-8") as f:
         f.write(text)
 
     return text
 
-def run():
-    #it would be good if the model only needs to be loaded once, not with every transcription.
-    print("Loading faster-whisper model...")
-    load_start = time.time()
-    model = WhisperModel(
-        "small", 
-        device="cpu",
-        compute_type="int8"
-    )
-    load_time = time.time() - load_start
-    print(f"✓ Model loaded in {load_time:.2f} seconds!")
-    
-    print(f"Audio file that needs to be transformed to text: question_{SharedState.booth_id}.wav")
-    audio_path = SAVE_DIR
-    print(f"in directory: {audio_path}")
-    # get the WAV from audio_files/question_0.wav (where 0 is the booth id, to be set in config.yaml)
-    # transform the WAV file to text
-    # store in audio_files/question_0.txt (where 0 is the booth id, to be set in config.yaml)
-    input_path = SAVE_DIR + f"/question_{SharedState.booth_id}.txt"
-    response = process_audio(input_path, model)
-    #time.sleep(5)  # simulate processing time
-    #response  = "this the the spoken word i tried to get from the audio, but it can be anything, it's just a placeholder for now"
-    print(f"Text response should be stored in: question_{SharedState.booth_id}.txt")
-    print(f"in directory: {audio_path}")
 
-    print(f"\n⏱️  [{(datetime.datetime.now().strftime('%H:%M:%S'))}]") 
+def run():
+    model = SharedState.whisper_model
+    if model is None:
+        raise RuntimeError("Whisper model not loaded — ensure main.py initialized SharedState.whisper_model")
+
+    audio_path = SAVE_DIR
+    input_path = os.path.join(SAVE_DIR, f"question_{SharedState.booth_id}.wav")
+
+    print(f"Audio file to transcribe: question_{SharedState.booth_id}.wav")
+    print(f"In directory: {audio_path}")
+
+    response = process_audio(input_path, model)
+
+    print(f"Text response stored in: question_{SharedState.booth_id}.txt")
+    print(f"In directory: {audio_path}")
+    print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
     print("🎙️  I've transformed the wav to text.")
-    print(f"📜  Here's the transcript: {response}")
+    print(f"📜  Transcript: {response}")
     print("\nSending transcript to n8n for further processing...")
 
     return "n8n"
