@@ -20,7 +20,7 @@ def run():
     try:
         process = subprocess.Popen([
             "aplay",
-            "-D", "plughw:0,0",
+            "-D", "plughw:3,0",
             audio_path
         ])
 
