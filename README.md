@@ -1,5 +1,5 @@
 # Echoes of Tomorrow
-Echoes of Tomorrow is an installation developed for the [Comon](https://comon.gent/) expo at [De Krook](https://dekrook.be/).   
+Echoes of Tomorrow is a crazy installation developed for the [Comon](https://comon.gent/) expo at [De Krook](https://dekrook.be/).   
 *Tinkered with* ❤ *by Bas Baccarne, Ben Robaeyst, Tim Theys, Fran Burger, Julien Verplanken, Yannick Christiaens, Jeroen Bourgonjon, Wanda Gaertner, Stephanie Van Hove, Azra Verlee, Axel Kiekens, Morgane Spanhove & Flo Van Hove*.
  
 ## Project Description
