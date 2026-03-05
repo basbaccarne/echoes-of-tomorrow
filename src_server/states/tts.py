@@ -39,7 +39,7 @@ def process_text(path_in, voice, speed=1.0):
     # Build output file path
     file_out = path_in.with_suffix(".wav")
 
-    with wave.open(file_out, "wb") as wav_file:
+    with wave.open(str(file_out), "wb") as wav_file:
         voice.synthesize_wav(txtinput, wav_file, syn_config= syn_config)
 
     elapsed = time.time() - t1
