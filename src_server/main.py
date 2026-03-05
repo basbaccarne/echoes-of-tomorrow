@@ -12,6 +12,9 @@ import time
 import argparse
 from states.shared import SharedState
 from faster_whisper import WhisperModel
+from pathlib import Path
+import yaml
+from piper import PiperVoice
 
 # parse arguments
 parser = argparse.ArgumentParser()
