@@ -31,7 +31,7 @@ def send_to_n8n(text):
     payload = {"chatInput": text}
     response = requests.post(url, json=payload, timeout=TIMEOUT)
     response.raise_for_status()
-    print(f"✓ Sent to n8n (status {response.status_code})\nWaiting for response...\n")
+    print(f"✓ Sent to n8n (status {response.status_code})\n\nWaiting for response...\n")
     # try JSON first, fall back to plain text
     try:
         data = response.json()
@@ -50,7 +50,7 @@ def run():
         question_text = f.read()
 
     # Send to n8n and wait for response
-    print(f"\n 💬 Sending question to n8n: {question_text}")
+    print(f"💬 Sending question to n8n: \n{question_text}")
     response = send_to_n8n(question_text)
 
     # Store response in .txt file
@@ -61,9 +61,9 @@ def run():
     # print(f"The text file of the agent response needs to be stored in: response_{SharedState.booth_id}.txt")
     # print(f"in directory: {SAVE_DIR}")
 
-    print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
+    print(f"⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
     print("🤖 Agent response ready.")
-    print(f"💬 Here's the reply: {response}")
-    print("\nSending this text to the text to speech module...")
+    print(f"💬 This is the reply: \n{response}")
+    # print("\nSending this text to the text to speech module...")
 
     return "tts"

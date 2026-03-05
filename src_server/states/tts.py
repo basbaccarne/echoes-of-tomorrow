@@ -44,7 +44,7 @@ def process_text(path_in, voice, speed=1.0):
         voice.synthesize_wav(txtinput, wav_file, syn_config= syn_config)
 
     elapsed = time.time() - t1
-    print(f"\n⏱️  Generated in {elapsed:.2f}s")
+    # print(f"\n⏱️  Generated in {elapsed:.2f}s")
 
     return elapsed
 
