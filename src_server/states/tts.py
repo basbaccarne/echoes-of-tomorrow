@@ -57,7 +57,7 @@ def run():
     # get the reponse text from audio_files/response_0.txt (where 0 is the booth id, to be set in config.yaml)
     # transform txt to WAV file
     # store in audio_files/response_0.wav (where 0 is the booth id, to be set in config.yaml)
-    v = PiperVoice.load(voice_path)
+    v = PiperVoice.load(VOICE_DIR)
     input_path = os.path.join(text_path, f"/response_{SharedState.booth_id}.txt")
     response = process_text(input_path, v)
     print(f"The WAV file should be stored as: response_{SharedState.booth_id}.wav")
