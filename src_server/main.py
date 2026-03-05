@@ -21,6 +21,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--booth-id", type=int, required=True)
 args = parser.parse_args()
 
+# load config
+BASE_DIR = Path(__file__).resolve().parent
+CONFIG_PATH = BASE_DIR / "config.yaml"
+with open(CONFIG_PATH, "r") as f:
+    config = yaml.safe_load(f)
+
 # set shared state
 SharedState.booth_id = args.booth_id
 
