@@ -31,7 +31,7 @@ def send_to_n8n(text):
     payload = {"chatInput": text}
     response = requests.post(url, json=payload, timeout=TIMEOUT)
     response.raise_for_status()
-    print(f"✓ Sent to n8n (status {response.status_code})")
+    print(f"✓ Sent to n8n (status {response.status_code})\nWaiting for response...\n")
     # try JSON first, fall back to plain text
     try:
         data = response.json()
@@ -41,8 +41,8 @@ def send_to_n8n(text):
 
 
 def run():
-    print(f"Text file that needs to be added to the webhook is: question_{SharedState.booth_id}.txt")
-    print(f"in directory: {SAVE_DIR}")
+    # print(f"Text file that needs to be added to the webhook is: question_{SharedState.booth_id}.txt")
+    # print(f"in directory: {SAVE_DIR}")
 
     # Read the transcript from the .txt file written by stt.py
     input_path = os.path.join(SAVE_DIR, f"question_{SharedState.booth_id}.txt")
@@ -50,7 +50,7 @@ def run():
         question_text = f.read()
 
     # Send to n8n and wait for response
-    print(f"Sending question to n8n: {question_text}")
+    print(f"\n 💬 Sending question to n8n: {question_text}")
     response = send_to_n8n(question_text)
 
     # Store response in .txt file
@@ -58,8 +58,8 @@ def run():
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(response)
 
-    print(f"The text file of the agent response needs to be stored in: response_{SharedState.booth_id}.txt")
-    print(f"in directory: {SAVE_DIR}")
+    # print(f"The text file of the agent response needs to be stored in: response_{SharedState.booth_id}.txt")
+    # print(f"in directory: {SAVE_DIR}")
 
     print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
     print("🤖 Agent response ready.")

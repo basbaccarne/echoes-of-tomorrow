@@ -25,7 +25,8 @@ def process_text(path_in, voice, speed=1.0):
     with open(path_in, 'r') as file:
         txtinput = file.read().replace('\n', '')
 
-    print(f"🔊 Speaking (speed {speed_inv}x): {txtinput[:50]}...")
+    print("\n🔊 Transforming text to speech with Piper...")
+    # print(f"Settings: speed = {speed_inv}x -: {txtinput[:50]}...")
     t1 = time.time()
 
     syn_config = SynthesisConfig(
@@ -43,7 +44,7 @@ def process_text(path_in, voice, speed=1.0):
         voice.synthesize_wav(txtinput, wav_file, syn_config= syn_config)
 
     elapsed = time.time() - t1
-    print(f"⏱️  Generated in {elapsed:.2f}s")
+    print(f"\n⏱️  Generated in {elapsed:.2f}s")
 
     return elapsed
 
@@ -51,14 +52,14 @@ def run():
     
     input_path = SAVE_DIR / f"response_{SharedState.booth_id}.txt"
     
-    print(f"Text file that needs to be transformed to WAV: {input_path.name}")
-    print(f"in directory: {SAVE_DIR}")
+    # print(f"Text file that needs to be transformed to WAV: {input_path.name}")
+    # print(f"in directory: {SAVE_DIR}")
     
     v = SharedState.piper_voice  # preloaded in main.py
     elapsed = process_text(input_path, v)
     
-    print(f"The WAV file should be stored as: response_{SharedState.booth_id}.wav")
-    print(f"in directory: {SAVE_DIR}")
+    # print(f"Stored as: response_{SharedState.booth_id}.wav")
+    # print(f"in directory: {SAVE_DIR}")
     print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
     print("🔊 Audio file ready.")
     print("Sending this back to the pi...")

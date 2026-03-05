@@ -30,21 +30,24 @@ with open(CONFIG_PATH, "r") as f:
 # set shared state
 SharedState.booth_id = args.booth_id
 
+# welcome message
+print("\n---------------------------------")
+print(f"🚀 Starting server for booth ID {SharedState.booth_id}...\n")
+
 # preload whisper
-print("Loading faster-whisper model...")
+print("👂 Loading faster-whisper speech-to-text model...")
 load_start = time.time()
 SharedState.whisper_model = WhisperModel("small", device="cpu", compute_type="int8")
-print(f"✓ Model loaded in {time.time() - load_start:.2f} seconds!")
+print(f"✓ Model loaded in {time.time() - load_start:.2f} seconds!\n")
 
 # preload piper voices
-print("Loading piper voice model...")
+print(f"💬 Loading piper voice model for text to speech - voice ID {SharedState.booth_id}...")
 load_start = time.time()
 voice_path = Path(config["voice_path"][SharedState.booth_id])
 SharedState.piper_voice = PiperVoice.load(voice_path)
 print(f"✓ Piper voice loaded in {time.time() - load_start:.2f} seconds!")
 
-print("\nServer started")
-print(f"🆔 Booth ID for this instance is set to: {SharedState.booth_id}")
+print("\nServer started... \n")
 
 #state = "waiting_for_receive"
 # for testing: uncomment the line below and change with the state you want to start from
