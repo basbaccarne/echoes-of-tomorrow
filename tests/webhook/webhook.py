@@ -20,8 +20,7 @@ def send_to_n8n(text):
     # try JSON first, fall back to plain text
     try:
         data = response.json()
-        # the agent reply is usually in one of these fields:
-        return data.get("output") or data.get("text") or data.get("message") or str(data)
+        return data.get("output") or data.get("text") or data.get("message") or data.get("content") or str(data)
     except Exception:
         return response.text
 
