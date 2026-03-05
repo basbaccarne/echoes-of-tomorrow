@@ -1,7 +1,14 @@
 import requests
 
 def send_to_n8n(text):
-    url = "http://localhost:5678/webhook/dae1d29b-5725-47fc-a68b-cba9d669a981/chat"
+    #Tims hook
+    #url = "http://localhost:5678/webhook/dae1d29b-5725-47fc-a68b-cba9d669a981/chat"
+    
+    #local test
+    # url = "http://localhost:5678/webhook/4a373672-3af4-4cae-a776-67fe0c43a3e6/chat"
+    
+    #SSH test
+    url = "http://localhost:5678/webhook/70f7a510-eec9-410d-b623-de8bc323273a/chat"
     
     payload = {"chatInput": text}
     
@@ -18,5 +25,7 @@ def send_to_n8n(text):
     except Exception:
         return response.text
 
-result = send_to_n8n("This is a test transcript.")
+question = "What does parenting look like in the year 2080? Answer in three sentences."
+print(f"Sending question to n8n: {question}")
+result = send_to_n8n(question)
 print(f"Agent response: {result}")
