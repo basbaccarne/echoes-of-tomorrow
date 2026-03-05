@@ -1,5 +1,6 @@
 server__ip: 10.63.235.157
 audio_path: /home/io/echoes-of-tomorrow/audio_files
+voice_path: /home/io/echoes-of-tomorrow/voices
 booth_id: 0
 # port: 8765 # to be omitted onde unique ports are implemented
 unique_port:
