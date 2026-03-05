@@ -59,7 +59,7 @@ def run():
     # store in audio_files/response_0.wav (where 0 is the booth id, to be set in config.yaml)
     voice_path = Path(VOICE_PATHS[SharedState.booth_id])
     v = PiperVoice.load(voice_path)
-    input_path = os.path.join(text_path, f"/response_{SharedState.booth_id}.txt")
+    input_path = os.path.join(text_path, f"response_{SharedState.booth_id}.txt")
     response = process_text(input_path, v)
     print(f"The WAV file should be stored as: response_{SharedState.booth_id}.wav")
     print(f"in directory: {text_path}")
