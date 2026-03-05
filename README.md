@@ -150,6 +150,37 @@ flowchart TB
             response_3.wav
 ```
 
+# Background: booting
+To enable the pi to boot at startup, you have to create a service. In this case, we give the service the name **echo**.
+```bash
+sudo nano /etc/systemd/system/echo.service
+```
+And use this content
+```ini
+[Unit]
+Description=Echoes of Tomorrow
+After=multi-user.target sound.target network.target
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/echoes-of-tomorrow/src
+ExecStart=/usr/bin/python3 /home/pi/echoes-of-tomorrow/src/main.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+```
+Then enable this service
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable echo.service
+sudo systemctl start echo.service
+```
+
 # Tests
 ## Capture microphone input (mic)
 **Hardware**
