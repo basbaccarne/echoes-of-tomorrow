@@ -1,6 +1,10 @@
 server__ip: 10.63.235.157
 audio_path: /home/io/echoes-of-tomorrow/audio_files
-voice_path: /home/io/echoes-of-tomorrow/src_server/voices
+voice_path:
+  0: /home/io/echoes-of-tomorrow/src_server/voices/nl_NL-mls_5809-low.onnx
+  1: /home/io/echoes-of-tomorrow/src_server/voices/voice1.onnx
+  2: /home/io/echoes-of-tomorrow/src_server/voices/voice2.onnx
+  3: /home/io/echoes-of-tomorrow/src_server/voices/voice3.onnx
 booth_id: 0
 # port: 8765 # to be omitted onde unique ports are implemented
 unique_port:
