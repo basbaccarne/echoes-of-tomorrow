@@ -28,7 +28,6 @@ os.makedirs(SAVE_DIR, exist_ok=True)
 
 
 def send_to_n8n(text):
-    url = "http://localhost:5678/webhook/dae1d29b-5725-47fc-a68b-cba9d669a981/chat"
     payload = {"chatInput": text}
     response = requests.post(url, json=payload, timeout=TIMEOUT)
     response.raise_for_status()
