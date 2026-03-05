@@ -5,6 +5,7 @@ from pathlib import Path
 import yaml
 import os
 import wave
+from piper import SynthesisConfig
 
 # Directories
 BASE_DIR = Path(__file__).resolve().parent.parent
