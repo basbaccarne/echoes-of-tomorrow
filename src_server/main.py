@@ -20,10 +20,19 @@ args = parser.parse_args()
 
 # set shared state
 SharedState.booth_id = args.booth_id
+
+# preload whisper
 print("Loading faster-whisper model...")
 load_start = time.time()
 SharedState.whisper_model = WhisperModel("small", device="cpu", compute_type="int8")
 print(f"✓ Model loaded in {time.time() - load_start:.2f} seconds!")
+
+# preload piper voices
+print("Loading piper voice model...")
+load_start = time.time()
+voice_path = Path(config["voice_path"][SharedState.booth_id])
+SharedState.piper_voice = PiperVoice.load(voice_path)
+print(f"✓ Piper voice loaded in {time.time() - load_start:.2f} seconds!")
 
 print("\nServer started")
 print(f"🆔 Booth ID for this instance is set to: {SharedState.booth_id}")
