@@ -28,9 +28,9 @@ print(f"✓ Model loaded in {time.time() - load_start:.2f} seconds!")
 print("\nServer started")
 print(f"🆔 Booth ID for this instance is set to: {SharedState.booth_id}")
 
-state = "waiting_for_receive"
+#state = "waiting_for_receive"
 # for testing: uncomment the line below and change with the state you want to start from
-# state = "tts"
+state = "n8n"
 
 loaded_state = None
 last_sender_ip = None
