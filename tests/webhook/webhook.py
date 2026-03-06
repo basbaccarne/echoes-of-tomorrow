@@ -38,11 +38,11 @@ def send_to_n8n(text, phone_id="phone_1"):
     print(f"Phone: {phone_id}, Future: {future}")
     
     # try JSON first, fall back to plain text
-    try:
-        data = response.json()
-        return data.get("output") or data.get("text") or (data.get("message") or {}).get("content") or str(data)
-    except Exception:
-        return response.text
+   try:
+    data = response.json()
+    return data.get("output") or data.get("text") or str(data)
+except Exception:
+    return response.text
 
 
 # Test with different phones
