@@ -3,7 +3,7 @@ import requests
 def send_to_n8n(text):
     # Tim's hook
     # url = "http://localhost:5678/webhook/dae1d29b-5725-47fc-a68b-cba9d669a981/chat" #old one
-    url = "http://localhost:5678/webhook-test/db4c9fc5-c0ed-41ee-8f1b-23d4dd7f1fa5" #new one
+    url = "http://localhost:5678/webhook/db4c9fc5-c0ed-41ee-8f1b-23d4dd7f1fa5" #new one
     
     #local test
     # url = "http://localhost:5678/webhook/4a373672-3af4-4cae-a776-67fe0c43a3e6/chat"
