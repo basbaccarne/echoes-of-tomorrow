@@ -46,7 +46,7 @@ def send_to_n8n(text, phone_id="phone_1"):
 
 # Test with different phones
 if __name__ == "__main__":
-    question = "Hoe zit opvoeden er uit in 2030? Antwoord in 3 zinnen."
+    question = "Hoe zit een internaat er uit in 2030?"
     
     # Test all 4 phones
     for phone_id in ["phone_1", "phone_2", "phone_3", "phone_4"]:
