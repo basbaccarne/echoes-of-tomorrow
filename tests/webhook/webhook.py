@@ -1,22 +1,41 @@
 import requests
 
-def send_to_n8n(text):
-    # Tim's hook
-    # url = "http://localhost:5678/webhook/dae1d29b-5725-47fc-a68b-cba9d669a981/chat" #old one
-    url = "http://localhost:5678/webhook/ab3e469b-5e4c-4605-b34a-6bde15477a11?future=1" #new one NOW FUTURE SET MANUALLY -> NEED TO MAKE DYNAMIC
+# Configuration: Map phone identifiers to future scenarios
+PHONE_CONFIG = {
+    "phone_1": 1,  # Phone 1 talks about "DE DIGITALE JEUGD"
+    "phone_2": 2,  # Phone 2 talks about "TERUG NAAR NATUUR"
+    "phone_3": 3,  # Phone 3 talks about "COLLECTIEF OPVOEDEN"
+    "phone_4": 4,  # Phone 4 talks about "GENETISCHE OPTIMALISATIE"
+}
+
+# Base webhook URL (the same for all phones)
+BASE_WEBHOOK_URL = "http://localhost:5678/webhook/ab3e469b-5e4c-4605-b34a-6bde15477a11"
+
+def send_to_n8n(text, phone_id="phone_1"):
+    """
+    Send text to n8n chatbot with dynamic future scenario based on phone.
     
-    #local test
-    # url = "http://localhost:5678/webhook/4a373672-3af4-4cae-a776-67fe0c43a3e6/chat"
+    Args:
+        text (str): The user's question
+        phone_id (str): Which phone is making the request (phone_1, phone_2, etc.)
     
-    #SSH test
-    #url = "http://localhost:5678/webhook/70f7a510-eec9-410d-b623-de8bc323273a/chat"
+    Returns:
+        str: The chatbot's response
+    """
+    
+    # Get the future number for this phone
+    future = PHONE_CONFIG.get(phone_id, 1)  # Default to future 1 if phone not found
+    
+    # Build the URL with the future parameter
+    url = f"{BASE_WEBHOOK_URL}?future={future}"
     
     payload = {"chatInput": text}
     
-    response = requests.post(url, json=payload, timeout=60)  # wait up to 60s
+    response = requests.post(url, json=payload, timeout=60)
     response.raise_for_status()
     
     print(f"Status code: {response.status_code}")
+    print(f"Phone: {phone_id}, Future: {future}")
     
     # try JSON first, fall back to plain text
     try:
@@ -25,7 +44,15 @@ def send_to_n8n(text):
     except Exception:
         return response.text
 
-question = "Hoe zit opvoeden er uit in 2030? Antwoord in 3 zinnen."
-print(f"Sending question to n8n: {question}")
-result = send_to_n8n(question)
-print(f"Agent response: {result}")
+
+# Test with different phones
+if __name__ == "__main__":
+    question = "Hoe zit opvoeden er uit in 2030? Antwoord in 3 zinnen."
+    
+    # Test all 4 phones
+    for phone_id in ["phone_1", "phone_2", "phone_3", "phone_4"]:
+        print(f"\n{'='*60}")
+        print(f"Sending question from {phone_id}: {question}")
+        print(f"{'='*60}")
+        result = send_to_n8n(question, phone_id=phone_id)
+        print(f"Agent response: {result}")
