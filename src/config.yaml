@@ -1,4 +1,5 @@
 serverip: 10.82.60.157
+audio_card: plughw:3,0
 unique_port:
   0: 8765
   1: 8766

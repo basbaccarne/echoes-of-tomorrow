@@ -3,7 +3,16 @@ import time
 import subprocess
 from hardware import button_horn
 from states.shared import SharedState
+import yaml
 
+# ── Config ───────────────────────────────────────────────────────────────────
+base_dir  = "/home/pi/echoes-of-tomorrow/src"
+audio_dir = "/home/pi/echoes-of-tomorrow/audio_files"
+
+with open(os.path.join(base_dir, "config.yaml"), "r") as f:
+    config = yaml.safe_load(f)
+
+AUDIO_CARD = config.get("audio_card", "plughw:0,0")
 DEBOUNCE = 0.3  # seconds — adjust if needed
 
 def run():
@@ -20,12 +29,12 @@ def run():
     try:
         process = subprocess.Popen([
             "aplay",
-            "-D", "plughw:0,0",
+            "-D", AUDIO_CARD,
             audio_path
         ])
 
         while process.poll() is None:
-            if button_horn.is_pressed:   # horn put back down = on the hook
+            if button_horn.is_pressed:
                 print("Horn replaced during welcome — returning to idle.")
                 process.terminate()
                 return "idle"

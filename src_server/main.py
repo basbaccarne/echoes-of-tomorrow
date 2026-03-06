@@ -12,25 +12,46 @@ import time
 import argparse
 from states.shared import SharedState
 from faster_whisper import WhisperModel
+from pathlib import Path
+import yaml
+from piper import PiperVoice
 
 # parse arguments
 parser = argparse.ArgumentParser()
 parser.add_argument("--booth-id", type=int, required=True)
 args = parser.parse_args()
 
+# load config
+BASE_DIR = Path(__file__).resolve().parent
+CONFIG_PATH = BASE_DIR / "config.yaml"
+with open(CONFIG_PATH, "r") as f:
+    config = yaml.safe_load(f)
+
 # set shared state
 SharedState.booth_id = args.booth_id
-print("Loading faster-whisper model...")
+
+# welcome message
+print("\n---------------------------------")
+print(f"🚀 Starting server for booth ID {SharedState.booth_id}...\n")
+
+# preload whisper
+print("👂 Loading faster-whisper speech-to-text model...")
 load_start = time.time()
 SharedState.whisper_model = WhisperModel("small", device="cpu", compute_type="int8")
-print(f"✓ Model loaded in {time.time() - load_start:.2f} seconds!")
+print(f"✓ Model loaded in {time.time() - load_start:.2f} seconds!\n")
 
-print("\nServer started")
-print(f"🆔 Booth ID for this instance is set to: {SharedState.booth_id}")
+# preload piper voices
+print(f"💬 Loading piper voice model for text to speech - voice ID {SharedState.booth_id}...")
+load_start = time.time()
+voice_path = Path(config["voice_path"][SharedState.booth_id])
+SharedState.piper_voice = PiperVoice.load(voice_path)
+print(f"✓ Piper voice loaded in {time.time() - load_start:.2f} seconds!")
+
+print("\nServer started... \n")
 
 state = "waiting_for_receive"
 # for testing: uncomment the line below and change with the state you want to start from
-# state = "tts"
+# state = "n8n"
 
 loaded_state = None
 last_sender_ip = None

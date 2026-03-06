@@ -3,10 +3,22 @@ import os
 from hardware import button_stop, button_horn
 from states.shared import SharedState
 import time
+import yaml
+
+
+
+# ── Config ───────────────────────────────────────────────────────────────────
+base_dir  = "/home/pi/echoes-of-tomorrow/src"
+audio_dir = "/home/pi/echoes-of-tomorrow/audio_files"
+
+with open(os.path.join(base_dir, "config.yaml"), "r") as f:
+    config = yaml.safe_load(f)
+
+AUDIO_CARD = config.get("audio_card", "plughw:0,0")
+DEBOUNCE = 0.3  # seconds — adjust if needed
+MAX_RECORDING_SECONDS = 20
 
 process = None
-DEBOUNCE = 0.3
-MAX_RECORDING_SECONDS = 20
 
 def run():
     global process
@@ -22,7 +34,7 @@ def run():
         print("ALSA message:")
         process = subprocess.Popen([
             "arecord",
-            "-D", "plughw:0,0",
+            "-D", AUDIO_CARD,
             "-f", "cd",
             "-t", "wav",
             audio_path

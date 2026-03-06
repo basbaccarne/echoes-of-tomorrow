@@ -3,72 +3,72 @@ Echoes of Tomorrow is a crazy installation developed for the [Comon](https://com
 *Tinkered with* ❤ *by Bas Baccarne, Ben Robaeyst, Tim Theys, Fran Burger, Julien Verplanken, Yannick Christiaens, Jeroen Bourgonjon, Wanda Gaertner, Stephanie Van Hove, Azra Verlee, Axel Kiekens, Morgane Spanhove & Flo Van Hove*.
  
 ## Project Description
-Echoes of Tomorrow is an immersive, interactive installation that invites visitors to step into a dialogue with the future—literally. Grounded in the methodologies of Futures Research and speculative design, this experiential piece uses a powerful metaphorical and physical system to make possible futures tangible, audible, and emotionally resonant. At the heart of the installation stand four telephone boots, each representing a distinct future scenario. These futures are not predictions, but provocations—embodied visions of what could emerge based on the interplay of current social, environmental, and technological trends. Each totem channels a unique persona, brought to life through scripted AI-generated voice interactions, audio design, and environmental cues.
+Echoes of Tomorrow is an immersive, interactive installation that invites visitors to step into a dialogue with the future. Grounded in the methodologies of Futures Research and speculative design, this experiential piece uses a powerful metaphorical and physical system to make possible futures tangible, audible, and emotionally resonant. At the heart of the installation stand four telephone boots, each representing a distinct future scenario. These futures are not predictions, but provocations—embodied visions of what could emerge based on the interplay of current social, environmental, and technological trends. Each totem channels a unique persona, brought to life through scripted AI-generated voice interactions, audio design, and environmental cues.
 
 ---
 
-# Hack zone
+<div align="center">  
+ <img src="/img/prototype.png" height="250"> 
+ <img src="/img/hacking.png" height="250"> 
+ <img src="/img/model_prototype.png" height="250"> 
+</div>
 
-* [General set-up](https://www.figma.com/board/wxgd1HG60FEPWjULjJxW3G/Untitled?node-id=0-1&t=mSymsbc2NLRJAKZq-1)
+# Building the thing
 
-# Bill of materials
+[🕸️ General set-up](https://www.figma.com/board/wxgd1HG60FEPWjULjJxW3G/Untitled?node-id=0-1&t=mSymsbc2NLRJAKZq-1)   
+
+📦3D model: [Fusion 360 link](https://a360.co/4aQVtJP)
+
+🪛 Bill of materials
 | part  | count  | price per part| source |
 |---|---|---| ---|
 | [Raspberry pi4 4GB](https://www.kiwi-electronics.com/nl/raspberry-pi-4-model-b-4gb-4268) |  4 | €80 | ✔ kiwi |
-| [Voeding raspi 27w usb-c](https://www.kiwi-electronics.com/nl/raspberry-pi-27w-usb-c-power-supply-zwart-eu-11582) | 4 | €13 | ✔ kiwi |
+| [Power supply 27w usb-c](https://www.kiwi-electronics.com/nl/raspberry-pi-27w-usb-c-power-supply-zwart-eu-11582) | 4 | €13 | ✔ kiwi |
 | [Microswitch](https://www.kiwi-electronics.com/nl/mini-microschakelaar-spdt-offset-lever-2-pack-2499)| 4 | €3 | ✔ kiwi |
 | [Grove 6-position DIP switch](https://www.kiwi-electronics.com/nl/grove-6-position-dip-switch-20587?search=grove%206-position%20DIP%20switch) |4 | €5,43| ✔ kiwi |
 | [Led ring](https://www.kiwi-electronics.com/nl/grove-rgb-led-ring-16-ws2813-mini-10313)| 4 | €13 | ✔ kiwi |
-| [optional: Grove pi HAT](https://www.kiwi-electronics.com/nl/grove-base-hat-for-raspberry-pi-3930) | 4 | €10 | kiwi |
-| [optional: Grove to female jumper](https://www.kiwi-electronics.com/nl/grove-4-pin-female-jumper-to-grove-4-pin-conversion-cable-5-pack-2065) | 4 | €4.10 | kiwi |
-| anders: male to female jumper wires | 50 ||gotron|
-| SD kaartje 32gb (snel) | 4 | €10 | gotron |
+| Male to female jumper wires | 50 | €5 | ✔ gotron|
+| SD cards 32gb (fast) | 4 | €10 | ✔ gotron |
 | Router | 1 | €60 | ✔ gotron | 
-| USB WiFi dongle server | 1 | €10 | ✔ grotron |
-| Flat arcade button | 4 | €1,5 | IDE lab |
+| USB WiFi dongle | 1 | €10 | ✔ gotron |
+| Flat arcade button | 4 | €1,5 | ✔ gotron |
 | Server | 1 | -- | ✔ desktop IDE lab|
-| 3.5mm jack telephone horn | 4 | -- | IDE lab + webshop tbd |
-| 3.5 mm jack to usb dongle|4| €9 | ✔ amazon |
-| [or] USB telephone horn |4| €20 | webshop tbd |
+| 3.5mm jack telephone horn | 4 | -- | ✔ amazon |
+| [3.5 mm jack to usb dongle](https://www.amazon.com.be/dp/B08B1KK54P?ref=ppx_yo2ov_dt_b_fed_asin_title)|4| €9 | ✔ amazon |
 
 
-# 3D model
-* [Fusion link](https://a360.co/4aQVtJP)
-
----
-# Build zone pi
-**wiring**
-* Connect **DIP switch** to ```3.3V```(red), ```ground```(black), ```SDA/GPIO2```(white), and ```SCL/GPIO3```(yellow)
+#### Seting up the raspberry pi
+**1. wiring**
+* Connect **DIP switch** to ```3.3V``` (red), ```ground``` (black), ```SDA/GPIO2``` (white), and ```SCL/GPIO3``` (yellow) > set the pin high for the correct ID.
 * Connect **LED ring** to ```5V``` (red) ```ground``` (black) and ```Pin 12 (GPIO 18)``` (yellow)   
 * Connect **horn button** to ``GPIO17`` and ``GROUND``
 * Connect **hashtag button** to ``GPIO27`` and ``GROUND``
 * Connect **USB telephone** to ```USB```
-* Attach power
 * Configure SD card (pi OS lite is fine)
+* Attach power
+
 <div align="left">  
  <img src="/img/pinout.png" width="600"> 
 </div>
 
-**software**
+**2. software**
 1. Initialize Raspberry Pi & ```sudo apt update && sudo apt upgrade -y```
 2. Software Installations - ```sudo apt install git i2c-tools python3-pip -y```
 3. Get the main repo - ```git clone https://github.com/basbaccarne/echoes-of-tomorrow```
 4. Install python libraries - ```pip install pyyaml requests rpi_ws281x adafruit-circuitpython-neopixel adafruit-blinka --break-system-packages```
 5. Enable I²C in raspi-config
-6. Set ID
-7. Set service
-8. Switch to offline network comon
+7. Set booth service [to do]
+8. Switch to offline network comon [to do]
 
 
-# Build zone server
+#### Seting up the server
 1. On a fresh Ubuntu server: ```sudo apt update && sudo apt upgrade -y```
 2. Software Installations - ```sudo apt install git nodejs npm -y```
 3. Get the main repo - ```git clone https://github.com/basbaccarne/echoes-of-tomorrow```
-4. Install n8n
+4. Install n8n (issue: n8n requires a specific version of nodejs > check this)
 5. Install ollama
 
-
-# State machine (pi & server)
+#### State machine (pi & server)
 
 ```mermaid
 flowchart TB
@@ -116,14 +116,14 @@ flowchart TB
 
 ```
 
-# led ring animations
+#### led ring animations
 * **idle**: slow amber breathe, very dim. The booth feels alive but dormant, like embers.
 * **play_welcome**: a gold comet chases around the ring. Looping and directional, it creates a sense of something arriving.
 * **recording**: all 16 LEDs glow red at the start, then drain away one by one over exactly 20 seconds. No numbers needed — the user can feel the time running out.
 * **waiting**: an orange spinner with a fading trail. Continuous loop, unhurried, something is happening behind the scenes.
 * **response**: soft cream pulse. Gentle and warm, like candlelight, so it doesn't compete with the audio playback.
 
-# File structure on the server
+# File structure for dynamic files on the server
 ```
 /home/
   /io/
@@ -150,9 +150,39 @@ flowchart TB
             response_3.wav
 ```
 
+# Background: booting
+To enable the pi to boot at startup, you have to create a service. In this case, we give the service the name **echo**.
+```bash
+sudo nano /etc/systemd/system/echo.service
+```
+And use this content
+```ini
+[Unit]
+Description=Echoes of Tomorrow
+After=multi-user.target sound.target network.target
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/echoes-of-tomorrow/src
+ExecStart=/usr/bin/python3 /home/pi/echoes-of-tomorrow/src/main.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+```
+Then enable this service
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable echo.service
+sudo systemctl start echo.service
+```
+
 # Tests
 ## Capture microphone input (mic)
-
 **Hardware**
 * ❌ Test: [Element 14 Wolfson Audio Card](/tests/mic/wolfson.md) (old raspis)
 * ❌ Test: [Respeaker 2](/tests/mic/respeaker.md) (depricated old raspis)
@@ -168,13 +198,14 @@ flowchart TB
 * ✔️ Test: [faster-whisper](/tests/STT/readme.md)
 
 ## Integration layer
-* ✍🏻 Test: [n8n](/tests/integration/readme.md)
+* ✔️ Test: [n8n](/tests/integration/readme.md)
+* ✔️ Test: [sending webhook data to n8n](/tests/webhook/)
 
 ## Interpretation (LLM)
 * ✔️ Test: [Ollama](/tests/LLM/readme.md) - local but slowish
 * ✔️ Test: [ChocoLlama](/tests/LLM/readme.md) - local, Flemish, bit realy slow
 * ✔️ Test: [OpenAI API](/tests/LLM/readme.md) - quick, but cloud-based & maga-support
-* 💬 Test: RAG system
+* ✔️ Test: RAG system
 
 ## Text to speech (TTS)
 * ✔️ test: [piper](/tests/TTS/readme.md)
@@ -190,11 +221,14 @@ flowchart TB
 
 ## General remarks
 **Latency challenge**
-* Nvidia Jetson Orin Nano kan dit sneller maken (, maar duur > €500)
-* Een lokale server kan dit sneller maken
-* Een cloud serverice kan dit sneller maken
+* Nvidia Jetson Orin Nano could make things quicker on the pi
 
 **Other things to think of**
-* Dutch plosives (“p”, “t”, “k”) clip easily → lower mic gain
 * Avoid long responses
 * [Interesting read](https://medium.com/@martin.hodges/setting-up-a-mems-i2s-microphone-on-a-raspberry-pi-306248961043)   
+
+**Discarded but interesting components**
+| part  | count  | price per part| source |
+|---|---|---| ---|
+| [optional: Grove pi HAT](https://www.kiwi-electronics.com/nl/grove-base-hat-for-raspberry-pi-3930) | 4 | €10 | ✔ kiwi |
+| [optional: Grove to female jumper](https://www.kiwi-electronics.com/nl/grove-4-pin-female-jumper-to-grove-4-pin-conversion-cable-5-pack-2065) | 4 | €4.10 | ✔ kiwi |

@@ -1,7 +1,15 @@
 import requests
 
 def send_to_n8n(text):
-    url = "http://localhost:5678/webhook/dae1d29b-5725-47fc-a68b-cba9d669a981/chat"
+    # Tim's hook
+    # url = "http://localhost:5678/webhook/dae1d29b-5725-47fc-a68b-cba9d669a981/chat" #old one
+    url = "http://localhost:5678/webhook/bad1f62a-8296-4f22-9d03-7c60222a9d65/chat" #new one
+    
+    #local test
+    # url = "http://localhost:5678/webhook/4a373672-3af4-4cae-a776-67fe0c43a3e6/chat"
+    
+    #SSH test
+    #url = "http://localhost:5678/webhook/70f7a510-eec9-410d-b623-de8bc323273a/chat"
     
     payload = {"chatInput": text}
     
@@ -13,10 +21,11 @@ def send_to_n8n(text):
     # try JSON first, fall back to plain text
     try:
         data = response.json()
-        # the agent reply is usually in one of these fields:
-        return data.get("output") or data.get("text") or data.get("message") or str(data)
+        return data.get("output") or data.get("text") or (data.get("message") or {}).get("content") or str(data)
     except Exception:
         return response.text
 
-result = send_to_n8n("This is a test transcript.")
+question = "Hoe zit opvoeden er uit in 2030? Antwoord in 3 zinnen."
+print(f"Sending question to n8n: {question}")
+result = send_to_n8n(question)
 print(f"Agent response: {result}")

@@ -24,6 +24,7 @@ with open(os.path.join(base_dir, "config.yaml"), "r") as f:
 
 SERVER_IP    = config["serverip"]
 UNIQUE_PORTS = config["unique_port"]
+AUDIO_CARD = config.get("audio_card", "plughw:0,0")
 
 # ── Module-level state ───────────────────────────────────────────────────────
 _response_path  = None   # set by the HTTP handler when response arrives
@@ -103,7 +104,7 @@ def run():
 
     if os.path.exists(next_file):
         _audio_process = subprocess.Popen([
-            "aplay", "-D", "plughw:0,0", next_file
+            "aplay", "-D", AUDIO_CARD, next_file
         ])
     else:
         print(f"   ⚠️  Audio file not found: {next_file}")
