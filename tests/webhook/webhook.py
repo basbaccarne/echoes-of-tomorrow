@@ -39,11 +39,10 @@ def send_to_n8n(text, phone_id="phone_1"):
     
     # try JSON first, fall back to plain text
     try:
-    data = response.json()
-    return data.get("output") or data.get("text") or str(data)
-except Exception:
-    return response.text
-
+        data = response.json()
+        return data.get("output") or data.get("text") or str(data)
+    except Exception:
+        return response.text
 
 # Test with different phones
 if __name__ == "__main__":
