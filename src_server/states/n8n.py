@@ -17,9 +17,9 @@ base_url = "http://localhost:5678/webhook/ab3e469b-5e4c-4605-b34a-6bde15477a11" 
 # query options to select
 query_options = ["?future=1", "?future=2", "?future=3", "?future=4"]
 # select query option based on booth_id
-JSON_QUERY_PHONE_ID = query_options[SharedState.booth_id]
+JSON_QUERY_PHONE_ID = query_options[SharedState.booth_id+2]
 url = base_url + JSON_QUERY_PHONE_ID
-print(f"I'm using the url:{url})")
+# print(f"I'm using the url:{url}")
 
 TIMEOUT = 60  # wait up to 60s
 
