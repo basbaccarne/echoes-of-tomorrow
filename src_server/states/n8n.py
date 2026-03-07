@@ -31,7 +31,7 @@ def send_to_n8n(text):
     payload = {"chatInput": text}
     response = requests.post(url, json=payload, timeout=TIMEOUT)
     response.raise_for_status()
-    print("✓ Question sent. Waiting for response ...")
+    # print("✓ Question sent. Waiting for response ...")
     # print(f"✓ Sent to n8n (status {response.status_code})\n\nWaiting for response...\n")
     # try JSON first, fall back to plain text
     try:
@@ -51,7 +51,7 @@ def run():
         question_text = f.read()
 
     # Send to n8n and wait for response
-    print(f"\n💬 Sending question to n8n.")
+    print(f"\n💬 Sending question to n8n. Waiting for response ...")
     n8n_start = time.time()
     # print(question_text)
     response = send_to_n8n(question_text)
