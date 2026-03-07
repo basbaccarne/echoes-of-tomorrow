@@ -21,6 +21,14 @@ JSON_QUERY_PHONE_ID = query_options[SharedState.booth_id+2]
 url = base_url + JSON_QUERY_PHONE_ID
 # print(f"I'm using the url:{url}")
 
+# future description (for debugging)
+futures = [
+    "[1] DE DIGITALE JEUGD (Digital Future)",
+    "[2] TERUG NAAR NATUUR (Nature-based)",
+    "[3] COLLECTIEF OPVOEDEN (Collective)",
+    "[4] GENETISCHE OPTIMALISATIE (Genetic)"
+]
+
 TIMEOUT = 60  # wait up to 60s
 
 # Directories
@@ -58,7 +66,7 @@ def run():
         question_text = f.read()
 
     # Send to n8n and wait for response
-    print(f"\n💬 Sending question to n8n. Waiting for response ...")
+    print(f"\n💬 Sending question to n8n future {futures[SharedState.booth_id]}). Waiting for response ...")
     n8n_start = time.time()
     # print(question_text)
     response = send_to_n8n(question_text)
