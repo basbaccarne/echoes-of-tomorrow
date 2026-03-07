@@ -41,7 +41,7 @@ SharedState.whisper_model = WhisperModel("small", device="cpu", compute_type="in
 print(f"✓ Model loaded in {time.time() - load_start:.2f} seconds!\n")
 
 # preload piper voices
-print(f"💬 Loading piper voice model for text to speech - voice ID {SharedState.booth_id}...")
+print(f"💬 Loading piper voice model for text to speech for the voice linked to ID {SharedState.booth_id}...")
 load_start = time.time()
 voice_path = Path(config["voice_path"][SharedState.booth_id])
 SharedState.piper_voice = PiperVoice.load(voice_path)

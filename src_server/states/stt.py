@@ -17,7 +17,7 @@ os.makedirs(SAVE_DIR, exist_ok=True)
 
 
 def process_audio(path_in, model):
-    print(f"Transcribing: {path_in}")
+    # print(f"Transcribing: {path_in}")
 
     transcribe_start = time.time()
 
@@ -67,7 +67,7 @@ def run():
     # print(f"In directory: {audio_path}")
     print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
     # print("🎙️  I've transformed the wav to text.")
-    print(f"📜  Transcript: {response}")
-    print("\nSending transcript to n8n for further processing...")
+    print(f"📜  Transcript:{response}")
+    # print("\nSending transcript to n8n for further processing...")
 
     return "n8n"
