@@ -12,7 +12,14 @@ import os
 #SSH test
 #url = "http://localhost:5678/webhook/70f7a510-eec9-410d-b623-de8bc323273a/chat"
 #Latest n8n flow webhook
-url = "http://localhost:5678/webhook/ab3e469b-5e4c-4605-b34a-6bde15477a11" #Depending on the phone that is used to call we need to add an URL parameter (e.g. ?future=1) so in n8n we can load the correct future file text (e.g. future1.txt)
+base_url = "http://localhost:5678/webhook/ab3e469b-5e4c-4605-b34a-6bde15477a11" #Depending on the phone that is used to call we need to add an URL parameter (e.g. ?future=1) so in n8n we can load the correct future file text (e.g. future1.txt)
+
+# query options to select
+query_options = ["?future=1", "?future=2", "?future=3", "?future=4"]
+# select query option based on booth_id
+JSON_QUERY_PHONE_ID = query_options[SharedState.booth_id]
+url = base_url + JSON_QUERY_PHONE_ID
+print(f"I'm using the url:{url})")
 
 TIMEOUT = 60  # wait up to 60s
 
