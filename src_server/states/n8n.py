@@ -17,7 +17,7 @@ base_url = "http://localhost:5678/webhook/ab3e469b-5e4c-4605-b34a-6bde15477a11" 
 # query options to select
 query_options = ["?future=1", "?future=2", "?future=3", "?future=4"]
 # select query option based on booth_id
-JSON_QUERY_PHONE_ID = query_options[SharedState.booth_id+2]
+JSON_QUERY_PHONE_ID = query_options[SharedState.booth_id]
 url = base_url + JSON_QUERY_PHONE_ID
 # print(f"I'm using the url:{url}")
 
@@ -66,7 +66,7 @@ def run():
         question_text = f.read()
 
     # Send to n8n and wait for response
-    print(f"\n💬 Sending question to n8n future {futures[SharedState.booth_id]}). Waiting for response ...")
+    print(f"\n💬 Sending question to n8n future {futures[SharedState.booth_id]}. Waiting for response ...")
     n8n_start = time.time()
     # print(question_text)
     response = send_to_n8n(question_text)
