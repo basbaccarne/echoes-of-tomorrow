@@ -47,7 +47,7 @@ voice_path = Path(config["voice_path"][SharedState.booth_id])
 SharedState.piper_voice = PiperVoice.load(voice_path)
 print(f"✓ Piper voice loaded in {time.time() - load_start:.2f} seconds!")
 
-print("\nServer started... \n")
+print("\n✓ Server started... \n")
 
 # state = "waiting_for_receive"
 # for testing: uncomment the line below and change with the state you want to start from

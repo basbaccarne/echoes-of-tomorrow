@@ -26,7 +26,8 @@ booth_ip = config["booth_ip"].get(booth_id, "127.0.0.1")
 
 def run():
     # print info about file and destination (single log)
-    print("\nsending file:", filepath, "-> to ip:", booth_ip, " over port:", port)
+    # print("\n⌲ sending file:", filepath, "-> to ip:", booth_ip, " over port:", port)
+    print("\n⌲ sending file back to ", booth_ip, " over port:", port)
 
     # helper function to send wav file (with error handling)
     def send_wav(filepath, server_ip, port):
@@ -73,8 +74,9 @@ def run():
 
     # 3. Handle result
     if success:
-        print(f"\n⏱️ [{datetime.datetime.now().strftime('%H:%M:%S')}]")
-        print("📤 Audiofile sent successfully.")
+        print("✓ Audiofile sent successfully.")
+        # print(f"\n⏱️ [{datetime.datetime.now().strftime('%H:%M:%S')}]")
+        # print("📤 Audiofile sent successfully.")
         return "waiting_for_receive"
 
     # 4. If server returned error, retry

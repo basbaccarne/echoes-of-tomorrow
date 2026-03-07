@@ -29,15 +29,15 @@ def process_audio(path_in, model):
         without_timestamps=True
     )
 
-    print("Processing segments...")
+    # print("Processing segments...")
     segments_list = list(segments)
 
     transcribe_time = time.time() - transcribe_start
-    print(f"Found {len(segments_list)} segments")
-    print(f"⏱️  Transcription took {transcribe_time:.2f} seconds")
+    # print(f"Found {len(segments_list)} segments")
+    # print(f"⏱️  Transcription took {transcribe_time:.2f} seconds")
 
     text = " ".join([segment.text for segment in segments_list])
-    print("✓ Transcription complete!")
+    print(f"✓ Transcription complete in {transcribe_time:.2f} seconds!")
 
     # Write output .txt next to the input .wav
     filename = os.path.splitext(os.path.basename(path_in))[0]
@@ -58,15 +58,15 @@ def run():
     audio_path = SAVE_DIR
     input_path = os.path.join(SAVE_DIR, f"question_{SharedState.booth_id}.wav")
 
-    print(f"Audio file to transcribe: question_{SharedState.booth_id}.wav")
-    print(f"In directory: {audio_path}")
+    print(f"📜 transcribing question_{SharedState.booth_id}.wav")
+    # print(f"In directory: {audio_path}")
 
     response = process_audio(input_path, model)
 
-    print(f"Text response stored in: question_{SharedState.booth_id}.txt")
-    print(f"In directory: {audio_path}")
+    # print(f"Text response stored in: question_{SharedState.booth_id}.txt")
+    # print(f"In directory: {audio_path}")
     print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
-    print("🎙️  I've transformed the wav to text.")
+    # print("🎙️  I've transformed the wav to text.")
     print(f"📜  Transcript: {response}")
     print("\nSending transcript to n8n for further processing...")
 

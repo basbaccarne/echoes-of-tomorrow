@@ -26,6 +26,7 @@ def process_text(path_in, voice, speed=1.0):
         txtinput = file.read().replace('\n', '')
 
     print("\n🔊 Transforming text to speech with Piper...")
+    tts_start = time.time()
     # print(f"Settings: speed = {speed_inv}x -: {txtinput[:50]}...")
     t1 = time.time()
 
@@ -60,8 +61,9 @@ def run():
     
     # print(f"Stored as: response_{SharedState.booth_id}.wav")
     # print(f"in directory: {SAVE_DIR}")
+    tts_time = time.time() - tts_start
+    print("✓ WAV file generated in {n8n_time:.2f} seconds!")
     print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
-    print("🔊 Audio file ready.")
-    print("Sending this back to the pi...")
+    print("🔊 Audio file ready. Sending this back to the pi...")
 
     return "sending"
