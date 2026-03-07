@@ -28,7 +28,7 @@ os.makedirs(SAVE_DIR, exist_ok=True)
 
 
 def send_to_n8n(text):
-        payload = {"chatInput": text}
+    payload = {"chatInput": text}
     response = requests.post(url, json=payload, timeout=TIMEOUT)
     response.raise_for_status()
     print(✓ Question sent. Waiting for response ...)
