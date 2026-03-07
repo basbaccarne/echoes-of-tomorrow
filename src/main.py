@@ -11,7 +11,10 @@
 # dynamic config is stored in states/shared.py (SharedState class)
 
 # Libraries
+import os
 import importlib
+import subprocess
+import yaml
 import time
 import socket
 from read_booth_id import read_booth_id
@@ -20,6 +23,14 @@ from led_controller import LEDController
 
 # detect DIP position and write to shared state (then all states can access it using SharedState.booth_id)
 SharedState.booth_id = read_booth_id()
+
+# config
+with open(os.path.join(os.path.dirname(__file__), "config.yaml"), "r") as f:
+    config = yaml.safe_load(f)
+
+AUDIO_CARD = config.get("audio_card", "plughw:0,0")
+audio_volume = config.get("audio_volume", 80)
+subprocess.run(["amixer", "-D", AUDIO_CARD, "sset", "PCM", f"{audio_volume}%"], capture_output=True)
 
 # initiate led animations
 led = LEDController()
