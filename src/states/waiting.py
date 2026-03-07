@@ -94,7 +94,7 @@ def run():
         print(f"🎵   Playing waiting intro ...")
     elif _random_queue:
         idx = _random_queue.pop(0)
-        next_file = os.path.join(audio_dir, f"waiting_random_{booth_id}_{idx}.wav")
+        next_file = os.path.join(audio_dir, f"waiting_random_{idx}.wav")
         print(f"🎵   Playing ambient snippet {idx} ...")
         # Reshuffle when queue is exhausted
         if not _random_queue:
