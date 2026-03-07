@@ -63,8 +63,13 @@ def run():
     # print(f"Stored as: response_{SharedState.booth_id}.wav")
     # print(f"in directory: {SAVE_DIR}")
     tts_time = time.time() - tts_start
-    print("✓ WAV file generated in {tts_time:.2f} seconds!")
+    print(f"✓ WAV file generated in {tts_time:.2f} seconds!")
     print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
     print("🔊 Audio file ready. Sending this back to the pi...")
+    
+    # general timer:
+    # [!] move to sending once complete
+    session_time = time.time() - SharedState.session_start
+    print(f"\n⏱️Total server processing time: {session_time:.2f} seconds!")
 
     return "sending"

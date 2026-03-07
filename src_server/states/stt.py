@@ -17,8 +17,11 @@ os.makedirs(SAVE_DIR, exist_ok=True)
 
 
 def process_audio(path_in, model):
+    
+    # general timer for the whole session
+    SharedState.session_start = time.time()
+    
     # print(f"Transcribing: {path_in}")
-
     transcribe_start = time.time()
 
     segments, info = model.transcribe(
@@ -31,7 +34,6 @@ def process_audio(path_in, model):
 
     # print("Processing segments...")
     segments_list = list(segments)
-
     transcribe_time = time.time() - transcribe_start
     # print(f"Found {len(segments_list)} segments")
     # print(f"⏱️  Transcription took {transcribe_time:.2f} seconds")
