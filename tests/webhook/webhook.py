@@ -28,6 +28,7 @@ def send_to_n8n(text, phone_id="phone_1"):
     
     # Build the URL with the future parameter
     url = f"{BASE_WEBHOOK_URL}?future={future}"
+    print(f"I'm using the url:{url})")
     
     payload = {"chatInput": text}
     

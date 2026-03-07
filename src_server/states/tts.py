@@ -70,6 +70,6 @@ def run():
     # general timer:
     # [!] move to sending once complete
     session_time = time.time() - SharedState.session_start
-    print(f"\n⏱️ Total server processing time: {session_time:.2f} seconds!")
+    print(f"\n🏁🏁 ⏱️ Total server processing time: {session_time:.2f} seconds!⏱️ 🏁🏁")
 
     return "sending"
