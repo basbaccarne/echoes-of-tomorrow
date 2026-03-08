@@ -22,11 +22,12 @@ filepath = os.path.join(SEND_DIR, filename)
 
 booth_id = SharedState.booth_id
 port = config["unique_port"].get(booth_id, 8765)
-booth_ip = config["booth_ip"].get(booth_id, "127.0.0.1")
+# old: booth_ip = config["booth_ip"].get(booth_id, "127.0.0.1")
 
 def run():
     # print info about file and destination (single log)
     # print("\n⌲ sending file:", filepath, "-> to ip:", booth_ip, " over port:", port)
+    booth_ip = SharedState.sender_ip or config["booth_ip"].get(booth_id, "127.0.0.1")
     print("\n⌲ sending file back to ", booth_ip, " over port:", port)
 
     # helper function to send wav file (with error handling)

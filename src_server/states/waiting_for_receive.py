@@ -46,6 +46,10 @@ def get_local_ip():
 class UploadHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         global file_received
+        
+        # Capture sender's IP and store it
+        SharedState.sender_ip = self.client_address[0]
+        print(f"📡 Sender IP captured: {SharedState.sender_ip}")
 
         filename = self.headers.get(
             "X-Filename",
