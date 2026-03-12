@@ -47,7 +47,7 @@ def run():
         audio_path = os.path.join(audio_dir, f"question_{booth_id}.wav")
 
         # Build shuffled queue of random snippets
-        _random_queue = random.sample(range(1, 11), 10)
+        _random_queue = [1, 2, 3]
         _played_welcome = True  # mark welcome as started now
 
         # Play welcome snippet immediately
@@ -106,11 +106,11 @@ def run():
         print(f"🎵   Playing waiting intro ...")
     elif _random_queue:
         idx = _random_queue.pop(0)
-        next_file = os.path.join(audio_dir, f"waiting_random_{idx}.wav")
+        next_file = os.path.join(audio_dir, f"waiting_fixed_0_{idx}.wav")
         print(f"🎵   Playing ambient snippet {idx} ...")
         # Reshuffle when queue is exhausted
         if not _random_queue:
-            _random_queue = random.sample(range(1, 11), 10)
+            _random_queue = [1, 2, 3]
     else:
         return None  # shouldn't happen but guard anyway
 
