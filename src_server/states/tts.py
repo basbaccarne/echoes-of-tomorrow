@@ -19,7 +19,7 @@ os.makedirs(SAVE_DIR, exist_ok=True)
 
 tts_start = time.time()
 
-def process_text(path_in, voice, speed=1.0):
+def process_text(path_in, voice, speed=0.8):
        
     speed_inv = 1/speed
     path_in = Path(path_in)
@@ -32,7 +32,7 @@ def process_text(path_in, voice, speed=1.0):
     t1 = time.time()
 
     syn_config = SynthesisConfig(
-        volume=0.5,  # half as loud
+        volume=1,  # half as loud
         length_scale=speed_inv,  # speed_inv times as slow
         noise_scale=1.0,  # more audio variation
         noise_w_scale=1.0,  # more speaking variation
