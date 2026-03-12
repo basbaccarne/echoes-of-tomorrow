@@ -49,9 +49,9 @@ print(f"✓ Piper voice loaded in {time.time() - load_start:.2f} seconds!")
 
 print("\n✓ Server started... \n")
 
-# state = "waiting_for_receive"
+state = "waiting_for_receive"
 # for testing: uncomment the line below and change with the state you want to start from
-state = "stt"
+# state = "stt"
 
 loaded_state = None
 last_sender_ip = None
