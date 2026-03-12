@@ -1,6 +1,18 @@
 import os
+import time
 import subprocess
 from states.shared import SharedState
+import yaml
+
+
+# ── Config ───────────────────────────────────────────────────────────────────
+base_dir  = "/home/pi/echoes-of-tomorrow/src"
+audio_dir = "/home/pi/echoes-of-tomorrow/audio_files"
+
+with open(os.path.join(base_dir, "config.yaml"), "r") as f:
+    config = yaml.safe_load(f)
+
+AUDIO_CARD = config.get("audio_card", "plughw:0,0")
 
 def run():
         
@@ -18,7 +30,7 @@ def run():
     try:
         subprocess.run([
             "aplay",
-            "-D", "plughw:0,0",
+            "-D", AUDIO_CARD,       
             audio_path
         ], check=True)
     except subprocess.CalledProcessError as e:
