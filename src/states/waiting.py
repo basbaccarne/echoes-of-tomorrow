@@ -42,19 +42,31 @@ def run():
     booth_id = SharedState.booth_id
     port     = UNIQUE_PORTS.get(booth_id, 8765)
 
-    # ── Step 1: upload and start listener (runs once) ────────────────────────
-    if _server is None and _response_path is None:
+    # ── Step 1: start welcome audio immediately, upload + listen in background ──
+    if _server is None and _response_path is None and not _ready:
         audio_path = os.path.join(audio_dir, f"question_{booth_id}.wav")
-        print(f"\n📤   Uploading question to {SERVER_IP}:{port} ...")
-        _upload(audio_path, SERVER_IP, port)
-
-        print(f"👂   Listening for response on port {port} ...")
-        _server = _start_listener(port, booth_id)
 
         # Build shuffled queue of random snippets
         _random_queue = random.sample(range(1, 11), 10)
-        _played_welcome = False
-        _audio_process  = None
+        _played_welcome = True  # mark welcome as started now
+
+        # Play welcome snippet immediately
+        welcome_file = os.path.join(audio_dir, f"waiting_{booth_id}.wav")
+        if os.path.exists(welcome_file):
+            print(f"🎵   Playing waiting intro ...")
+            _audio_process = subprocess.Popen(["aplay", "-D", AUDIO_CARD, welcome_file])
+        else:
+            print(f"   ⚠️  Welcome audio not found: {welcome_file}")
+
+        # Upload + start listener concurrently in background
+        def _upload_and_listen():
+            global _server
+            print(f"\n📤   Uploading question to {SERVER_IP}:{port} ...")
+            _upload(audio_path, SERVER_IP, port)
+            print(f"👂   Listening for response on port {port} ...")
+            _server = _start_listener(port, booth_id)
+
+        threading.Thread(target=_upload_and_listen, daemon=True).start()
 
         time.sleep(0.3)  # horn debounce
         _ready = True
