@@ -1,4 +1,4 @@
-serverip: 10.82.60.157
+serverip: 10.74.61.157
 audio_card: plughw:3,0
 audio_volume: 80
 unique_port:
