@@ -158,6 +158,13 @@ flowchart TB
             response_3.wav
 ```
 
+# Background: logging
+To log the output of the main.py script, you can use the following command. This will save the logs to a file named `echo_log.txt` in your home directory while also displaying them in the terminal.
+```bash
+sudo python -u echoes-of-tomorrow/src/main.py 2>&1 | tee ~/echo_log.txt
+```
+
+
 # Background: booting
 To enable the pi to boot at startup, you have to create a service. In this case, we give the service the name **echo**.
 ```bash
