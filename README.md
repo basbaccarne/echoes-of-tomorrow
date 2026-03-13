@@ -31,12 +31,12 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 | SD cards 32gb (fast) | 4 | €10 | ✔ gotron |
 | Router | 1 | €60 | ✔ gotron | 
 | USB WiFi dongle | 1 | €10 | ✔ gotron |
-| Flat arcade button | 4 | €1,5 | ✔ gotron |
+| [Flat arcade button](https://www.gotron.be/componenten/schakelmateriaal/schakelaars-en-drukknoppen/arcade-knoppen/lichtgevende-arcade-drukknop-30mm-wit.html) | 4 | €3 | ✔ gotron |
 | Server | 1 | -- | ✔ desktop IDE lab|
-| 3.5mm jack telephone horn | 4 | -- | ✔ amazon |
+| [3.5mm jack telephone horn](https://www.amazon.com.be/-/en/Bright-Mobile-Professional-Anti-Radiation-Computers/dp/B0CP17NRHM?th=1) | 4 | €12- | ✔ amazon |
 | [3.5 mm jack to usb dongle](https://www.amazon.com.be/dp/B08B1KK54P?ref=ppx_yo2ov_dt_b_fed_asin_title)|4| €9 | ✔ amazon |
-| [Adafruit I2S 3W Class D Amplifier Breakout - MAX98357A](https://www.adafruit.com/product/3006?srsltid=AfmBOoqNziQHxSEdTn_SE5z7XJhqKsPX-fF9SyxldwQWQEfZMztRJJRE) | 4 | |
-| [3W 8Ω speaker](https://www.dfrobot.com/product-1506.html) | 4 | €10 | ✔ dfrobot |
+| [Adafruit I2S 3W Class D Amplifier Breakout - MAX98357A](https://www.adafruit.com/product/3006?srsltid=AfmBOoqNziQHxSEdTn_SE5z7XJhqKsPX-fF9SyxldwQWQEfZMztRJJRE) | 4 |€5 | ✔ mouser |
+| [3W 8Ω speaker](https://www.dfrobot.com/product-1506.html) | 4 | €3 | ✔ mouser |
 
 
 #### Seting up the raspberry pi
