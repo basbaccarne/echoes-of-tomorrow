@@ -1,5 +1,6 @@
 from hardware import button_horn
 import time
+import datetime
 import os
 import random
 import subprocess
@@ -38,8 +39,14 @@ def _schedule_new_hour():
     _hour_start   = time.time()
     _call_offsets = sorted(random.uniform(0, 3600) for _ in range(calls_per_hour))
     _calls_fired  = set()
-    print(f"[idle] 🕐 New hour scheduled — calls at offsets: "
-          f"{[f'{t:.1f}s' for t in _call_offsets]}")
+    # Convert offsets to actual timestamps
+    _call_times = [
+        datetime.datetime.fromtimestamp(_hour_start + offset).strftime("%H:%M:%S")
+        for offset in _call_offsets
+    ]
+
+    print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
+    print(f"[idle] 🕐 New hour scheduled — calls at times: {_call_times}")
 
 
 def _check_horn():
