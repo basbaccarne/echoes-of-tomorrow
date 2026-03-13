@@ -84,7 +84,7 @@ def _play_call():
     The horn is checked continuously — during playback AND during the gap between rings.
     Returns 'play_welcome' if the horn is lifted at any point, else None.
     """
-    print(f"[idle] [{datetime.datetime.now().strftime('%H:%M:%S')}] 📳 Incoming call — ringing…")
+    print(f"\n📞 [idle] [{datetime.datetime.now().strftime('%H:%M:%S')}] Incoming call — ringing…")
 
     for ring_num in range(rings_per_call):
         # Start the ring audio in a subprocess so we stay responsive
