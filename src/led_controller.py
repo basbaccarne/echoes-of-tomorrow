@@ -15,7 +15,7 @@ import board
 import neopixel
 
 # ── Config ───────────────────────────────────────────────────────────────────
-PIN             = board.D18
+PIN             = board.D10
 NUM_LEDS        = 16
 BRIGHTNESS      = 0.3       # 0.0 – 1.0
 ORDER           = neopixel.GRB

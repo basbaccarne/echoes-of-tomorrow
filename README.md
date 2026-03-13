@@ -39,11 +39,16 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 
 #### Seting up the raspberry pi
 **1. wiring**
-* Connect **DIP switch** to ```3.3V``` (red), ```ground``` (black), ```SDA/GPIO2``` (white), and ```SCL/GPIO3``` (yellow) > set the pin high for the correct ID.
-* Connect **LED ring** to ```5V``` (red) ```ground``` (black) and ```Pin 12 (GPIO 18)``` (yellow)   
-* Connect **horn button** to ``GPIO17`` and ``GROUND``
-* Connect **hashtag button** to ``GPIO27`` and ``GROUND``
-* Connect **USB telephone** to ```USB```
+|component|wiring|
+|---|---|
+| **DIP switch** | 3.3V (red), ground (black), SDA/GPIO2 (white), SCL/GPIO3 (yellow)  |
+| **LED ring** | 5V (red), ground (black), data → GPIO 10 (yellow) **(remap from GPIO18)**|
+| **horn button** | GPIO17 and GROUND |
+| **hashtag button** | GPIO27 and GROUND |
+| **I²S speaker** | BCLK → GPIO18, LRCLK → GPIO19, DIN → GPIO20, DOUT → GPIO21| 
+| **USB telephone** | USB |
+| **power** | USB-C |
+
 * Configure SD card (pi OS lite is fine)
 * Attach power
 
@@ -53,9 +58,9 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 
 **2. software**
 1. Initialize Raspberry Pi & ```sudo apt update && sudo apt upgrade -y```
-2. Software Installations - ```sudo apt install git i2c-tools python3-pip -y```
+2. Software Installations - ```sudo apt install git i2c-tools python3-pip python3-rpi.gpio -y```
 3. Get the main repo - ```git clone https://github.com/basbaccarne/echoes-of-tomorrow```
-4. Install python libraries - ```pip install pyyaml requests rpi_ws281x adafruit-circuitpython-neopixel adafruit-blinka --break-system-packages```
+4. Install python libraries - ```pip install pyyaml requests rpi_ws281x adafruit-circuitpython-neopixel adafruit-blinka --break-system-packages``` (for pi5 you need ```Adafruit-Blinka-Raspberry-Pi5-Neopixel```)
 5. Enable I²C in raspi-config
 7. Set booth service [to do]
 8. Switch to offline network comon [to do]
