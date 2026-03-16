@@ -44,12 +44,16 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 |component|wiring|
 |---|---|
 | **DIP switch** | 3.3V (red), ground (black), SDA/GPIO2 (white), SCL/GPIO3 (yellow)  |
-| **LED ring** | 5V (red), ground (black), data → GPIO 10 (yellow) **(remap from GPIO18)**|
+| **LED ring** | 5V (red), ground (black), data → GPIO 10 (yellow)|
 | **horn button** | GPIO17 and GROUND |
 | **hashtag button** | GPIO27 and GROUND |
-| **I²S speaker** | BCLK → GPIO18, LRCLK → GPIO19, DIN → GPIO20, DOUT → GPIO21| 
+| **I²S speaker** | BCLK → GPIO18, LRCLK → GPIO19, DIN → GPIO21, GND → GROUND VCC → 5V | 
 | **USB telephone** | USB |
 | **power** | USB-C |
+
+<div align="center">  
+ <img src="/img/button.jpg" height="250"> 
+</div>
 
 * Connect the speaker to the amp
 * Configure SD card (pi OS lite is fine)
