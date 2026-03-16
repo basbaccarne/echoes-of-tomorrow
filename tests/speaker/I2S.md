@@ -48,14 +48,24 @@ On Raspberry Pi
 * It won't blow the speaker but will not produce max decibels.
 
 ## Software
+
 1. I²S must be enabled on raspi, so check
     ```bash
     sudo nano /boot/firmware/config.txt
     ```
     Check or add (reboot if you changed something)
     ```ini
+    # CHANGE this:
+    dtparam=audio=on
+    # TO:
+    dtparam=audio=off
+    #In the [all] section at the bottom, ensure it reads:
+    [all]
+    enable_uart=1
+    dtparam=audio=off
     dtparam=i2s=on
-    dtoverlay=hifiberry-dac
+    dtparam=spi=on
+    dtoverlay=max98357a
     ```
 2. Check if the device is visible
     ```bash
@@ -70,3 +80,40 @@ On Raspberry Pi
     ```bash
     aplay -D plughw:2,0 /usr/share/sounds/alsa/Front_Center.wav
     ```
+4. Create asound file
+```
+sudo nano /etc/asound.conf
+```
+and add this
+```ini
+# USB as default output
+pcm.!default {
+    type plug
+    slave.pcm "hw:CARD=Audio,DEV=0"
+}
+
+ctl.!default {
+    type hw
+    card Audio
+}
+
+# dmix holds I2S clocks alive to prevent pop
+pcm.dmix_i2s {
+    type dmix
+    ipc_key 2048
+    ipc_perm 0666
+    slave {
+        pcm "hw:CARD=MAX98357A,DEV=0"
+        period_size 1024
+        buffer_size 8192
+        rate 44100
+        channels 1
+        format S16_LE
+    }
+}
+
+pcm.i2s_amp {
+    type plug
+    slave.pcm "dmix_i2s"
+}
+```

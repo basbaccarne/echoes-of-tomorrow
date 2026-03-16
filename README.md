@@ -69,6 +69,7 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 3. Get the main repo - ```git clone https://github.com/basbaccarne/echoes-of-tomorrow```
 4. Install python libraries - ```pip install pyyaml requests rpi_ws281x adafruit-circuitpython-neopixel adafruit-blinka --break-system-packages``` (for pi5 you need ```Adafruit-Blinka-Raspberry-Pi5-Neopixel```)
 5. Enable I²C in raspi-config
+6. Configure I²S audio (see [this read me](/tests/speaker/I2S.md))
 7. Set booth service [to do]
 8. Switch to offline network comon [to do]
 
