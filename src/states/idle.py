@@ -5,7 +5,8 @@ import random
 import subprocess
 
 from hardware import button_horn
-from shared import AUDIO_CARD_RING, AUDIO_VOLUME, SharedState
+from states.shared import SharedState
+from states.shared import AUDIO_CARD_RING
 
 # ── Config ────────────────────────────────────────────────────────────────────
 audio_dir = "/home/pi/echoes-of-tomorrow/audio_files"
