@@ -3,7 +3,8 @@ import time
 import subprocess
 
 from hardware import button_horn
-from shared import AUDIO_CARD, SharedState
+from states.shared import SharedState
+from states.shared import AUDIO_CARD
 
 # ── Config ────────────────────────────────────────────────────────────────────
 audio_dir = "/home/pi/echoes-of-tomorrow/audio_files"

@@ -1,68 +1,60 @@
+import time
 import subprocess
 import os
+
 from hardware import button_stop, button_horn
-from states.shared import SharedState
-import time
-import yaml
+from states.shared import SharedState, AUDIO_CARD
 
-
-
-# ── Config ───────────────────────────────────────────────────────────────────
-base_dir  = "/home/pi/echoes-of-tomorrow/src"
+# ── Config ────────────────────────────────────────────────────────────────────
 audio_dir = "/home/pi/echoes-of-tomorrow/audio_files"
-
-with open(os.path.join(base_dir, "config.yaml"), "r") as f:
-    config = yaml.safe_load(f)
-
-AUDIO_CARD = config.get("audio_card", "plughw:0,0")
-DEBOUNCE = 0.3  # seconds — adjust if needed
+DEBOUNCE = 0.3
 MAX_RECORDING_SECONDS = 20
 
-process = None
+_process = None
+
+
+def _stop_recording():
+    """Terminate the recording process and reset module state."""
+    global _process
+    if _process is not None:
+        _process.terminate()
+        _process.wait()
+        _process = None
+
 
 def run():
-    global process
+    global _process
 
-    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-    audio_path = os.path.join(base_dir, "audio_files", f"question_{SharedState.booth_id}.wav")
+    audio_path = os.path.join(audio_dir, f"question_{SharedState.booth_id}.wav")
 
-    # start recording if not already
-    if process is None:
+    # ── Start recording if not already running ────────────────────────────────
+    if _process is None:
         time.sleep(DEBOUNCE)
-        print(f"\n🎤   Recording the question in file {audio_path}")
-        print("Press the #️⃣   button to stop the recording.")
-        print("ALSA message:")
-        process = subprocess.Popen([
-            "arecord",
-            "-D", AUDIO_CARD,
-            "-f", "cd",
-            "-t", "wav",
-            audio_path
-        ])
+        print(f"\n🎤  Recording to {audio_path}")
+        print("Press the #️⃣  button to stop.")
+        _process = subprocess.Popen(
+            ["arecord", "-D", AUDIO_CARD, "-f", "cd", "-t", "wav", audio_path],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
         SharedState.recording_start_time = time.time()
 
-    # horn put back → abort to idle
+    # ── Horn replaced → abort to idle ────────────────────────────────────────
     if button_horn.is_pressed:
-        process.terminate()
-        process.wait()
-        process = None
-        print("📵   Horn replaced during recording — returning to idle.")
+        _stop_recording()
+        print("📵  Horn replaced during recording — returning to idle.")
         return "idle"
 
-    # stop recording on hashtag button press
+    # ── Stop button → proceed to waiting ─────────────────────────────────────
     if button_stop.is_pressed:
-        process.terminate()
-        process.wait()
-        process = None
-        print("🛑   Hashtag button pressed → Recording stopped.")
+        _stop_recording()
+        print("🛑  Stop button pressed — recording stopped.")
         return "waiting"
 
-    # auto-stop after MAX_RECORDING_SECONDS
+    # ── Auto-stop after MAX_RECORDING_SECONDS ─────────────────────────────────
     if (time.time() - SharedState.recording_start_time) >= MAX_RECORDING_SECONDS:
-        process.terminate()
-        process.wait()
-        process = None
-        print(f"⏱️   Max recording time ({MAX_RECORDING_SECONDS}s) reached → Recording stopped.")
+        _stop_recording()
+        print(f"⏱️  Max recording time ({MAX_RECORDING_SECONDS}s) reached — recording stopped.")
         return "waiting"
 
     return None

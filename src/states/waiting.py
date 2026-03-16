@@ -11,28 +11,20 @@ import threading
 import subprocess
 import urllib.request
 from http.server import HTTPServer, BaseHTTPRequestHandler
-import yaml
-from hardware import button_horn
-from states.shared import SharedState
 
-# ── Config ───────────────────────────────────────────────────────────────────
-base_dir  = "/home/pi/echoes-of-tomorrow/src"
+from hardware import button_horn
+from states.shared import SharedState, AUDIO_CARD, SERVER_IP, UNIQUE_PORTS
+
+# ── Config ────────────────────────────────────────────────────────────────────
 audio_dir = "/home/pi/echoes-of-tomorrow/audio_files"
 
-with open(os.path.join(base_dir, "config.yaml"), "r") as f:
-    config = yaml.safe_load(f)
-
-SERVER_IP    = config["serverip"]
-UNIQUE_PORTS = config["unique_port"]
-AUDIO_CARD = config.get("audio_card", "plughw:0,0")
-
-# ── Module-level state ───────────────────────────────────────────────────────
-_response_path  = None   # set by the HTTP handler when response arrives
-_server         = None   # HTTPServer instance
-_ready          = False  # horn debounce flag
-_audio_process  = None   # current aplay subprocess
-_played_welcome = False  # ensure welcome snippet plays first
-_random_queue   = []     # shuffled queue of random snippets
+# ── Module-level state ────────────────────────────────────────────────────────
+_response_path  = None
+_server         = None
+_ready          = False
+_audio_process  = None
+_played_welcome = False
+_random_queue   = []
 
 
 def run():
@@ -42,33 +34,33 @@ def run():
     booth_id = SharedState.booth_id
     port     = UNIQUE_PORTS.get(booth_id, 8765)
 
-    # ── Step 1: start welcome audio immediately, upload + listen in background ──
+    # ── Step 1: start welcome audio, upload + listen in background ───────────
     if _server is None and _response_path is None and not _ready:
-        audio_path = os.path.join(audio_dir, f"question_{booth_id}.wav")
-
-        # Build shuffled queue of random snippets
+        audio_path    = os.path.join(audio_dir, f"question_{booth_id}.wav")
+        welcome_file  = os.path.join(audio_dir, f"waiting_{booth_id}.wav")
         _random_queue = [1, 2, 3]
-        _played_welcome = True  # mark welcome as started now
+        _played_welcome = True
 
-        # Play welcome snippet immediately
-        welcome_file = os.path.join(audio_dir, f"waiting_{booth_id}.wav")
         if os.path.exists(welcome_file):
-            print(f"🎵   Playing waiting intro ...")
-            _audio_process = subprocess.Popen(["aplay", "-D", AUDIO_CARD, welcome_file])
+            print("🎵  Playing waiting intro...")
+            _audio_process = subprocess.Popen(
+                ["aplay", "-D", AUDIO_CARD, welcome_file],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
         else:
-            print(f"   ⚠️  Welcome audio not found: {welcome_file}")
+            print(f"⚠️  Welcome audio not found: {welcome_file}")
 
-        # Upload + start listener concurrently in background
         def _upload_and_listen():
             global _server
-            print(f"\n📤   Uploading question to {SERVER_IP}:{port} ...")
+            print(f"\n📤  Uploading question to {SERVER_IP}:{port}...")
             _upload(audio_path, SERVER_IP, port)
-            print(f"👂   Listening for response on port {port} ...")
+            print(f"👂  Listening for response on port {port}...")
             _server = _start_listener(port, booth_id)
 
         threading.Thread(target=_upload_and_listen, daemon=True).start()
 
-        time.sleep(0.3)  # horn debounce
+        time.sleep(0.3)
         _ready = True
 
     if not _ready:
@@ -76,25 +68,18 @@ def run():
 
     # ── Step 2: abort if horn is replaced ────────────────────────────────────
     if button_horn.is_pressed:
-        print("📵   Horn replaced during waiting — returning to idle.")
+        print("📵  Horn replaced during waiting — returning to idle.")
         _stop_audio()
         _cleanup()
         return "idle"
 
-    # ── Step 3: check if current snippet finished ────────────────────────────
+    # ── Step 3: still playing — wait for snippet to finish ───────────────────
     if _audio_process is not None and _audio_process.poll() is None:
-        # Still playing — check for response but don't interrupt
-        if _response_path is not None:
-            # Wait for current snippet to finish before transitioning
-            # (feels more natural than cutting off mid-sentence)
-            pass
         return None
 
-    # ── Step 4: snippet finished (or none started yet) ───────────────────────
-
-    # If response arrived, transition now (between snippets = clean cutoff)
+    # ── Step 4: snippet finished — transition if response arrived ────────────
     if _response_path is not None:
-        print(f"✅   Response received: {_response_path}")
+        print(f"✅  Response received: {_response_path}")
         _stop_audio()
         _cleanup()
         return "response"
@@ -103,28 +88,29 @@ def run():
     if not _played_welcome:
         next_file = os.path.join(audio_dir, f"waiting_{booth_id}.wav")
         _played_welcome = True
-        print(f"🎵   Playing waiting intro ...")
+        print("🎵  Playing waiting intro...")
     elif _random_queue:
         idx = _random_queue.pop(0)
         next_file = os.path.join(audio_dir, f"waiting_fixed_0_{idx}.wav")
-        print(f"🎵   Playing ambient snippet {idx} ...")
-        # Reshuffle when queue is exhausted
+        print(f"🎵  Playing ambient snippet {idx}...")
         if not _random_queue:
             _random_queue = [1, 2, 3]
     else:
-        return None  # shouldn't happen but guard anyway
+        return None
 
     if os.path.exists(next_file):
-        _audio_process = subprocess.Popen([
-            "aplay", "-D", AUDIO_CARD, next_file
-        ])
+        _audio_process = subprocess.Popen(
+            ["aplay", "-D", AUDIO_CARD, next_file],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
     else:
-        print(f"   ⚠️  Audio file not found: {next_file}")
+        print(f"⚠️  Audio file not found: {next_file}")
 
     return None
 
 
-# ── Helpers ──────────────────────────────────────────────────────────────────
+# ── Helpers ───────────────────────────────────────────────────────────────────
 
 def _stop_audio():
     global _audio_process
@@ -136,13 +122,12 @@ def _stop_audio():
 
 def _upload(audio_path, server_ip, port):
     """POST the question wav to the server."""
-    url      = f"http://{server_ip}:{port}"
-    filename = os.path.basename(audio_path)
+    url = f"http://{server_ip}:{port}"
     try:
         with open(audio_path, "rb") as f:
             data = f.read()
         req = urllib.request.Request(url, data=data, method="POST")
-        req.add_header("X-Filename", filename)
+        req.add_header("X-Filename", os.path.basename(audio_path))
         req.add_header("Content-Length", str(len(data)))
         with urllib.request.urlopen(req, timeout=10) as resp:
             print(f"   Server responded: {resp.read().decode()}")
@@ -151,35 +136,31 @@ def _upload(audio_path, server_ip, port):
 
 
 def _start_listener(port, booth_id):
-    """Start HTTP listener in a background thread for the server to POST response to."""
+    """Start HTTP listener in background thread for server to POST response to."""
 
     class ResponseHandler(BaseHTTPRequestHandler):
         def do_POST(self):
             global _response_path
             length    = int(self.headers["Content-Length"])
             data      = self.rfile.read(length)
-
             save_path = os.path.join(audio_dir, f"response_{booth_id}.wav")
             with open(save_path, "wb") as f:
                 f.write(data)
-
             self.send_response(200)
             self.end_headers()
             self.wfile.write(b"OK")
-
-            _response_path = save_path  # signal the main loop
+            _response_path = save_path
 
         def log_message(self, format, *args):
-            pass  # suppress default HTTP log noise
+            pass
 
     server = HTTPServer(("0.0.0.0", port), ResponseHandler)
-    thread = threading.Thread(target=server.serve_forever, daemon=True)
-    thread.start()
+    threading.Thread(target=server.serve_forever, daemon=True).start()
     return server
 
 
 def _cleanup():
-    """Shut down the listener and reset all module state."""
+    """Shut down listener and reset all module state."""
     global _response_path, _server, _ready, _played_welcome, _random_queue
     if _server:
         _server.shutdown()
