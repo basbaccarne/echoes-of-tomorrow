@@ -38,6 +38,13 @@ On Raspberry Pi
 | ```DATA IN``` | GPIO20 |
 | ```DATA OUT``` | GPIO21 |
 
+Mounting manual MAX98357A to pi
+* LRC → GPIO19 (blue)
+* BCLK → GPIO18 (yellow)
+* DIN → GPIO21 (green)
+* GND → GROUND (black)
+* Vin → 5V |(red)
+
 <div align="left">  
  <img src="i2s.png" width="600"> 
 </div>

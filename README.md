@@ -47,7 +47,7 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 | **LED ring** | 5V (red), ground (black), data → GPIO 10 (yellow)|
 | **horn button** | GPIO17 and GROUND |
 | **hashtag button** | GPIO27 and GROUND |
-| **I²S speaker** | BCLK → GPIO18, LRCLK → GPIO19, DIN → GPIO21, GND → GROUND VCC → 5V | 
+| **I²S speaker** | LRC → GPIO19 (blue), BCLK → GPIO18 (yellow), DIN → GPIO21 (green), GND → GROUND (black), Vin → 5V (red) | 
 | **USB telephone** | USB |
 | **power** | USB-C |
 
