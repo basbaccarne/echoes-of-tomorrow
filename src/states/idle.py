@@ -17,9 +17,9 @@ debounce = 0.3
 ring_on = True
 
 # Ring settings
-rings_per_call = 3  # Number of rings per call
+rings_per_call = 4  # Number of rings per call
 ring_interval  = 2  # Seconds between rings within a single call
-calls_per_hour = 2  # How many calls to schedule per hour
+calls_per_hour = 1  # How many calls to schedule per hour
 
 # ── Hour-scheduling state (module-level, persists between run() calls) ────────
 _hour_start   = None
