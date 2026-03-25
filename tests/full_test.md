@@ -1,4 +1,14 @@
-Create serve
+allow shutdown
+```bash
+sudo visudo
+```
+
+add at the botom
+``ìni
+pi ALL=(ALL) NOPASSWD: /usr/sbin/shutdown
+`` 
+
+Create service
 ```bash
 sudo nano /etc/systemd/system/hardware-test.service
 ```
@@ -25,3 +35,4 @@ sudo systemctl daemon-reload
 sudo systemctl enable hardware-test.service
 sudo systemctl start hardware-test.service
 ```
+

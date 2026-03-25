@@ -115,4 +115,4 @@ if __name__ == "__main__":
 
     finally:
         logging.info("🔌  Shutting down...")
-        subprocess.run(["sudo", "systemctl", "poweroff"])
+        subprocess.run(["sudo", "shutdown", "-h", "now"])
