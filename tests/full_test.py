@@ -1,27 +1,39 @@
 #!/usr/bin/env python3
-# test_hardware.py — tests LED ring, I2S amp, and USB audio
+# tests/full_test.py — tests LED ring, I2S amp, and USB audio then shuts down
 
 import time
 import subprocess
+import logging
 import board
 import neopixel
 
+# ── Logging ───────────────────────────────────────────────────────────────────
+LOG_PATH = "/home/pi/echoes-of-tomorrow/tests/full_test.log"
+
+logging.basicConfig(
+    filename=LOG_PATH,
+    level=logging.INFO,
+    format="%(asctime)s  %(levelname)-8s  %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
+logging.getLogger().addHandler(logging.StreamHandler())
+
 # ── Config ────────────────────────────────────────────────────────────────────
-LED_COUNT   = 16          # adjust to your ring size
-LED_PIN     = board.D10  # SPI mode for NeoPixel (avoids I2S conflict)
-BRIGHTNESS  = 0.3
+LED_COUNT  = 24
+LED_PIN    = board.MOSI
+BRIGHTNESS = 0.3
 
-AUDIO_RING  = "i2s_amp"   # MAX98357A via dmix
-AUDIO_USB   = "default"   # USB card
+AUDIO_RING = "i2s_amp"
+AUDIO_USB  = "default"
 
-RING_WAV    = "/home/pi/echoes-of-tomorrow/audio_files/ring.wav"
-USB_WAV     = "/home/pi/echoes-of-tomorrow/audio_files/pick-up_phone.wav"
+RING_WAV   = "/home/pi/echoes-of-tomorrow/audio_files/ring.wav"
+USB_WAV    = "/home/pi/echoes-of-tomorrow/audio_files/pick-up_phone.wav"
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def play(path, card):
-    print(f"   ▶  aplay -D {card} {path}")
+    logging.info(f"   ▶  aplay -D {card} {path}")
     proc = subprocess.Popen(
         ["aplay", "-D", card, path],
         stdout=subprocess.DEVNULL,
@@ -29,15 +41,15 @@ def play(path, card):
     )
     proc.wait()
     if proc.returncode != 0:
-        print(f"   ⚠️  aplay exited with code {proc.returncode}")
+        logging.warning(f"   ⚠️  aplay exited with code {proc.returncode}")
     else:
-        print("   ✅  Done")
+        logging.info("   ✅  Done")
 
 
 # ── Test 1: LED swirl ─────────────────────────────────────────────────────────
 
 def test_leds():
-    print("\n🌈  [1/3] Testing LED ring — swirl...")
+    logging.info("[1/3] Testing LED ring — swirl...")
     pixels = neopixel.NeoPixel(
         LED_PIN, LED_COUNT,
         brightness=BRIGHTNESS,
@@ -46,15 +58,14 @@ def test_leds():
     )
 
     colors = [
-        (255,   0,   0),   # red
-        (255, 128,   0),   # orange
-        (255, 255,   0),   # yellow
-        (0,   255,   0),   # green
-        (0,     0, 255),   # blue
-        (128,   0, 255),   # purple
+        (255,   0,   0),
+        (255, 128,   0),
+        (255, 255,   0),
+        (0,   255,   0),
+        (0,     0, 255),
+        (128,   0, 255),
     ]
 
-    # Two full swirl cycles
     for _ in range(2):
         for color in colors:
             for i in range(LED_COUNT):
@@ -64,36 +75,44 @@ def test_leds():
 
     pixels.fill((0, 0, 0))
     pixels.show()
-    print("   ✅  Done")
+    logging.info("   ✅  Done")
 
 
-# ── Test 2: I2S amp (ring) ────────────────────────────────────────────────────
+# ── Test 2: I2S amp ───────────────────────────────────────────────────────────
 
 def test_i2s():
-    print("\n🔔  [2/3] Testing I2S amp (MAX98357A)...")
+    logging.info("[2/3] Testing I2S amp (MAX98357A)...")
     play(RING_WAV, AUDIO_RING)
 
 
 # ── Test 3: USB audio ─────────────────────────────────────────────────────────
 
 def test_usb():
-    print("\n🔊  [3/3] Testing USB audio...")
+    logging.info("[3/3] Testing USB audio...")
     play(USB_WAV, AUDIO_USB)
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    print("=" * 40)
-    print("  Hardware test — LED / I2S / USB")
-    print("=" * 40)
+    logging.info("=" * 40)
+    logging.info("  Hardware test — LED / I2S / USB")
+    logging.info("=" * 40)
 
-    test_leds()
-    time.sleep(0.5)
+    try:
+        test_leds()
+        time.sleep(0.5)
 
-    test_i2s()
-    time.sleep(0.5)
+        test_i2s()
+        time.sleep(0.5)
 
-    test_usb()
+        test_usb()
 
-    print("\n✅  All tests complete.")
+        logging.info("✅  All tests complete.")
+
+    except Exception as e:
+        logging.error(f"❌  Test failed: {e}")
+
+    finally:
+        logging.info("🔌  Shutting down...")
+        subprocess.run(["sudo", "systemctl", "poweroff"])
