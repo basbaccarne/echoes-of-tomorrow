@@ -24,7 +24,7 @@ import board
 import neopixel
 
 # ── Config ──────────────────────────────────────────
-PIN        = board.D18   # Pin 12 (GPIO 18)
+PIN        = board.D10   # GPIO 10)
 NUM_LEDS   = 16         # change to match your ring size
 BRIGHTNESS = 0.3        # 0.0 – 1.0  (start low to protect eyes!)
 ORDER      = neopixel.GRB
