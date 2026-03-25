@@ -8,7 +8,7 @@ import time
 button_horn = Button(17)
 button_hashtag = Button(27)
 
-debounce = 0.3
+debounce = 0.5
 
 while True:
     # --- Pin 4: trigger on RELEASE ---
