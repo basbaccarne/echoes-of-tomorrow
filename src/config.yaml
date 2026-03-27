@@ -1,4 +1,4 @@
-serverip: 10.74.61.157
+serverip: 172.31.185.157
 audio_card: default        # USB audio
 audio_card_ring: i2s_amp   # MAX98357A via dmix
 audio_volume: 80

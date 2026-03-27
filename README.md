@@ -70,8 +70,50 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
 4. Install python libraries - ```pip install pyyaml requests rpi_ws281x adafruit-circuitpython-neopixel adafruit-blinka --break-system-packages``` (for pi5 you need ```Adafruit-Blinka-Raspberry-Pi5-Neopixel```)
 5. Enable I²C in raspi-config
 6. Configure I²S audio (see [this read me](/tests/speaker/I2S.md))
-7. Set booth service [to do]
-8. Switch to offline network comon [to do]
+7. Allow shutdown
+    ```bash
+    sudo visudo
+    ```
+    And add this line to the end of the file
+    ```
+    ìni pi ALL=(ALL) NOPASSWD: /usr/sbin/shutdown 
+    ```
+8. Create service
+    ```bash
+    sudo nano /etc/systemd/system/echoes-of-tomorrow.service
+    ```
+    And use this content
+    ```ini 
+    [Unit]
+    Description=Main script for Echoes of Tomorrow
+    After=sound.target
+
+    [Service]
+    Type=oneshot
+    User=pi
+    WorkingDirectory=/home/pi/echoes-of-tomorrow/
+    ExecStartPre=/bin/sh -c 'echo "\n===== START $(date) =====" >> /home/pi/log.log'
+    ExecStartPre=/bin/sh -c 'echo "Checking network..." >> /home/pi/log.log && timeout 5 getent hosts github.com > /dev/null && echo "Updating repo..." >> /home/pi/log.log && timeout 15 git -C /home/pi/echoes-of-tomorrow pull >> /home/pi/log.log 2>&1 || echo "No network or git failed, skipping update." >> /home/pi/log.log'
+    ExecStart=/usr/bin/python3 /home/pi/echoes-of-tomorrow/src/main.py
+    RemainAfterExit=no
+    StandardOutput=append:/home/pi/log.log
+    StandardError=append:/home/pi/log.log
+    Restart=no
+    RestartSec=5
+    TimeoutStartSec=300
+    Environment=PYTHONUNBUFFERED=1
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+    Then enable this service
+    ```bash
+    sudo systemctl daemon-reload
+    sudo systemctl enable echoes-of-tomorrow.service
+    sudo systemctl start echoes-of-tomorrow.service
+    ```
+9. Add shutdown logic [to do]
+10. Switch to offline network comon [to do]
 
 
 #### Seting up the server
