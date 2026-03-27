@@ -86,31 +86,40 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
     ```ini 
     [Unit]
     Description=Main script for Echoes of Tomorrow
-    After=sound.target
+    After=network-online.target sound.target
+    Wants=network-online.target
 
     [Service]
     Type=oneshot
-    User=pi
+    User=root
     WorkingDirectory=/home/pi/echoes-of-tomorrow/
+
+    # Log start timestamp
     ExecStartPre=/bin/sh -c 'echo "\n===== START $(date) =====" >> /home/pi/log.log'
-    ExecStartPre=/bin/sh -c 'echo "Checking network..." >> /home/pi/log.log && timeout 5 getent hosts github.com > /dev/null && echo "Updating repo..." >> /home/pi/log.log && timeout 15 git -C /home/pi/echoes-of-tomorrow pull >> /home/pi/log.log 2>&1 || echo "No network or git failed, skipping update." >> /home/pi/log.log'
+
+    # Check network and update repo if possible
+    ExecStartPre=/bin/sh -c '\
+    echo "Checking network..." >> /home/pi/log.log && \
+    timeout 5 /usr/bin/getent hosts github.com > /dev/null && \
+    echo "Updating repo..." >> /home/pi/log.log && \
+    timeout 15 /usr/bin/git -C /home/pi/echoes-of-tomorrow pull >> /home/pi/log.log 2>&1 || \
+    echo "No network or git failed, skipping update." >> /home/pi/log.log'
+
+    # Run the main Python script
     ExecStart=/usr/bin/python3 /home/pi/echoes-of-tomorrow/src/main.py
-    RemainAfterExit=no
+
+    # Logging
     StandardOutput=append:/home/pi/log.log
     StandardError=append:/home/pi/log.log
-    Restart=no
-    RestartSec=5
-    TimeoutStartSec=300
     Environment=PYTHONUNBUFFERED=1
+    TimeoutStartSec=300
+
+    # Do not restart (since script ends with shutdown)
+    Restart=no
+    SuccessExitStatus=0 143
 
     [Install]
     WantedBy=multi-user.target
-    ```
-    Then enable this service
-    ```bash
-    sudo systemctl daemon-reload
-    sudo systemctl enable echoes-of-tomorrow.service
-    sudo systemctl start echoes-of-tomorrow.service
     ```
 9. Add shutdown logic [to do]
 10. Switch to offline network comon [to do]
