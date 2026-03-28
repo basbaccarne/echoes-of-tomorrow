@@ -29,7 +29,7 @@ futures = [
     "[4] GENETISCHE OPTIMALISATIE (Genetic)"
 ]
 
-TIMEOUT = 60  # wait up to 60s
+TIMEOUT = 180 # wait up to 180s
 
 # Directories
 BASE_DIR = Path(__file__).resolve().parent.parent
