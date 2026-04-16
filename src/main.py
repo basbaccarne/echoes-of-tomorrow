@@ -17,6 +17,7 @@ import subprocess
 import yaml
 import time
 import socket
+import datetime
 from read_booth_id import read_booth_id
 from states.shared import SharedState
 from led_controller import LEDController
@@ -28,8 +29,11 @@ SharedState.booth_id = read_booth_id()
 with open(os.path.join(os.path.dirname(__file__), "config.yaml"), "r") as f:
     config = yaml.safe_load(f)
 
-AUDIO_CARD = config.get("audio_card", "plughw:0,0")
-audio_volume = config.get("audio_volume", 80)
+AUDIO_CARD     = config.get("audio_card", "plughw:0,0")
+audio_volume   = config.get("audio_volume", 80)
+SHUTDOWN_HOUR  = config.get("shutdown_hour", 23)
+SHUTDOWN_MINUTE = config.get("shutdown_minute", 0)
+
 subprocess.run(["amixer", "-D", AUDIO_CARD, "sset", "PCM", f"{audio_volume}%"], capture_output=True)
 
 # initiate led animations
@@ -40,6 +44,7 @@ led.set_state("idle")  # set initial animation
 # Global "state" variable and loaded state to track which module is currently loaded
 state = "idle"
 loaded_state = None
+shutdown_requested = False
 
 # function to get the ip address
 def get_ip():
@@ -53,18 +58,27 @@ def get_ip():
         return ip
     except Exception:
         return "No network connection"
-    
+
 # opening statements
 print("\n-------------------------------")
 print("☎️   Raspberry Pi Telephone Module")
 print(f"IP address: {get_ip()}")
-print(f'This device is set to booth ID: {SharedState.booth_id}')
+print(f"This device is set to booth ID: {SharedState.booth_id}")
 print(f"Starting state machine in state: {state}")
+print(f"Scheduled shutdown at: {SHUTDOWN_HOUR:02d}:{SHUTDOWN_MINUTE:02d}")
 print("Waiting for the horn to be picked up, looking forward to this conversation ...\n")
 
 # Main loop to continuously check the state and run the corresponding module
 try:
     while True:
+        # --- Scheduled shutdown check ---
+        now = datetime.datetime.now()
+        if now.hour == SHUTDOWN_HOUR and now.minute == SHUTDOWN_MINUTE:
+            print(f"\n🕐  Scheduled shutdown time reached ({SHUTDOWN_HOUR:02d}:{SHUTDOWN_MINUTE:02d})")
+            shutdown_requested = True
+            break
+        # ---------------------------------
+
         try:
             # load module only when state changes
             if loaded_state != state:
@@ -96,3 +110,6 @@ finally:
     led.stop()
     print("\n🧹   GPIO cleaned up. All set up for a new run!")
     print("-------------------------------\n")
+    if shutdown_requested:
+        print("🔌  Shutting down...")
+        subprocess.run(["sudo", "shutdown", "-h", "now"])

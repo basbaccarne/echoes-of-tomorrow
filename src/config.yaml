@@ -12,3 +12,6 @@ unique_port:
   1: 8766
   2: 8767
   3: 8768
+
+shutdown_hour: 22
+shutdown_minute: 0
