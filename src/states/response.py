@@ -24,9 +24,10 @@ def _play(path: str) -> bool:
 
 
 def run():
-    booth_id        = SharedState.booth_id
-    response_path   = os.path.join(audio_dir, f"response_{booth_id}.wav")
-    response_0_path = os.path.join(audio_dir, f"response_0_{booth_id}.wav")
+    booth_id                  = SharedState.booth_id
+    fixed_start_path          = os.path.join(audio_dir, f"fixed_response_start_{booth_id}.wav")
+    response_path             = os.path.join(audio_dir, f"response_{booth_id}.wav")
+    response_0_path           = os.path.join(audio_dir, f"response_0_{booth_id}.wav")
 
     print(f"\n⏳  Checking for response file at {response_path}")
 
@@ -36,9 +37,18 @@ def run():
 
     print(f"\n⏳  Playing response for booth {booth_id}...")
 
+    # 1. Play fixed intro (optional — skip if missing)
+    if os.path.exists(fixed_start_path):
+        if not _play(fixed_start_path):
+            return "idle"
+    else:
+        print(f"⚠️  No fixed start file at {fixed_start_path} — skipping.")
+
+    # 2. Play main response (required)
     if not _play(response_path):
         return "idle"
 
+    # 3. Play follow-up response (optional — skip if missing)
     if os.path.exists(response_0_path):
         if not _play(response_0_path):
             return "idle"

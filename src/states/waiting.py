@@ -38,7 +38,7 @@ def run():
     if _server is None and _response_path is None and not _ready:
         audio_path    = os.path.join(audio_dir, f"question_{booth_id}.wav")
         welcome_file  = os.path.join(audio_dir, f"waiting_{booth_id}.wav")
-        _random_queue = [1, 2, 3]
+        _random_queue = [1, 2, 3, 4, 5, 6, 7]
         _played_welcome = True
 
         if os.path.exists(welcome_file):
@@ -91,10 +91,10 @@ def run():
         print("🎵  Playing waiting intro...")
     elif _random_queue:
         idx = _random_queue.pop(0)
-        next_file = os.path.join(audio_dir, f"waiting_fixed_0_{idx}.wav")
+        next_file = os.path.join(audio_dir, f"waiting_random_0_{idx}.wav")
         print(f"🎵  Playing ambient snippet {idx}...")
         if not _random_queue:
-            _random_queue = [1, 2, 3]
+            _random_queue = [1, 2, 3, 4, 5, 6, 7]
     else:
         return None
 
