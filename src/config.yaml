@@ -1,4 +1,9 @@
-serverip: 10.211.222.157
+serverip: 192.168.0.100
+booth_0_ip: 192.168.0.101
+booth_1_ip: 192.168.0.102
+booth_2_ip: 192.168.0.103
+booth_3_ip: 192.168.0.104
+
 audio_card: default        # USB audio
 audio_card_ring: i2s_amp   # MAX98357A via dmix
 audio_volume: 80

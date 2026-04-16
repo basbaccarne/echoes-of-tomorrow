@@ -1,4 +1,4 @@
-server__ip: 10.63.235.157
+server__ip: 192.168.0.101
 audio_path: /home/io/echoes-of-tomorrow/audio_files
 voice_path:
   0: /home/io/echoes-of-tomorrow/src_server/voices/nl_BE-rdh-medium.onnx
@@ -12,7 +12,7 @@ unique_port:
   2: 8767
   3: 8768
 booth_ip:
-  0: 10.82.60.165
-  1: 10.63.235.166
-  2: 10.63.235.167
-  3: 10.63.235.168
+  0: 192.168.0.101
+  1: 192.168.0.102
+  2: 192.168.0.103
+  3: 192.168.0.104
