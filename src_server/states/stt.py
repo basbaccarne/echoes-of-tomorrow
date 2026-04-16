@@ -21,7 +21,6 @@ def process_audio(path_in, model):
     # general timer for the whole session
     SharedState.session_start = time.time()
     
-    # print(f"Transcribing: {path_in}")
     transcribe_start = time.time()
 
     segments, info = model.transcribe(
@@ -32,11 +31,8 @@ def process_audio(path_in, model):
         without_timestamps=True
     )
 
-    # print("Processing segments...")
     segments_list = list(segments)
     transcribe_time = time.time() - transcribe_start
-    # print(f"Found {len(segments_list)} segments")
-    # print(f"⏱️  Transcription took {transcribe_time:.2f} seconds")
 
     text = " ".join([segment.text for segment in segments_list])
     print(f"✓ Transcription complete in {transcribe_time:.2f} seconds!")
@@ -52,6 +48,19 @@ def process_audio(path_in, model):
     return text
 
 
+def log_question(booth_id, question):
+    log_filename = f"{booth_id}_LOGS.txt"
+    log_path = os.path.join(SAVE_DIR, log_filename)
+    date_str = datetime.datetime.now().strftime("%Y-%m-%d")
+
+    log_entry = f"[{date_str}] [{booth_id}] [{question}]\n"
+
+    with open(log_path, "a", encoding="utf-8") as log_file:
+        log_file.write(log_entry)
+        log_file.flush()
+        os.fsync(log_file.fileno())
+
+
 def run():
     model = SharedState.whisper_model
     if model is None:
@@ -61,15 +70,12 @@ def run():
     input_path = os.path.join(SAVE_DIR, f"question_{SharedState.booth_id}.wav")
 
     print(f"📜 transcribing question_{SharedState.booth_id}.wav")
-    # print(f"In directory: {audio_path}")
 
     response = process_audio(input_path, model)
 
-    # print(f"Text response stored in: question_{SharedState.booth_id}.txt")
-    # print(f"In directory: {audio_path}")
+    log_question(SharedState.booth_id, response)
+
     print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
-    # print("🎙️  I've transformed the wav to text.")
     print(f"📜  Transcript:{response}")
-    # print("\nSending transcript to n8n for further processing...")
 
     return "n8n"
