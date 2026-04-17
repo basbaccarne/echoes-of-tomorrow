@@ -1,0 +1,231 @@
+Scenario: Collapse – Vlaanderen 2045
+Scenarionaam: Van Prestatie naar Overleving
+
+Scenario Stack
+NIVEAU 1 – ABSTRACT LOGISCH NIVEAU
+(Regels, axioma’s en gecontroleerde variatie)
+1.1 Vaste Wereldparameters
+•	Jaar = 2040
+•	Regio = Vlaanderen
+•	Technologische maturiteit = instabiel (van zeer hoog naar selectief functioneel)
+•	Culturele basis = overgang van meritocratisch naar lokaal-collectief maar vertrekt vanuit een ineengestortte samenleving. Nieuwe lokale initiatieven zijn emerging. 
+•	Samenlevingstype = post-collapse heropbouwmaatschappij
+De samenleving vertrekt vanuit een doorgedreven performantiemodel, maar deze structuur is  ingestort onder haar eigen complexiteit en afhankelijkheden. Mensen konden dit niet meer volhouden. Niet enkel economische structuren zijn ingestort, maar ook mensen kunnen het gezinsleven en de constante druk niet meer aan. Dit ligt aan de basis voor het ineenstorten van de bestaande structuur. 
+Transformatiedynamiek:
+•	Overbelasting van systemen (arbeidsmarkt, onderwijs, zorg) leidt tot uitval.
+•	Sterke afhankelijkheid van technologie en globale netwerken maakt systemen kwetsbaar. Globale geopolitieke  dynamieken verstoren deze flows. 
+•	Wanneer centrale infrastructuren falen, verliezen instituties hun organiserende kracht en leiden er heel veel mensen onder slechte werkomstandigheden. .
+Gevolg voor maatschappelijke structuur:
+•	Grote organisaties en platformstructuren fragmenteren of verdwijnen.
+•	Gemeenschappen reorganiseren zich lokaal rond directe noden uit noodzaak er komen lokale bottum-up samenwerkingen. Deze zijn nog heel emergent.
+•	Sociale relaties verschuiven van instrumenteel naar wederkerig.
+
+1.2 Dominant Normatief Kader
+Het oorspronkelijke normatieve kader van prestatie en competitie verliest legitimiteit en wordt vervangen door een logica van overleving en lokale solidariteit.
+Verschuiving in axioma’s:
+•	Van individuele prestatie → naar collectieve bijdrage
+•	Van optimalisatie → naar robuustheid en zelfvoorziening
+•	Van technologische afhankelijkheid → naar functioneel gebruik
+•	Van centrale controle → naar lokale afstemming
+Nieuwe dominante axioma’s:
+•	Bijdrage aan de gemeenschap is noodzakelijk voor participatie.
+•	Stabiliteit en voorspelbaarheid primeren op groei.
+•	Lokale solidariteit is een voorwaarde voor overleving.
+•	Technologie wordt enkel behouden indien direct inzetbaar.
+Kernprincipe:
+•	De samenleving reorganiseert zich volgens een lokaal collectief overlevingsmodel dat voortkomt uit het falen van het performantiemodel.
+
+1.3 Ruimte voor Variatie
+De collapse verloopt niet homogeen; verschillende gemeenschappen ontwikkelen zich verschillend afhankelijk van hun uitgangspositie.
+Bronnen van variatie:
+•	mate van afhankelijkheid van technologie vóór de collapse
+•	beschikbaarheid van lokale netwerken en middelen
+•	sociale cohesie binnen gemeenschappen
+Structurele grenzen:
+•	Mobiliteit tussen systemen is sterk afgenomen.
+•	Heropbouw gebeurt binnen lokale grenzen.
+•	Oude ongelijkheden werken door in nieuwe structuren.
+Formele structuur:
+•	Dominant kader = lokale heropbouw na systeemfalen
+•	Subgroepen = gemeenschappen met verschillende herstelcapaciteit
+
+1.4 Mogelijke spanningsvelden
+Belangrijke bronnen van onzekerheid:
+•	breuklijnen tussen oude en nieuwe structuren
+•	verlies van vertrouwen in instituties
+•	conflicten tussen gemeenschappen
+•	uitsluiting van individuen zonder netwerk
+Mechanismen voor beheersing:
+•	sociale controle binnen kleine groepen
+•	collectieve besluitvorming op lokaal niveau
+•	wederzijdse afhankelijkheid als stabiliserend mechanisme
+Instrumenten:
+•	dorpsraden, lokale fora, informele referenda
+•	gedeelde normen rond gedrag en opvoeding
+•	reputatie en vertrouwen als regulerend systeem
+De nieuwe stabiliteit ontstaat niet door centrale controle, maar door lokale onderlinge afhankelijkheid.
+
+NIVEAU 2 – SCENARIONIVEAU
+(Wereldbeschrijving met dominante lijn en variatie)
+2.1 De Meeste Gezinnen
+Gezinnen bevinden zich in een overgang van een technologisch ondersteunde, sterk georganiseerde samenleving naar een lokaal ingebedde structuur.
+Evolutie:
+•	In de beginfase valt externe ondersteuning (bedrijven, diensten, systemen) weg.
+•	Gezinnen worden gedwongen om terug te vallen op directe omgeving.
+•	Lokale netwerken nemen geleidelijk functies over van verdwenen instituties.
+Huidige kenmerken (2045):
+•	opvoeding is collectief georganiseerd binnen de gemeenschap
+•	gezinnen vormen functionele samenwerkingsverbanden
+•	zorg gebeurt via informele ruilsystemen
+Waar in het vorige systeem opvoeding werd uitbesteed aan technologie en instituties, wordt deze nu opnieuw ingebed in de gemeenschap.
+
+2.2 Minderheidsgroepen / Alternatieve Praktijken
+Niet alle groepen slagen even goed in de heropbouw.
+Voorbeelden:
+•	gemeenschappen met sterke interne cohesie stabiliseren sneller
+•	individuen zonder netwerk raken gemarginaliseerd
+•	nieuwe groepen ontstaan door migratie of uitsluiting
+Structurele continuïteit:
+•	oude ongelijkheden (toegang tot middelen, kennis) blijven doorwerken
+•	lokale normen bepalen kansen en positie
+De collapse leidt niet tot gelijkheid, maar tot herverdeling van ongelijkheid op lokaal niveau.
+
+2.3 Maatschappelijke Context
+Technologische context
+•	Hoogtechnologische systemen zijn grotendeels weggevallen of niet langer onderhouden.
+•	Enkel robuuste en eenvoudige technologie blijft functioneren.
+•	Technologie verschuift van sturend naar ondersteunend.
+Economische context
+•	De globale economie stort in of fragmentariseert.
+•	Lokale ruilsystemen en productie domineren.
+•	Arbeid wordt direct gekoppeld aan basisbehoeften.
+Sociale context
+•	Gemeenschappen worden hechter intern, maar sluiten zich af extern.
+•	Sociale controle neemt toe.
+•	Uitsluiting wordt zichtbaarder en directer.
+Culturele context
+•	Meritocratische waarden verliezen betekenis.
+•	Loyaliteit, nabijheid en praktische inzet worden centrale waarden.
+
+NIVEAU 3 – PERSONA-NIVEAU
+(Perspectieven binnen meerderheid en minderheden)
+3.1 Het Kind (dominant kader)
+Kinderen groeien op in een context waarin het oude systeem verdwenen is.
+Kenmerken:
+•	leren gebeurt via participatie in de gemeenschap
+•	rotatie tussen praktische taken vervangt formeel onderwijs
+•	sociale vaardigheden en groepsintegratie zijn cruciaal
+Kinderen worden voorbereid op een rol binnen een lokale overlevingsstructuur.
+
+3.2 Het Kind (minderheidsgroep)
+Niet elk kind profiteert van stabiele gemeenschappen.
+Variaties:
+•	beperkte toegang tot kennis buiten de gemeenschap
+•	afhankelijkheid van toevallige aanwezige vaardigheden
+•	verhoogd risico op uitsluiting
+
+3.3 De Ouder
+Ouders verliezen hun rol als individuele opvoeders binnen een systeem en worden deel van een collectief.
+Kenmerken:
+•	opvoeding wordt gedeeld
+•	afhankelijkheid van gemeenschap is groot
+•	gezinsvorming gebeurt op jongere leeftijd
+
+3.4 Institutionele Actor (onderwijs)
+Het formele onderwijssysteem is grotendeels weggevallen.
+Kenmerken:
+•	leren gebeurt via praktijk en gemeenschap
+•	geen centrale curricula of standaarden
+•	kennisoverdracht is lokaal en informeel
+
+3.5 Arbeidsmarktactor
+De arbeidsmarkt zoals gekend is verdwenen.
+Kenmerken:
+•	werk is direct gekoppeld aan overleving
+•	rollen zijn flexibel en contextafhankelijk
+•	waarde wordt bepaald door directe bijdrage
+
+3.6 Technologische Actor
+Technologie heeft haar centrale rol verloren.
+Functieverschuiving:
+•	van sturend systeem → naar ondersteunend hulpmiddel
+•	enkel technologie met bewezen nut blijft behouden
+
+NIVEAU 4 – ARTEFACTNIVEAU
+(Technologische of institutionele objecten)
+4.1 Dominant Gebruik
+Overblijvende artefacten:
+•	eenvoudige communicatiemiddelen
+•	robuuste huishoudelijke technologie
+•	fysieke werktuigen
+Complexe infrastructuren zijn grotendeels verdwenen of niet langer operationeel.
+
+4.2 Alternatieve Gebruikspatronen
+Gebruik verschilt per gemeenschap afhankelijk van beschikbare middelen.
+
+4.3 Leefruimtes en Vrije Tijd
+•	fysieke interactie staat centraal
+•	spel en vrije tijd zijn collectief en eenvoudig
+•	digitale omgevingen zijn grotendeels verdwenen
+
+Q&A: 
+Hoe ziet een gewone schooldag eruit voor kinderen in 2040?
+Een gewone schooldag begint vaak later dan vroeger. Veel kinderen gaan niet elke dag naar een groot schoolgebouw. Ze leren in kleine buurthuizen, oude bibliotheken, kerken of gedeelde lokalen. Een leerkracht begeleidt vaak verschillende leeftijden samen. Een kind van 10 helpt bijvoorbeeld een kind van 7 met lezen of rekenen.
+De voormiddag gaat meestal over basisvakken zoals taal, rekenen en geschiedenis. In de namiddag doen kinderen praktische taken. Ze leren voedsel kweken, eenvoudige herstellingen uitvoeren, koken of zorg dragen voor jongere kinderen. Een jongen van 12 helpt bijvoorbeeld mee in de schoolmoestuin en gebruikt daarna een oude tablet om de oogst bij te houden. Internet werkt niet altijd goed, dus veel lessen gebeuren nog met papier, borden en gesprekken.
+Welke rol zullen schermen en technologie spelen in de opvoeding van kinderen?
+Schermen blijven aanwezig, maar ze zijn minder overheersend dan vroeger. Ouders gebruiken vaak een eenvoudige gezinstablet voor planning, leeropdrachten, contact met familie of lokale berichten. Kinderen gebruiken schermen vooral voor concrete taken en minder voor eindeloos scrollen of entertainment.
+Een jongen van 12 gebruikt bijvoorbeeld een oude AI-assistent om te leren hoe hij regenwater kan opvangen voor de moestuin. Daarna moet hij buiten helpen om het systeem echt op te bouwen. Veel gezinnen spreken vaste uren af voor schermgebruik. Schermen worden meer gezien als gereedschap dan als ontspanning.
+Zullen ouders in de toekomst minder of meer tijd met hun kinderen doorbrengen?
+Veel ouders brengen meer tijd met hun kinderen door omdat werk, school en zorg dichter bij huis georganiseerd zijn. Mensen pendelen minder en veel gezinnen werken lokaal. Daardoor zien ouders hun kinderen vaker tijdens de dag.
+Tegelijk zijn veel ouders moe of overbelast. Sommige ouders kunnen hun kinderen niet altijd voldoende aandacht geven. Daarom spelen buren, grootouders en andere gezinnen vaak een grotere rol. Een moeder werkt bijvoorbeeld enkele uren per dag in een voedselcoöperatie, terwijl haar dochter leert en eet bij een buurvrouw. Opvoeding gebeurt vaker samen met andere volwassenen.
+Hoe kunnen kinderen leren omgaan met kunstmatige intelligentie?
+Kinderen leren omgaan met AI zoals ze vroeger leerden omgaan met internet. Ze leren dat AI nuttig kan zijn, maar ook fouten maakt. Een jongen van 11 vraagt aan een eenvoudige AI hoe hij water kan filteren. Daarna controleert hij de uitleg samen met een oudere buur of leerkracht.
+Scholen geven vaak kleine opdrachten waarbij kinderen moeten vergelijken wat een AI zegt en wat mensen zeggen. Ze leren dat ze nooit zomaar alles mogen geloven. Kinderen leren ook eenvoudige AI-systemen gebruiken voor planning, taal, rekenen en voorraadbeheer.
+Zullen robots ooit een deel van de opvoeding overnemen?
+Robots nemen geen groot deel van de opvoeding over. Ze zijn duur, moeilijk te herstellen en niet betrouwbaar genoeg. Sommige gezinnen gebruiken wel eenvoudige apparaten die helpen bij dagelijkse taken.
+Een alleenstaande vader gebruikt bijvoorbeeld een klein toestel dat zijn kind herinnert aan tanden poetsen, medicijnen nemen of water drinken. In sommige buurten zijn er eenvoudige robots die kinderen helpen met lezen of taal oefenen. Maar troosten, grenzen stellen, conflicten oplossen en liefde geven blijven taken van echte mensen.
+Welke waarden zullen ouders in de toekomst het belangrijkst vinden?
+Ouders vinden betrouwbaarheid, samenwerken en rust belangrijker dan prestaties. In 2040 draait opvoeding minder om de beste zijn en meer om nuttig zijn voor de groep. Ouders willen dat kinderen leren zorgen voor anderen, rustig blijven in moeilijke situaties en hun afspraken nakomen.
+Een moeder prijst haar zoon bijvoorbeeld niet omdat hij de hoogste punten haalt, maar omdat hij zijn jongere broer hielp en daarna nog water ging halen voor een oudere buurvrouw. Ook eerlijkheid en zelfstandigheid worden belangrijker.
+Hoe kunnen kinderen leren omgaan met online pesten en sociale media?
+Kinderen leren sneller herkennen wanneer iemand online pest of manipuleert. Veel sociale media bestaan nog, maar ze zijn kleiner en lokaler geworden. Veel kinderen gebruiken buurtapps of gesloten netwerken.
+Een meisje van 13 krijgt bijvoorbeeld gemene berichten in een buurtchat. Haar begeleider bespreekt dit niet alleen met haar, maar ook met de groep. Kinderen leren screenshots bewaren, hulp vragen en niet meteen boos terug te reageren. Ouders en leerkrachten oefenen vaak met echte voorbeelden zodat kinderen sneller zien wanneer iets niet oké is.
+Zal buitenspelen in de toekomst belangrijk blijven?
+Buitenspelen blijft heel belangrijk. Kinderen zitten minder binnen omdat huizen kleiner zijn en schermtijd beperkter is. Veel leren gebeurt buiten: in speelvelden, moestuinen, bossen of op pleinen.
+Een jongen van 8 leert bijvoorbeeld timmeren met afvalhout terwijl andere kinderen in de buurt spelen. In veel buurten spelen kinderen van verschillende leeftijden samen. Buiten zijn helpt niet alleen voor beweging, maar ook tegen stress en spanningen thuis.
+Hoe kunnen ouders hun kinderen voorbereiden op jobs die vandaag nog niet bestaan?
+Ouders bereiden kinderen niet voor op één vaste job, maar op veel verschillende taken. Kinderen leren omgaan met verandering, samenwerken, herstellen, plannen en nieuwe dingen snel begrijpen.
+Een meisje van 14 leert bijvoorbeeld hoe ze een waterfilter bouwt, een groep mensen organiseert en een eenvoudige AI gebruikt om voorraad bij te houden. Ouders weten dat beroepen snel veranderen. Daarom vinden ze het belangrijker dat kinderen flexibel zijn dan dat ze al vroeg gespecialiseerd raken.
+Zullen kinderen in de toekomst meer vrijheid krijgen of net meer controle ervaren?
+Kinderen krijgen op sommige vlakken meer vrijheid en op andere meer controle. Veel kinderen bewegen zelfstandiger door hun buurt. Een jongen van 9 gaat alleen naar de bakker, de moestuin of de werkplaats in de buurt.
+Tegelijk is er meer sociale controle. Mensen weten sneller waar kinderen zijn en wie voor hen zorgt. Buren letten vaker op elkaar. Dat geeft veiligheid, maar soms ook minder privacy. Kinderen hebben dus meer bewegingsvrijheid, maar worden ook vaker gevolgd door de gemeenschap.
+Welke invloed zal klimaatverandering hebben op de opvoeding van kinderen?
+Klimaatverandering heeft veel invloed op het dagelijkse leven van kinderen. Ze leren omgaan met hitte, droogte, stormen en voedseltekorten. Scholen en gezinnen houden vaker rekening met extreem weer.
+Een gezin heeft bijvoorbeeld altijd een noodpakket klaar met water, zaklampen en basisvoeding. Kinderen leren hoe ze schaduw kunnen maken, water kunnen sparen en voedsel langer kunnen bewaren. In de zomer gaan lessen soms vroeger door om de grootste hitte te vermijden.
+Hoe kunnen ouders hun kinderen leren omgaan met veel verandering en onzekerheid?
+Ouders proberen zoveel mogelijk vaste routines te maken. Een kind weet bijvoorbeeld dat er elke ochtend vaste taken zijn, ook als er stroomuitval is of als internet niet werkt.
+Een eenvoudige planner op zonne-energie helpt gezinnen om afspraken en taken bij te houden. Een moeder spreekt bijvoorbeeld af dat haar kinderen elke ochtend water halen, samen eten en daarna schoolwerk doen. Kinderen leren dat de wereld onzeker is, maar dat routines veiligheid kunnen geven.
+Zal onderwijs in de toekomst meer thuis plaatsvinden of op school?
+Onderwijs gebeurt deels thuis en deels op gedeelde plekken. Veel scholen bestaan nog, maar ze zijn kleiner en minder centraal georganiseerd. Sommige kinderen gaan drie dagen per week naar een leerplek in de buurt en leren de rest thuis.
+Een jongen leert bijvoorbeeld lezen van zijn tante, rekenen van een leerkracht in het buurthuis en houtbewerking van een buurman. Onderwijs wordt meer verspreid over verschillende mensen en plaatsen.
+Hoe kunnen ouders kinderen leren om kritisch om te gaan met informatie online?
+Ouders leren kinderen dat ze informatie niet direct mogen geloven. Een meisje van 12 leest bijvoorbeeld een bericht dat een waterput besmet is. Haar vader vraagt waar de informatie vandaan komt en of iemand het gecontroleerd heeft.
+Kinderen leren kijken naar de bron, de datum en de bedoeling van een bericht. Vaak vergelijken ze informatie uit verschillende bronnen, zoals een radio, een buurtbericht en een eenvoudige AI-assistent. Zo leren ze dat sommige berichten fout of overdreven kunnen zijn.
+Zullen kinderen in de toekomst nog dezelfde hobby’s hebben als vandaag?
+Kinderen hebben nog steeds hobby’s zoals tekenen, muziek maken, sporten en verhalen verzinnen. Maar veel hobby’s worden praktischer dan vroeger.
+Een jongen van 13 speelt bijvoorbeeld voetbal, maar leert ook fietsen herstellen en lampen maken van oude onderdelen. Een meisje maakt muziek met een oude digitale recorder en repareert tegelijk kleren. Hobby’s zijn vaker verbonden met wat nuttig is in het dagelijkse leven.
+Hoe belangrijk zal mentale gezondheid worden in de opvoeding van kinderen?
+Mentale gezondheid wordt veel belangrijker. Veel volwassenen dragen nog stress en vermoeidheid mee van de moeilijke jaren ervoor. Daardoor willen ouders voorkomen dat kinderen dezelfde problemen krijgen.
+Een leerkracht begint de dag bijvoorbeeld met tien minuten stilte of een korte gespreksronde. Kinderen leren gevoelens benoemen en leren wanneer ze rust nodig hebben. Ouders vinden slaap, rust en veiligheid belangrijker dan altijd presteren.
+Hoe kunnen ouders ervoor zorgen dat technologie kinderen helpt in plaats van afleidt?
+Ouders maken duidelijke regels over wanneer technologie gebruikt mag worden. Een kind mag bijvoorbeeld een tablet gebruiken voor schoolwerk of contact met familie, maar niet urenlang zonder doel.
+Veel gezinnen bewaren schermen in een gemeenschappelijke kast. Een moeder laat haar zoon eerst zijn taken afwerken voor hij een uur mag spelen op een oude console. Technologie wordt vooral gebruikt voor leren, plannen en contact houden.
+Welke nieuwe uitdagingen zullen ouders in de toekomst tegenkomen?
+Ouders krijgen te maken met stroomtekorten, slecht internet, voedselproblemen en mentale uitputting. Veel gezinnen wonen ook dichter op elkaar, waardoor er sneller spanningen ontstaan.
+Een vader wil bijvoorbeeld strenge regels voor schermtijd, terwijl de grootouders veel soepeler zijn. Omdat opvoeding vaker gedeeld wordt met buren en familie, moeten volwassenen veel meer afspraken maken over regels en gewoontes.
+Hoe kunnen kinderen leren samenwerken met mensen én slimme machines?
+Kinderen leren samenwerken met eenvoudige AI-programma’s, sorteersystemen en landbouwsensoren. Ze leren dat machines kunnen helpen, maar dat mensen altijd verantwoordelijk blijven.
+Een meisje van 11 gebruikt bijvoorbeeld een AI-programma om te zien wanneer planten water nodig hebben. Daarna kijkt ze zelf of de grond echt droog is. Kinderen leren dus niet alleen op machines vertrouwen, maar ook zelf nadenken.
+Wat betekent “een goede ouder zijn” in de toekomst?
+Een goede ouder zijn betekent in 2040 vooral dat je rust, veiligheid en duidelijkheid geeft. Ouders hoeven niet perfect te zijn. Het belangrijkste is dat kinderen weten dat er iemand is die naar hen luistert en voor hen zorgt.
+Een vader die elke avond samen eet met zijn kinderen, vaste regels heeft en rustig blijft tijdens problemen, wordt gezien als een goede ouder. Zelfs als hij weinig geld heeft of niet veel technologie kan gebruiken.

@@ -32,7 +32,7 @@ def send_to_n8n(text, phone_id="phone_1"):
     
     payload = {"chatInput": text}
     
-    response = requests.post(url, json=payload, timeout=60)
+    response = requests.post(url, json=payload, timeout=600)
     response.raise_for_status()
     
     print(f"Status code: {response.status_code}")

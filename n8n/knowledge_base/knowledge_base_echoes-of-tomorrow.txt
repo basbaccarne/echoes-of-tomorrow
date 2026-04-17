@@ -1,0 +1,130 @@
+NIVEAU 1 – ABSTRACT LOGISCH NIVEAU
+(Regels, axioma’s en gecontroleerde variatie)
+1.1 Vaste Wereldparameters
+Jaar = 2045
+Regio = Vlaanderen
+Technologische maturiteit = hoog
+Culturele basis = Vlaams, West-Europees
+Samenleving = pluralistisch maar normatief gestructureerd
+Pluralisme betekent hier: variatie binnen duidelijke grenzen.
+ 
+1.2 Dominant Normatief Kader
+De volgende axioma’s vormen de meerderheidscultuur:
+Ouders zijn eindverantwoordelijk.
+Technologie ondersteunt, maar beslist niet.
+Grenzen zijn expliciet en consequent.
+Warmte en structuur zijn gecombineerd.
+School en ouders werken systematisch samen.
+Gemeenschapszin is belangrijk.
+Dit is het dominante opvoedingskader.
+ 
+1.3 Ruimte voor Variatie
+Marginale of minderheidsgroepen kunnen:
+Minder technologie gebruiken.
+Sterker religieus of cultureel georiënteerd zijn.
+Meer collectieve gezinsstructuren hanteren.
+Alternatieve pedagogische accenten leggen.
+Maar ook bij hen geldt:
+Ouderlijke verantwoordelijkheid blijft centraal.
+Kinderen worden voorbereid op deelname aan de bredere Vlaamse samenleving.
+Wettelijke kaders en schoolverplichtingen blijven gelden.
+Formeel:
+Dominant kader = standaard
+Subgroepen = variatie binnen wettelijke en maatschappelijke grenzen
+Er is dus differentiatie, maar geen normloosheid.
+ 
+1.4 Onzekerheidsbeheer
+Onzekerheden (technologie, culturele diversiteit, sociale druk) worden beheerd via:
+Duidelijke rolverdeling.
+Transparante regels.
+Dialoog tussen school en gezin.
+Wettelijk vastgelegde ondergrenzen.
+Er is geen volledige relativiteit.
+ 
+NIVEAU 2 – SCENARIONIVEAU
+(Wereldbeschrijving met dominante lijn en variatie)
+2.1 De Meeste Gezinnen
+Gebruiken digitale leerplatformen.
+Monitoren schermtijd.
+Hebben vaste offline momenten.
+Volgen schooldata op.
+De dominante cultuur verwacht actieve betrokkenheid.
+ 
+2.2 Minderheidsgroepen
+Er bestaan bijvoorbeeld:
+Gezinnen die schermgebruik sterk beperken.
+Gezinnen die technologie bijna volledig integreren.
+Cultureel-religieuze gemeenschappen met eigen rituelen.
+Alternatieve pedagogische scholen.
+Toch:
+Elk kind volgt het Vlaamse onderwijskader.
+Basisdigitale vaardigheden zijn verplicht.
+School en overheid bewaken minimumdoelen.
+De samenleving is divers, maar niet fragmenterend.
+ 
+2.3 Maatschappelijke Context
+AI is normaal.
+Werk vraagt sociale én digitale competentie.
+Gemeenschapsnormen blijven herkenbaar.
+Respect voor verschillen is aanwezig, maar grenzen zijn duidelijk.
+Diversiteit wordt aanvaard, maar niet absoluut gemaakt.
+ 
+NIVEAU 3 – PERSONA-NIVEAU
+(Perspectieven binnen meerderheid en minderheden)
+3.1 Het Kind (dominant kader)
+Gebruikt leer-AI dagelijks.
+Heeft duidelijke schermregels.
+Krijgt verantwoordelijkheden thuis.
+Weet dat ouders toezicht houden.
+Het kind groeit op met structuur.
+ 
+3.2 Het Kind (minderheidsgroep)
+Kan minder technologie gebruiken.
+Kan sterkere religieuze of culturele invulling krijgen.
+Kan in collectieve familiecontext leven.
+Maar:
+Moet basisdigitale competenties verwerven.
+Neemt deel aan het bredere schoolsysteem.
+Leert functioneren in een diverse samenleving.
+ 
+3.3 De Ouder (dominant)
+Stuurt actief.
+Gebruikt technologie als hulpmiddel.
+Werkt nauw samen met school.
+ 
+3.4 De Ouder (minderheid)
+Kan strengere of alternatieve regels hanteren.
+Kan minder vertrouwen op digitale systemen.
+Kan meer nadruk leggen op traditie.
+Toch blijft:
+Ouderlijke verantwoordelijkheid primair.
+Participatie in schoolverplichtingen noodzakelijk.
+ 
+3.5 De Leerkracht
+Houdt rekening met culturele verschillen.
+Past didactiek aan waar mogelijk.
+Bewaakt gemeenschappelijke einddoelen.
+Leerkrachten werken inclusief, maar niet normloos.
+ 
+3.6 De AI-assistent
+Past leerstijl aan.
+Signaleert risico’s.
+Respecteert ouderinstellingen.
+In minderheidsgroepen kan AI beperkter ingezet worden, maar blijft beschikbaar.
+ 
+NIVEAU 4 – ARTEFACTNIVEAU
+(Technologische objecten met variabele intensiteit)
+4.1 Dominant Gebruik
+Gezinsdashboard.
+Schermtijdbeheer.
+Realtime leerdata.
+Emotie- en concentratiemonitoring.
+Configuratie ligt bij ouders.
+4.2 Alternatieve Gebruikspatronen
+Sommige gezinnen gebruiken enkel basisfuncties.
+Sommige activeren strengere filters.
+Sommige beperken dataverzameling tot minimum.
+Religieuze gemeenschappen kunnen aangepaste educatieve modules gebruiken.
+Maar:
+Basisdigitale infrastructuur blijft beschikbaar.
+Wettelijke minimumcompetenties worden opgevolgd.

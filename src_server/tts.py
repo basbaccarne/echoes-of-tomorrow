@@ -23,10 +23,16 @@ USAGE:
 # 📝 Input: type your text directly here, or point to a .txt file.
 #    If TEXT_INPUT is set, it takes priority over INPUT_FILE.
 TEXT_INPUT = """
-Hello! This is a test of the Piper text-to-speech system.
-You can replace this text with anything you like.
-"""
+Hey, Hallo!
 
+Je spreekt met Tom jouw opvoedscommunicatie verantwoordelijke uit het jaar 2040. 
+
+Ik geef je alle nodige antwoorden uit een toekomst waarin we samen met technologie lokale gemeenschappen ondersteunen. 
+
+Ook in opvoeding speelt technologie een verbindende rol.
+
+Heb je vragen over mijn wereld? Laat het gerust weten na de biep! 
+"""
 # 💾 Where to save the generated audio file
 import os as _os
 OUTPUT_FILE = _os.path.join(_os.path.expanduser("~"), "Desktop", "output.wav")
@@ -36,7 +42,7 @@ OUTPUT_FILE = _os.path.join(_os.path.expanduser("~"), "Desktop", "output.wav")
 #   0 → nl_BE-rdh-medium      (male)
 #   1 → nl_BE-nathalie-medium (female)
 #
-VOICE_CHOICE = 0   # ← change this to 0 or 1
+VOICE_CHOICE = 0 # ← change this to 0 or 1
 
 _VOICES = {
     0: "/home/io/echoes-of-tomorrow/src_server/voices/nl_BE-rdh-medium.onnx",
@@ -47,19 +53,19 @@ VOICE_MODEL_PATH = _VOICES[VOICE_CHOICE]
 # ⚡ Speed of speech
 #    1.0 = normal | < 1.0 = faster | > 1.0 = slower
 #    Recommended range: 0.7 (fast) → 1.5 (slow)
-SPEED = 1.0
+SPEED = 0.8
 
 # 🔊 Volume multiplier
 #    1.0 = normal | 0.5 = half volume | 2.0 = double volume
-VOLUME = 1.0
+VOLUME = 1.2
 
 # 🎲 Audio variation — how much the audio texture varies
 #    0.0 = robotic/flat | 1.0 = natural | 2.0 = very varied
-NOISE_SCALE = 0.667
+NOISE_SCALE = 0.8
 
 # 🎤 Speaking variation — how much the rhythm/timing varies
 #    0.0 = very steady | 1.0 = natural variation
-NOISE_W_SCALE = 0.8
+NOISE_W_SCALE = 1.0
 
 # 📊 Normalize audio levels before saving?
 #    True = auto-level the output | False = raw audio from voice model

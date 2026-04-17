@@ -1,0 +1,262 @@
+Scenario 3: Disciplined
+Scenario Stack:
+NIVEAU 1 – ABSTRACT LOGISCH NIVEAU
+(Regels, axioma’s en gecontroleerde variatie)
+1.1 Vaste Wereldparameters
+•	Jaar = 2040
+•	Regio = Vlaanderen
+•	Technologische maturiteit = Hoog maar selectief toegepast. Technologie is beschikbaar maar wordt bewust beperkt ingezet in sociale processen. Dit heeft voornamelijk een ondersteunende rol. 
+•	Culturele basis = Gemeenschapsgericht pluralisme met sterke nadruk op informele solidariteit.
+•	Samenlevingstype = Netwerksamenleving met gedeelde verantwoordelijkheid voor opvoeding.
+•	De gemeenschapsvillectieven worden nu ook steeds meer gefaciliteerd door lokale overheden. Subsidies worden steeds meer uitgereikt. 
+Korte beschrijving van hoe pluralisme of homogeniteit in deze samenleving functioneert
+•	De samenleving accepteert diverse gezinsvormen en opvoedingsstijlen.
+•	Pluralisme wordt gedragen binnen lokale gemeenschappen die relatief gedeelde waarden ontwikkelen rond zorg voor kinderen.
+•	Culturele verschillen bestaan, maar participatie in de gemeenschap rond het kind vormt een gedeelde norm.
+Beschrijving van de structurele maatschappelijke kaders
+•	Institutionele kaders =
+o	Overheden ondersteunen informele zorgnetwerken in plaats van ze te vervangen.
+o	Formele systemen voor opvoeding en welzijn zijn gedeeltelijk afgebouwd of verschoven naar faciliterende rollen.
+o	Scholen focussen primair op onderwijs en minder op bredere sociale functies.
+•	Sociale verwachtingen =
+o	Opvoeding is een gedeelde verantwoordelijkheid.
+o	Volwassenen dragen bij aan de ontwikkeling van meerdere kinderen binnen hun netwerk.
+o	Gemeenschapsdeelname wordt gezien als een normaal onderdeel van burgerschap.
+•	Basiscompetenties of deelnamevereisten =
+o	Vermogen tot samenwerking binnen informele netwerken.
+o	Sociale betrokkenheid en zorgcapaciteit.
+o	Basisdigitale vaardigheden om netwerkcoördinatie te ondersteunen.
+
+1.2 Dominant Normatief Kader
+Beschrijving van het dominante normatieve kader
+De samenleving beschouwt opvoeding als een collectieve activiteit waarin meerdere volwassenen bijdragen aan de ontwikkeling van kinderen. Ouders behouden formeel eigenaarschap, maar dagelijkse zorg en begeleiding worden gedeeld binnen een gemeenschap.
+Dominante axioma’s
+•	Kinderen ontwikkelen zich beter binnen een brede gemeenschap.
+•	Zorg en opvoeding zijn gedeelde maatschappelijke verantwoordelijkheden.
+•	Informele netwerken zijn effectiever dan sterk geformaliseerde systemen voor dagelijkse ondersteuning.
+•	Kinderen moeten ruimte krijgen om hun interesses te ontwikkelen.
+Beschrijving van de rolverdeling tussen
+•	Individuen =
+Actieve deelnemers in lokale zorgnetwerken; ouders, buurtleden en wensgrootouders dragen bij aan opvoeding.
+•	Technologie =
+Ondersteunend instrument voor communicatie, coördinatie en monitoring van noden.
+•	Instituties =
+Faciliteren netwerken, bieden minimale structuur en grijpen in bij problemen.
+Kernprincipe van het opvoedings- of samenlevingsmodel
+“Het dorp rond het kind”: opvoeding wordt gedragen door een uitgebreid sociaal netwerk waarin verantwoordelijkheid wordt gedeeld.
+
+1.3 Ruimte voor Variatie
+Beschrijving van mogelijke subgroepen of minderheidsposities
+Niet alle gezinnen nemen in dezelfde mate deel aan de gemeenschapsstructuur.
+Subgroepen kunnen bijvoorbeeld:
+•	sterk geïntegreerde gezinnen met grote netwerken
+•	gezinnen met beperkte sociale netwerken
+•	gezinnen die bewust kiezen voor meer autonomie en minder gedeelde opvoeding
+Structurele grenzen voor variatie
+•	Ouders behouden de formele eindverantwoordelijkheid voor hun kinderen.
+•	Basisregels rond kinderrechten blijven gelden.
+•	Gemeenschapsdeelname wordt sociaal aangemoedigd.
+Formele structuur
+•	Dominant kader = Gemeenschapsgebaseerde opvoeding.
+•	Subgroepen = Autonomere gezinnen, zwak verbonden gezinnen, en sterk collectieve gemeenschappen.
+Beschrijving van het niveau van diversiteit
+•	Diversiteit in gezinsstructuren is groot.
+•	De kernnorm van gedeelde verantwoordelijkheid blijft echter breed gedragen.
+
+1.4 Mogelijke spanningsvelden
+Belangrijke bronnen van onzekerheid in de samenleving
+•	Onduidelijkheid over verantwoordelijkheid binnen complexe zorgnetwerken.
+•	Ongelijkheid tussen gezinnen met sterke en zwakke netwerken.
+•	Spanningen tussen gemeenschapsdeelname en individuele autonomie.
+•	Vragen rond de toekomstige arbeidsmarkt wanneer opvoeding minder op arbeidsmarktlogica is gericht.
+Mechanismen om onzekerheid te beheren
+•	Informele bemiddeling binnen gemeenschappen.
+•	Digitale systemen die noden en verantwoordelijkheden inzichtelijk maken.
+•	Lokale rollen zoals verbindingscoördinatoren.
+Institutionele instrumenten
+•	Gemeentelijke ondersteuning voor netwerken.
+•	Premies voor plusouders of wensgrootouders.
+•	Sociale rollen zoals een “eenzaamheidscoördinator”.
+Beschrijving van de stabiliteit van het systeem
+Het systeem is relatief stabiel zolang gemeenschappen voldoende sociale cohesie behouden. Ongelijkheden kunnen ontstaan wanneer netwerken zwakker zijn.
+
+NIVEAU 2 – SCENARIONIVEAU
+(Wereldbeschrijving met dominante lijn en variatie)
+2.1 De Meeste Gezinnen / Actoren
+Beschrijving van de dominante dagelijkse praktijk
+De meeste gezinnen maken deel uit van uitgebreide netwerken waarin kinderen regelmatig bij andere volwassenen terechtkunnen.
+Typische kenmerken
+•	Kinderen bewegen tussen verschillende huizen.
+•	Wensgrootouders en buurtleden spelen actieve rollen.
+•	Gemeenschapsactiviteiten zoals gezamenlijke maaltijden of repair cafés komen frequent voor.
+Verwachtingen vanuit de samenleving
+•	Ouders ondersteunen ook andere gezinnen.
+•	Volwassenen dragen bij aan activiteiten in de buurt.
+•	Kinderen nemen geleidelijk verantwoordelijkheden op binnen de gemeenschap.
+Beschrijving van het dominante gedragspatroon
+Samenwerking, gedeelde zorg en wederzijdse ondersteuning vormen het standaardpatroon.
+
+2.2 Minderheidsgroepen / Alternatieve Praktijken
+Beschrijving van alternatieve praktijken of subculturen
+Sommige gezinnen houden hun opvoeding sterker binnen het kerngezin.
+Voorbeelden
+•	gezinnen die minder deelnemen aan buurtnetwerken
+•	gezinnen met beperkte sociale connecties
+•	gezinnen die sceptisch staan tegenover collectieve opvoeding
+Structurele voorwaarden die blijven gelden
+•	Ouders behouden wettelijke verantwoordelijkheid.
+•	Basisvoorzieningen zoals onderwijs blijven universeel.
+Relatie tussen diversiteit en systeemcoherentie
+Diversiteit wordt toegestaan zolang de basisnorm van zorg en kinderrechten gerespecteerd wordt.
+
+2.3 Maatschappelijke Context
+Technologische context
+•	Digitale systemen ondersteunen communicatie en planning binnen netwerken.
+•	Sensoren of chips kunnen noden van kinderen detecteren en verbinden met geschikte helpers.
+Economische context
+•	Sommige sociale rollen ontvangen basisinkomens of vergoedingen.
+•	Gemeenschapsbijdragen worden deels economisch erkend.
+Sociale context
+•	Buurten zijn actiever en meer zichtbaar in het dagelijks leven.
+•	Sociale cohesie wordt bewust gestimuleerd.
+Culturele context
+•	Het klassieke kerngezin wordt aangevuld met nieuwe rollen zoals plusouders en wensgrootouders.
+•	Diversiteit in gezinsstructuren is breed geaccepteerd.
+Belangrijke maatschappelijke verwachtingen
+•	Deelname aan gemeenschapsleven.
+•	Zorg voor kinderen als gedeelde verantwoordelijkheid.
+
+
+NIVEAU 3 – PERSONA-NIVEAU
+(Perspectieven binnen meerderheid en minderheden)
+3.1 Persona A (dominant kader)
+Een ouder binnen een sterk buurtnetwerk.
+Beschrijving van dagelijkse interactie met systemen of instituties
+•	Gebruikt digitale tools om activiteiten en zorgmomenten te coördineren.
+•	Werkt samen met plusouders en wensgrootouders.
+Ontwikkelingscontext of leefomgeving
+•	Woont in een buurt waar kinderen vaak buiten spelen.
+•	Neemt deel aan gezamenlijke activiteiten zoals buurtmaaltijden.
+
+3.2 Persona A (minderheidsgroep)
+Een ouder met beperkt netwerk.
+Variatie in context of gedrag
+•	Heeft minder toegang tot informele ondersteuning.
+•	Is meer afhankelijk van formele diensten.
+Structurele verplichtingen die blijven gelden
+•	Deelname aan basisvoorzieningen zoals onderwijs.
+
+3.3 Persona B (dominant)
+Een wensgrootouder of buurtmentor.
+Beschrijving van rol en verantwoordelijkheden
+•	Ondersteunt meerdere kinderen uit de buurt.
+•	Organiseert activiteiten of helpt bij dagelijkse routines.
+Relatie met systemen of instituties
+•	Wordt erkend binnen lokale netwerken en kan hiervoor symbolische beloningen ontvangen.
+
+3.4 Persona B (minderheid)
+Een volwassene die minder betrokken wil zijn bij gemeenschapsopvoeding.
+Alternatieve praktijken of overtuigingen
+•	Beperkt betrokkenheid tot eigen gezin.
+Structurele verplichtingen
+•	Respecteren van kinderrechten en basiszorg.
+
+3.5 Institutionele Actor
+Bijvoorbeeld een gemeentelijke netwerkcoördinator.
+Rol binnen het systeem
+•	Ondersteunt lokale netwerken en bemiddelt bij conflicten.
+Balans tussen flexibiliteit en normhandhaving
+•	Stimuleert autonomie van gemeenschappen maar grijpt in bij problemen.
+
+3.6 Technologische Actor / Systeem
+Een digitaal netwerkplatform.
+Belangrijkste functies
+•	Coördinatie van zorgmomenten
+•	Detectie van noden via sensoren
+•	Overzicht van beschikbare helpers
+Aanpassingsvermogen aan verschillende gebruikersgroepen
+•	Ondersteunt zowel sterk verbonden netwerken als kleinere groepen.
+
+NIVEAU 4 – ARTEFACTNIVEAU
+(Technologische of institutionele objecten)
+4.1 Dominant Gebruik
+Beschrijving van dominante infrastructuren of tools
+•	Digitale platforms voor netwerkcoördinatie.
+•	Sensor- of chiptechnologie voor gezondheids- en voedingsmonitoring.
+Configuratie en controle
+•	Controlemechanismen bestaan maar worden selectief ingezet.
+Relatie tussen gebruikers en systemen
+•	Technologie ondersteunt sociale interactie maar vervangt ze niet.
+
+4.2 Alternatieve Gebruikspatronen
+Variaties in gebruik
+•	Sommige gezinnen gebruiken technologie intensiever voor planning.
+•	Andere beperken technologie tot minimale communicatie.
+Aanpassingen voor subgroepen
+•	Extra ondersteuning voor gezinnen met kleinere netwerken.
+Structurele basisvoorzieningen die blijven gelden
+•	Onderwijsinstellingen.
+•	Gemeentelijke ondersteuning voor zorgnetwerken.
+
+Q&A: 
+Discipline: 
+Hoe ziet een gewone schooldag eruit voor kinderen in 2040?
+School bestaat nog, maar ziet er losser en lokaler uit. Kinderen bewegen vaker tussen school, buurtplekken en thuis.
+Mila van 10 start haar dag in het buurtleerhuis. Ze bekijkt op het digitale leerplatform welke opdrachten gepland zijn. In de voormiddag werkt ze met een leerkracht en twee buurtmentoren aan taal en rekenen. Na de lunch gaat ze met andere kinderen naar een buurtmoestuin waar een wensgrootouder helpt bij een project over voedsel. Haar ouders volgen via een app welke activiteiten ze deed en welke ondersteuning ze nodig heeft.
+Welke rol zullen schermen en technologie spelen in de opvoeding van kinderen?
+Schermen zijn overal aanwezig, maar ze worden bewust gebruikt. Technologie ondersteunt dagelijkse routines, maar neemt het contact tussen mensen niet over.
+Een gezin gebruikt thuis een gezinsdashboard waarop staat wie het kind die dag begeleidt, hoeveel schermtijd er al was en welke activiteiten nog gepland zijn. Een AI-assistent geeft voorstellen voor rustmomenten, beweging of huiswerk. Ouders en buurtcoaches beslissen samen wat nodig is.
+Zullen ouders in de toekomst minder of meer tijd met hun kinderen doorbrengen?
+Ouders brengen anders tijd door met hun kinderen. Ze zijn minder alleen verantwoordelijk, maar blijven wel nauw betrokken.
+Karim werkt drie dagen per week thuis in de buurtwerkhub. Daardoor kan hij zijn dochter ophalen bij het maakatelier in de wijk. Op andere momenten helpt een buurvrouw of wensgrootouder met opvang. Ouders gebruiken een gedeelde gezinsapp om te zien wie welke taak opneemt.
+Hoe kunnen kinderen leren omgaan met kunstmatige intelligentie?
+AI is een gewone tool geworden. Kinderen leren al vroeg hoe ze AI kunnen gebruiken zonder alles zomaar te geloven.
+In de leerkring vraagt Finn aan zijn AI-assistent om ideeën voor een spreekbeurt. Daarna bekijkt hij samen met een mentor welke informatie klopt en welke niet. Kinderen leren vragen stellen, bronnen controleren en herkennen wanneer AI fouten maakt.
+Zullen robots ooit een deel van de opvoeding overnemen?
+Robots helpen bij praktische taken, maar nemen de opvoeding niet over. Mensen blijven belangrijk voor troost, regels en relaties.
+In een buurtcentrum rijdt een kleine robot rond die kinderen helpt herinneren aan hun planning of medicatie. Een opvoedcoach en de ouders bekijken de meldingen op hun platform. Wanneer een kind verdrietig is of ruzie heeft, komt altijd een volwassene tussen.
+Welke waarden zullen ouders in de toekomst het belangrijkst vinden?
+Samenwerken en verantwoordelijkheid worden belangrijker. Ouders willen dat kinderen goed kunnen omgaan met verschillen en met hun omgeving.
+Leonie leert van haar ouders dat ze meehelpt in de buurtkeuken, respectvol praat met ouderen en verantwoordelijkheid neemt voor haar taken. Op het buurtplatform krijgen kinderen badges voor samenwerking, zorg en initiatief.
+Hoe kunnen kinderen leren omgaan met online pesten en sociale media?
+Online pesten wordt sneller opgemerkt. Kinderen leren dat sociale media deel zijn van het gewone leven, maar niet alles bepalen.
+Wanneer Noah kwetsende berichten krijgt, merkt het welzijnsplatform op dat hij zich terugtrekt uit groepsactiviteiten. Een mentor neemt contact op met zijn ouders en met de buurtcoach. Op school oefenen kinderen hoe ze online conflicten kunnen melden en hoe ze elkaar kunnen beschermen.
+Zal buitenspelen in de toekomst belangrijk blijven?
+Buitenspelen blijft een vast deel van het dagelijks leven. Lokale buurten zijn ingericht zodat kinderen veilig buiten kunnen zijn.
+Na school trekt een groep kinderen naar een speelstraat waar sensoren de verkeersdrukte meten. Een wensgrootouder houdt toezicht en een buurtapp laat ouders weten waar de kinderen spelen. Kinderen bouwen kampen, verzorgen dieren en spelen sport.
+Hoe kunnen ouders hun kinderen voorbereiden op jobs die vandaag nog niet bestaan?
+Kinderen leren minder vaste beroepen en meer flexibele vaardigheden. Ze oefenen hoe ze nieuwe dingen kunnen leren.
+Aya volgt een project waarbij ze samenwerkt met een bakker, een programmeur en een buurtmaker. Ze leert presenteren, problemen oplossen en werken met AI-tools. Haar ouders bespreken via het leerplatform welke interesses ze verder wil ontwikkelen.
+Zullen kinderen in de toekomst meer vrijheid krijgen of net meer controle ervaren?
+Kinderen krijgen meer vrijheid, maar ook meer opvolging. Technologie maakt het makkelijker om te weten waar kinderen zijn en hoe het met hen gaat.
+Tibo mag alleen naar de sporthal fietsen. Zijn ouders zien via een buurtapp dat hij veilig is aangekomen. Sensoren in zijn fietshelm geven een melding als hij valt. Tegelijk mag hij zelf kiezen welke activiteiten hij na school wil doen.
+Welke invloed zal klimaatverandering hebben op de opvoeding van kinderen?
+Klimaatverandering maakt kinderen bewuster van hun omgeving. Veel dagelijkse routines worden aangepast aan hitte, droogte of hevige regen.
+Op warme dagen start de school vroeger en spelen kinderen in schaduwrijke buurtzones. Emma helpt samen met haar wensgrootouder regenwater verzamelen voor de moestuin. Een lokale klimaatapp geeft waarschuwingen en tips aan gezinnen.
+Hoe kunnen ouders hun kinderen leren omgaan met veel verandering en onzekerheid?
+Verandering wordt een normaal deel van het leven. Kinderen leren hoe ze flexibel kunnen omgaan met onverwachte situaties.
+Wanneer een buurtcentrum tijdelijk sluit door overstroming, krijgt het gezin van Sam meteen een nieuw weekschema via het gezinsplatform. Zijn ouders leggen uit wat er verandert en welke mensen hem blijven helpen. Zo leert hij dat ondersteuning kan verschuiven zonder te verdwijnen.
+Zal onderwijs in de toekomst meer thuis plaatsvinden of op school?
+Onderwijs gebeurt op verschillende plekken tegelijk. School blijft belangrijk, maar thuis en de buurt spelen een grotere rol.
+Lina volgt twee dagen les in het leerhuis, één dag thuis en één dag in een buurthub waar kinderen werken aan projecten. Via een digitaal platform kunnen ouders, leerkrachten en buurtmentoren elkaar opvolgen.
+Hoe kunnen ouders kinderen leren om kritisch om te gaan met informatie online?
+Kinderen leren niet alleen informatie zoeken, maar ook controleren. Ze oefenen om twijfel toe te laten.
+Tijdens een project over gezondheid zoekt Amir informatie online. Zijn moeder toont hem hoe hij bronnen vergelijkt en hoe hij kan zien of beelden door AI zijn gemaakt. Op school gebruiken kinderen een factcheck-app die waarschuwt voor misleidende informatie.
+Zullen kinderen in de toekomst nog dezelfde hobby’s hebben als vandaag?
+Veel hobby’s blijven bestaan, maar krijgen een nieuwe vorm. Kinderen combineren fysieke en digitale activiteiten.
+Nora speelt nog altijd voetbal, maar gebruikt ook een slim trainingsvest dat haar bewegingen meet. Haar vriend doet aan muziek en werkt samen met een AI-programma om nieuwe liedjes te maken. In de buurt zijn gedeelde ateliers voor koken, gamen, sport en techniek.
+Hoe belangrijk zal mentale gezondheid worden in de opvoeding van kinderen?
+Mentale gezondheid krijgt een vaste plaats in het dagelijks leven. Het wordt normaal om gevoelens te bespreken.
+Iedere ochtend vult Jonas op zijn polsband in hoe hij zich voelt. Als hij enkele dagen na elkaar slecht slaapt, krijgt zijn moeder een melding. Een buurtcoach plant dan een gesprek met Jonas, zijn ouders en een vertrouwde leerkracht.
+Hoe kunnen ouders ervoor zorgen dat technologie kinderen helpt in plaats van afleidt?
+Technologie wordt bewust gestuurd. Ouders letten niet alleen op hoeveel schermtijd er is, maar ook op waarvoor schermen worden gebruikt.
+Bij Emma thuis gaat het scherm automatisch uit tijdens maaltijden en voor het slapengaan. Een AI-systeem stelt voor wanneer het beter is om te bewegen, lezen of af te spreken met anderen. Haar ouders bekijken samen met haar welke apps nuttig zijn.
+Welke nieuwe uitdagingen zullen ouders in de toekomst tegenkomen?
+Ouders moeten meer keuzes maken. Ze moeten leren omgaan met veel technologie, veel informatie en veel betrokken volwassenen.
+De ouders van Yassin overleggen via een buurtplatform met leerkrachten, coaches en wensgrootouders. Soms krijgen ze tegenstrijdige adviezen van AI-systemen en mensen. Daarom plannen ze regelmatig een gezinsgesprek om samen beslissingen te nemen.
+Hoe kunnen kinderen leren samenwerken met mensen én slimme machines?
+Samenwerken betekent niet alleen met andere mensen werken. Kinderen leren ook hoe ze slimme systemen kunnen gebruiken zonder afhankelijk te worden.
+Bij een buurtproject bouwt Zoë samen met andere kinderen een kleine serre. Een robot meet de temperatuur en een AI-programma geeft tips voor de planten. De kinderen beslissen zelf welke taken ze verdelen en wat ze aanpassen.
+Wat betekent “een goede ouder zijn” in de toekomst?
+Een goede ouder is aanwezig, maar hoeft niet alles alleen te doen. Ouders zorgen ervoor dat hun kind een sterk netwerk rond zich heeft.
+De vader van Elias kent zijn vrienden, praat met de buurtcoach en volgt zijn welzijn via het gezinsplatform. Hij maakt tijd om samen te eten, te luisteren en grenzen te stellen. Tegelijk durft hij hulp vragen aan anderen in de buurt.
