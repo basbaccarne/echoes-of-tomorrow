@@ -290,6 +290,9 @@ sudo systemctl start echo.service
 * ✔️ Test: [Google Voice HAT](/tests/speaker/voice_hat.md)
 * ✔️ Test: [I²S DAC pre-amp](/tests/speaker/I2S.md) (e.g. ADA3006)
 
+## Changing wifi network over raspberry pi connect
+```nohup sudo nmcli dev wifi connect SSIDNAME password PASSWORD &```
+
 ## General remarks
 **Latency challenge**
 * Nvidia Jetson Orin Nano could make things quicker on the pi
