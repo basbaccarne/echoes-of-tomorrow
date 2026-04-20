@@ -90,7 +90,7 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
     Wants=network-online.target
 
     [Service]
-    Type=oneshot
+    Type=simple
     User=root
     WorkingDirectory=/home/pi/echoes-of-tomorrow/
 
@@ -112,7 +112,6 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
     StandardOutput=append:/home/pi/log.log
     StandardError=append:/home/pi/log.log
     Environment=PYTHONUNBUFFERED=1
-    TimeoutStartSec=300
 
     # Do not restart (since script ends with shutdown)
     Restart=no
