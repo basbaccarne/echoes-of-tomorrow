@@ -58,7 +58,9 @@ def run():
     # print(f"in directory: {SAVE_DIR}")
     
     v = SharedState.piper_voice  # preloaded in main.py
-    print(f"🗣️  Voice config attrs: {vars(v.config)}")
+    v = SharedState.piper_voice  # preloaded in main.py
+    voice_name = Path(config["voice_path"][SharedState.booth_id]).name
+    print(f"🗣️  Voice model: {voice_name}")
     elapsed = process_text(input_path, v)
     
     # print(f"Stored as: response_{SharedState.booth_id}.wav")
