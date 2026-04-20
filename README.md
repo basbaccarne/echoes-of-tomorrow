@@ -75,8 +75,8 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
     sudo visudo
     ```
     And add this line to the end of the file
-    ```
-    ìni pi ALL=(ALL) NOPASSWD: /usr/sbin/shutdown 
+    ```ìni 
+    pi ALL=(ALL) NOPASSWD: /usr/sbin/shutdown 
     ```
 8. Create service
     ```bash
@@ -121,8 +121,13 @@ Echoes of Tomorrow is an immersive, interactive installation that invites visito
     [Install]
     WantedBy=multi-user.target
     ```
-9. Add shutdown logic [to do]
-10. Switch to offline network comon [to do]
+9. Activate service
+    ```bash
+    sudo systemctl daemon-reload
+    sudo systemctl enable echoes-of-tomorrow.service
+    sudo systemctl start echoes-of-tomorrow.service
+    ```
+
 
 
 #### Seting up the server
