@@ -34,7 +34,7 @@ def process_text(path_in, voice, speed=0.8):
     syn_config = SynthesisConfig(
         volume=1,  # half as loud
         length_scale=speed_inv,  # speed_inv times as slow
-        noise_scale=1.0,  # more audio variation
+        noise_scale=0.8,  # more audio variation
         noise_w_scale=1.0,  # more speaking variation
         normalize_audio=False, # use raw audio from voice
     )
@@ -58,6 +58,7 @@ def run():
     # print(f"in directory: {SAVE_DIR}")
     
     v = SharedState.piper_voice  # preloaded in main.py
+    print(f"🗣️  Voice model: {v.config.model_path.name}")
     elapsed = process_text(input_path, v)
     
     # print(f"Stored as: response_{SharedState.booth_id}.wav")
