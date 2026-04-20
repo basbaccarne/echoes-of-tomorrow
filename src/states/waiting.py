@@ -41,6 +41,12 @@ def run():
         _random_queue = [1, 2, 3, 4, 5, 6, 7]
         _played_welcome = True
 
+        # ── Clear any stale response file from a previous session ────────────
+        stale_response = os.path.join(audio_dir, f"response_{booth_id}.wav")
+        if os.path.exists(stale_response):
+            os.remove(stale_response)
+            print("🗑️  Cleared stale response file.")
+
         if os.path.exists(welcome_file):
             print("🎵  Playing waiting intro...")
             _audio_process = subprocess.Popen(
