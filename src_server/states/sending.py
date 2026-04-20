@@ -16,24 +16,19 @@ with open(CONFIG_PATH, "r") as f:
 
 SEND_DIR = config["audio_path"]
 
-# Main variables
-filename = f"response_{config['booth_id']}.wav"
-filepath = os.path.join(SEND_DIR, filename)
-
-booth_id = SharedState.booth_id
-port = config["unique_port"].get(booth_id, 8765)
-# old: booth_ip = config["booth_ip"].get(booth_id, "127.0.0.1")
 
 def run():
-    # print info about file and destination (single log)
-    # print("\n⌲ sending file:", filepath, "-> to ip:", booth_ip, " over port:", port)
+    # ── Resolve per-session values inside run() ───────────────────────────────
+    booth_id = SharedState.booth_id
+    port     = config["unique_port"].get(booth_id, 8765)
+    filename = f"response_{booth_id}.wav"
+    filepath = os.path.join(SEND_DIR, filename)
     booth_ip = SharedState.sender_ip or config["booth_ip"].get(booth_id, "127.0.0.1")
-    print("\n⌲ sending file back to ", booth_ip, " over port:", port)
 
-    # helper function to send wav file (with error handling)
+    print(f"\n⌲ sending {filename} back to {booth_ip} over port {port}")
+
     def send_wav(filepath, server_ip, port):
         filename = os.path.basename(filepath)
-
         try:
             with open(filepath, "rb") as f:
                 response = requests.post(
@@ -43,9 +38,8 @@ def run():
                         "Content-Type": "audio/wav",
                         "X-Filename": filename
                     },
-                    timeout=5  # avoid hanging forever
+                    timeout=5
                 )
-
             return response.ok
 
         except requests.exceptions.ConnectTimeout:
@@ -63,7 +57,7 @@ def run():
     # 1. Wait until file exists
     if not os.path.exists(filepath):
         print(f"⏳ File not found (yet): {filepath}")
-        return "sending"  # stay in same state
+        return "sending"
 
     # 2. Try to send (network-safe)
     try:
@@ -76,8 +70,6 @@ def run():
     # 3. Handle result
     if success:
         print("✓ Audiofile sent successfully.")
-        # print(f"\n⏱️ [{datetime.datetime.now().strftime('%H:%M:%S')}]")
-        # print("📤 Audiofile sent successfully.")
         return "waiting_for_receive"
 
     # 4. If server returned error, retry
