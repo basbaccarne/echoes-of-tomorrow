@@ -17,18 +17,28 @@ os.makedirs(SAVE_DIR, exist_ok=True)
 
 
 def process_audio(path_in, model):
-    
+
     # general timer for the whole session
     SharedState.session_start = time.time()
-    
+
     transcribe_start = time.time()
 
     segments, info = model.transcribe(
         path_in,
         language="nl",
-        beam_size=1,
-        vad_filter=False,
-        without_timestamps=True
+        beam_size=5,
+        best_of=5,
+        vad_filter=True,
+        vad_parameters=dict(
+            min_silence_duration_ms=500,
+        ),
+        without_timestamps=True,
+        condition_on_previous_text=True,
+        temperature=0.0,
+        initial_prompt="Vraag aan de gids:",   # seed with domain vocab; adjust to your context
+        compression_ratio_threshold=2.4,
+        log_prob_threshold=-1.0,
+        no_speech_threshold=0.6,
     )
 
     segments_list = list(segments)
@@ -66,7 +76,6 @@ def run():
     if model is None:
         raise RuntimeError("Whisper model not loaded — ensure main.py initialized SharedState.whisper_model")
 
-    audio_path = SAVE_DIR
     input_path = os.path.join(SAVE_DIR, f"question_{SharedState.booth_id}.wav")
 
     print(f"📜 transcribing question_{SharedState.booth_id}.wav")
@@ -76,6 +85,6 @@ def run():
     log_question(SharedState.booth_id, response)
 
     print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
-    print(f"📜  Transcript:{response}")
+    print(f"📜  Transcript: {response}")
 
     return "n8n"

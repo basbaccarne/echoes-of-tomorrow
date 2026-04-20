@@ -1,12 +1,3 @@
-# main state machine of the server
-# quickest hack is to run this script for each pi on a different port
-# to each pi sends to another port, so we can run 4 paralllel state machines on the same server
-
-# run using "python main.py --booth-id=0" (or 1, 2, 3)
-
-# static config is stored in config.yaml
-# dynamic config is stored in states/shared.py (SharedState class)
-
 import importlib
 import time
 import argparse
@@ -15,6 +6,7 @@ from faster_whisper import WhisperModel
 from pathlib import Path
 import yaml
 from piper import PiperVoice
+import torch
 
 # parse arguments
 parser = argparse.ArgumentParser()
@@ -34,10 +26,26 @@ SharedState.booth_id = args.booth_id
 print("\n---------------------------------")
 print(f"🚀 Starting server for booth ID {SharedState.booth_id}...\n")
 
+# detect device
+if torch.cuda.is_available():
+    device = "cuda"
+    compute_type = "float16"
+    print(f"🖥️  GPU detected: {torch.cuda.get_device_name(0)}")
+else:
+    device = "cpu"
+    compute_type = "int8_float32"
+    print("🖥️  No GPU detected, falling back to CPU")
+
 # preload whisper
 print("👂 Loading faster-whisper speech-to-text model...")
 load_start = time.time()
-SharedState.whisper_model = WhisperModel("small", device="cpu", compute_type="int8")
+SharedState.whisper_model = WhisperModel(
+    "medium",
+    device=device,
+    compute_type=compute_type,
+    cpu_threads=4,   # ignored on GPU; tune to core count / num booths on CPU
+    num_workers=1,
+)
 print(f"✓ Model loaded in {time.time() - load_start:.2f} seconds!\n")
 
 # preload piper voices
@@ -54,7 +62,6 @@ state = "waiting_for_receive"
 # state = "stt"
 
 loaded_state = None
-last_sender_ip = None
 
 try:
     while True:
