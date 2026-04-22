@@ -19,7 +19,7 @@ ring_on = True
 # Ring settings
 rings_per_call = 4  # Number of rings per call
 ring_interval  = 2  # Seconds between rings within a single call
-calls_per_hour = 1  # How many calls to schedule per hour
+calls_per_hour = 50  # How many calls to schedule per hour
 
 # ─────────────────────────────────────────────────────────────────────────────
 
