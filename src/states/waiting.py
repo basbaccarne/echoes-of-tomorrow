@@ -107,8 +107,6 @@ def run():
     if os.path.exists(next_file):
         _audio_process = subprocess.Popen(
             ["aplay", "-D", AUDIO_CARD, next_file],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
         )
     else:
         print(f"⚠️  Audio file not found: {next_file}")
