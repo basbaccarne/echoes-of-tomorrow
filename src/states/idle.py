@@ -21,22 +21,17 @@ rings_per_call = 4  # Number of rings per call
 ring_interval  = 2  # Seconds between rings within a single call
 calls_per_hour = 1  # How many calls to schedule per hour
 
-# ── Hour-scheduling state (module-level, persists between run() calls) ────────
-_hour_start   = None
-_call_offsets = []
-_calls_fired  = set()
 # ─────────────────────────────────────────────────────────────────────────────
 
 
 def _schedule_new_hour():
     """Pick random moments within the next 3600-second window."""
-    global _hour_start, _call_offsets, _calls_fired
-    _hour_start   = time.time()
-    _call_offsets = sorted(random.uniform(0, 3600) for _ in range(calls_per_hour))
-    _calls_fired  = set()
+    SharedState.idle_hour_start   = time.time()
+    SharedState.idle_call_offsets = sorted(random.uniform(0, 3600) for _ in range(calls_per_hour))
+    SharedState.idle_calls_fired  = set()
     _call_times = [
-        datetime.datetime.fromtimestamp(_hour_start + offset).strftime("%H:%M:%S")
-        for offset in _call_offsets
+        datetime.datetime.fromtimestamp(SharedState.idle_hour_start + offset).strftime("%H:%M:%S")
+        for offset in SharedState.idle_call_offsets
     ]
     print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
     print(f"[idle] 🕐 New hour scheduled — calls at: {_call_times}")
@@ -65,6 +60,7 @@ def _check_horn():
             time.sleep(0.01)
         print("\n📞   The horn has been picked up")
         time.sleep(debounce)
+        _schedule_new_hour()  # reschedule on every pickup
         return "play_welcome"
     return None
 
@@ -110,12 +106,10 @@ def _play_call():
 
 # ── Main state entry point ────────────────────────────────────────────────────
 def run():
-    global _hour_start
-
-    if _hour_start is None:
+    if SharedState.idle_hour_start is None:
         _schedule_new_hour()
 
-    if time.time() - _hour_start >= 3600:
+    if time.time() - SharedState.idle_hour_start >= 3600:
         _schedule_new_hour()
 
     result = _check_horn()
@@ -123,10 +117,10 @@ def run():
         return result
 
     if ring_on:
-        elapsed = time.time() - _hour_start
-        for i, offset in enumerate(_call_offsets):
-            if i not in _calls_fired and elapsed >= offset:
-                _calls_fired.add(i)
+        elapsed = time.time() - SharedState.idle_hour_start
+        for i, offset in enumerate(SharedState.idle_call_offsets):
+            if i not in SharedState.idle_calls_fired and elapsed >= offset:
+                SharedState.idle_calls_fired.add(i)
                 result = _play_call()
                 if result:
                     return result

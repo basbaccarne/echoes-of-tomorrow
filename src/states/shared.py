@@ -22,3 +22,6 @@ UNIQUE_PORTS    = _config.get("unique_port",     {})
 
 class SharedState:
     booth_id = 0
+    idle_hour_start = None
+    idle_call_offsets = []
+    idle_calls_fired = set()
