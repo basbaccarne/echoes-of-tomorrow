@@ -127,6 +127,8 @@ def _play_call():
 # ── Main entry point ─────────────────────────────────────────────────────
 def run():
 
+    print("[DEBUG] idle.run() is executing")
+    
     # safety init
     if not hasattr(SharedState, "idle_call_times") or not SharedState.idle_call_times:
         _schedule_new_hour()
