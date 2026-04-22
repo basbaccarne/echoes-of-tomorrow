@@ -10,6 +10,7 @@ from states.shared import SharedState, AUDIO_CARD_RING
 # ── Config ────────────────────────────────────────────────────────────────
 audio_dir = "/home/pi/echoes-of-tomorrow/audio_files"
 ring_path = os.path.join(audio_dir, "ring.wav")
+
 debounce = 0.3
 
 ring_on = True
@@ -25,6 +26,7 @@ def _schedule_new_hour():
 
     SharedState.idle_hour_start = now
 
+    # IMPORTANT: store ONLY timestamps (floats)
     SharedState.idle_call_times = sorted(
         now + random.uniform(0, 3600)
         for _ in range(calls_per_hour)
@@ -32,28 +34,30 @@ def _schedule_new_hour():
 
     SharedState.idle_calls_fired = set()
 
-    _call_times = [
-        datetime.datetime.fromtimestamp(t).strftime("%H:%M:%S")
-        for t in SharedState.idle_call_times
-    ]
-
     print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
-    print(f"[idle] 🕐 New hour scheduled — calls at: {_call_times}")
+    print("[idle] 🕐 New hour scheduled — calls at:")
+
+    for t in SharedState.idle_call_times:
+        print("   -", datetime.datetime.fromtimestamp(t).strftime("%H:%M:%S"))
 
 
 # ── Audio ────────────────────────────────────────────────────────────────
 def _play_ring(path: str):
     if not os.path.exists(path):
-        print(f"[idle] Audio file not found: {path}")
+        print(f"[idle] ❌ Audio file not found: {path}")
         return None
 
-    print(f"[idle] ▶ playing ring: {path}")
+    print(f"[idle] 🔊 playing ring: {path}")
 
-    return subprocess.Popen(
-        ["aplay", "-D", AUDIO_CARD_RING, path],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
+    try:
+        return subprocess.Popen(
+            ["aplay", "-D", AUDIO_CARD_RING, path],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+    except Exception as e:
+        print(f"[idle] ❌ aplay error: {e}")
+        return None
 
 
 # ── Input ────────────────────────────────────────────────────────────────
@@ -72,9 +76,9 @@ def _check_horn():
 
 
 def _interruptible_sleep(seconds):
-    deadline = time.time() + seconds
+    end = time.time() + seconds
 
-    while time.time() < deadline:
+    while time.time() < end:
         result = _check_horn()
         if result:
             return result
@@ -83,11 +87,11 @@ def _interruptible_sleep(seconds):
     return None
 
 
-# ── Call Logic ───────────────────────────────────────────────────────────
+# ── Call logic ───────────────────────────────────────────────────────────
 def _play_call():
     print(f"\n📞 [{datetime.datetime.now().strftime('%H:%M:%S')}] Incoming call — ringing…")
 
-    for ring_num in range(rings_per_call):
+    for i in range(rings_per_call):
 
         proc = _play_ring(ring_path)
 
@@ -100,7 +104,7 @@ def _play_call():
                     return result
                 time.sleep(0.05)
 
-        if ring_num < rings_per_call - 1:
+        if i < rings_per_call - 1:
             result = _interruptible_sleep(ring_interval)
             if result:
                 return result
@@ -109,17 +113,17 @@ def _play_call():
     return None
 
 
-# ── Main state entry point ───────────────────────────────────────────────
+# ── Main entry point ─────────────────────────────────────────────────────
 def run():
 
-    # Ensure scheduler exists
-    if not hasattr(SharedState, "idle_call_times"):
+    # ensure scheduler exists
+    if not hasattr(SharedState, "idle_call_times") or not SharedState.idle_call_times:
         _schedule_new_hour()
 
     if SharedState.idle_hour_start is None:
         _schedule_new_hour()
 
-    # hourly reset safety
+    # hourly reset
     if time.time() - SharedState.idle_hour_start >= 3600:
         _schedule_new_hour()
 
@@ -128,17 +132,23 @@ def run():
     if result:
         return result
 
-    # trigger calls
     if ring_on:
         now = time.time()
 
         for i, call_time in enumerate(SharedState.idle_call_times):
 
+            # DEBUG (keep this until stable)
+            # print(f"[DEBUG] now={now}, call_time={call_time}")
+
             if i in SharedState.idle_calls_fired:
                 continue
 
             if now >= call_time:
-                print(f"\n📞 triggering call {i} at {datetime.datetime.now()}")
+                print(
+                    f"\n📞 triggering call {i} "
+                    f"({datetime.datetime.fromtimestamp(call_time).strftime('%H:%M:%S')})"
+                )
+
                 SharedState.idle_calls_fired.add(i)
 
                 result = _play_call()
