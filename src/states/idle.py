@@ -19,7 +19,7 @@ rings_per_call = 4
 ring_interval = 2
 
 # 🔧 TEST MODE SWITCH
-testing = True  # True = trigger in 30s, False = random within hour
+testing = False  # True = trigger in 30s, False = random within hour
 
 
 # ── Scheduler ─────────────────────────────────────────────────────────────
