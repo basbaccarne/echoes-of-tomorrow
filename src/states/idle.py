@@ -5,90 +5,90 @@ import random
 import subprocess
 
 from hardware import button_horn
-from states.shared import SharedState
-from states.shared import AUDIO_CARD_RING
+from states.shared import SharedState, AUDIO_CARD_RING
 
-# ── Config ────────────────────────────────────────────────────────────────────
+# ── Config ────────────────────────────────────────────────────────────────
 audio_dir = "/home/pi/echoes-of-tomorrow/audio_files"
 ring_path = os.path.join(audio_dir, "ring.wav")
 debounce = 0.3
 
-# Switch to True to enable the random ring sound and False to disable it
 ring_on = True
 
-# Ring settings
-rings_per_call = 4  # Number of rings per call
-ring_interval  = 2  # Seconds between rings within a single call
-calls_per_hour = 50  # How many calls to schedule per hour
-
-# ─────────────────────────────────────────────────────────────────────────────
+rings_per_call = 4
+ring_interval = 2
+calls_per_hour = 50
 
 
+# ── Scheduler ──────────────────────────────────────────────────────────────
 def _schedule_new_hour():
-    """Pick random moments within the next 3600-second window."""
     now = time.time()
+
+    SharedState.idle_hour_start = now
+
     SharedState.idle_call_times = sorted(
         now + random.uniform(0, 3600)
         for _ in range(calls_per_hour)
     )
+
     SharedState.idle_calls_fired = set()
-    
-    SharedState.idle_calls_fired  = set()
+
     _call_times = [
-        datetime.datetime.fromtimestamp(SharedState.idle_hour_start + offset).strftime("%H:%M:%S")
-        for offset in SharedState.idle_call_offsets
+        datetime.datetime.fromtimestamp(t).strftime("%H:%M:%S")
+        for t in SharedState.idle_call_times
     ]
+
     print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
     print(f"[idle] 🕐 New hour scheduled — calls at: {_call_times}")
 
 
-def _play_ring(path: str) -> subprocess.Popen | None:
-    """Start ring audio, return Popen handle or None on error."""
+# ── Audio ────────────────────────────────────────────────────────────────
+def _play_ring(path: str):
     if not os.path.exists(path):
         print(f"[idle] Audio file not found: {path}")
         return None
-    try:
-        return subprocess.Popen(
-            ["aplay", "-D", AUDIO_CARD_RING, path],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-        )
-    except Exception as e:
-        print(f"[idle] Error playing ring: {e}")
-        return None
+
+    print(f"[idle] ▶ playing ring: {path}")
+
+    return subprocess.Popen(
+        ["aplay", "-D", AUDIO_CARD_RING, path],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
 
 
+# ── Input ────────────────────────────────────────────────────────────────
 def _check_horn():
-    """Non-blocking horn check. Returns 'play_welcome' on lift, else None."""
     if button_horn.is_pressed:
         while button_horn.is_pressed:
             time.sleep(0.01)
-        print("\n📞   The horn has been picked up")
+
+        print("\n📞 Horn picked up")
         time.sleep(debounce)
-        _schedule_new_hour()  # reschedule on every pickup
+
+        _schedule_new_hour()
         return "play_welcome"
+
     return None
 
 
 def _interruptible_sleep(seconds):
-    """Sleep in small chunks, returning 'play_welcome' immediately if horn lifted."""
     deadline = time.time() + seconds
+
     while time.time() < deadline:
         result = _check_horn()
         if result:
             return result
         time.sleep(0.05)
+
     return None
 
 
+# ── Call Logic ───────────────────────────────────────────────────────────
 def _play_call():
-    """
-    Execute one full call: rings_per_call rings separated by ring_interval seconds.
-    Returns 'play_welcome' if horn is lifted at any point, else None.
-    """
-    print(f"\n📞 [idle] [{datetime.datetime.now().strftime('%H:%M:%S')}] Incoming call — ringing…")
+    print(f"\n📞 [{datetime.datetime.now().strftime('%H:%M:%S')}] Incoming call — ringing…")
 
     for ring_num in range(rings_per_call):
+
         proc = _play_ring(ring_path)
 
         if proc:
@@ -109,22 +109,35 @@ def _play_call():
     return None
 
 
-# ── Main state entry point ────────────────────────────────────────────────────
+# ── Main state entry point ───────────────────────────────────────────────
 def run():
+
+    # Ensure scheduler exists
+    if not hasattr(SharedState, "idle_call_times"):
+        _schedule_new_hour()
+
     if SharedState.idle_hour_start is None:
         _schedule_new_hour()
 
+    # hourly reset safety
     if time.time() - SharedState.idle_hour_start >= 3600:
         _schedule_new_hour()
 
+    # horn check
     result = _check_horn()
     if result:
         return result
 
+    # trigger calls
     if ring_on:
         now = time.time()
+
         for i, call_time in enumerate(SharedState.idle_call_times):
-            if i not in SharedState.idle_calls_fired and now >= call_time:
+
+            if i in SharedState.idle_calls_fired:
+                continue
+
+            if now >= call_time:
                 print(f"\n📞 triggering call {i} at {datetime.datetime.now()}")
                 SharedState.idle_calls_fired.add(i)
 
