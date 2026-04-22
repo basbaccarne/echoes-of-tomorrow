@@ -19,7 +19,6 @@ rings_per_call = 4
 ring_interval = 2
 calls_per_hour = 50
 
-
 # ── Scheduler ──────────────────────────────────────────────────────────────
 def _schedule_new_hour():
     now = time.time()
@@ -32,12 +31,14 @@ def _schedule_new_hour():
     )
 
     SharedState.idle_calls_fired = set()
+    SharedState.active_call = False
 
     print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
     print("[idle] 🕐 New hour scheduled — calls at:")
 
     for t in SharedState.idle_call_times:
         print("   -", datetime.datetime.fromtimestamp(t).strftime("%H:%M:%S"))
+
 
 # ── Audio ────────────────────────────────────────────────────────────────
 def _play_ring(path: str):
@@ -87,51 +88,76 @@ def _interruptible_sleep(seconds):
 
 # ── Call logic ───────────────────────────────────────────────────────────
 def _play_call():
-    print(f"\n📞 [{datetime.datetime.now().strftime('%H:%M:%S')}] Incoming call — ringing…")
+    if SharedState.active_call:
+        return None
 
-    for i in range(rings_per_call):
+    SharedState.active_call = True
 
-        proc = _play_ring(ring_path)
+    try:
+        print(f"\n📞 [{datetime.datetime.now().strftime('%H:%M:%S')}] Incoming call — ringing…")
 
-        if proc:
-            while proc.poll() is None:
-                result = _check_horn()
+        for ring_num in range(rings_per_call):
+
+            print(f"[idle] 🔔 Ring {ring_num + 1}/{rings_per_call}")
+
+            proc = _play_ring(ring_path)
+
+            if proc:
+                while proc.poll() is None:
+                    result = _check_horn()
+                    if result:
+                        proc.terminate()
+                        proc.wait()
+                        return result
+                    time.sleep(0.05)
+
+            if ring_num < rings_per_call - 1:
+                print("[idle] ⏳ waiting between rings...")
+                result = _interruptible_sleep(ring_interval)
                 if result:
-                    proc.terminate()
-                    proc.wait()
                     return result
-                time.sleep(0.05)
 
-        if i < rings_per_call - 1:
-            result = _interruptible_sleep(ring_interval)
-            if result:
-                return result
+        print("[idle] 📵 Call ended (no answer)")
+        return None
 
-    print("[idle] 📵 Call ended (no answer)")
-    return None
+    finally:
+        SharedState.active_call = False
 
 
 # ── Main entry point ─────────────────────────────────────────────────────
 def run():
 
     # safety init
-    if SharedState.idle_hour_start is None or not SharedState.idle_call_times:
+    if not hasattr(SharedState, "idle_call_times") or not SharedState.idle_call_times:
         _schedule_new_hour()
 
-    now = time.time()
+    if SharedState.idle_hour_start is None:
+        _schedule_new_hour()
 
-    for i, call_time in enumerate(SharedState.idle_call_times):
+    # hourly reset
+    if time.time() - SharedState.idle_hour_start >= 3600:
+        _schedule_new_hour()
 
-        if i in SharedState.idle_calls_fired:
-            continue
+    # horn check
+    result = _check_horn()
+    if result:
+        return result
 
-        if now >= call_time:
-            print(f"\n📞 triggering call {i} at {datetime.datetime.now()}")
+    if ring_on:
+        now = time.time()
 
-            SharedState.idle_calls_fired.add(i)
+        for i, call_time in enumerate(SharedState.idle_call_times):
 
-            result = _play_call()
-            if result:
-                return result
+            if i in SharedState.idle_calls_fired:
+                continue
+
+            if now >= call_time:
+                print(f"\n📞 triggering call {i} at {datetime.datetime.now()}")
+
+                SharedState.idle_calls_fired.add(i)
+
+                result = _play_call()
+                if result:
+                    return result
 
     return None
