@@ -26,8 +26,13 @@ calls_per_hour = 50  # How many calls to schedule per hour
 
 def _schedule_new_hour():
     """Pick random moments within the next 3600-second window."""
-    SharedState.idle_hour_start   = time.time()
-    SharedState.idle_call_offsets = sorted(random.uniform(0, 3600) for _ in range(calls_per_hour))
+    now = time.time()
+    SharedState.idle_call_times = sorted(
+        now + random.uniform(0, 3600)
+        for _ in range(calls_per_hour)
+    )
+    SharedState.idle_calls_fired = set()
+    
     SharedState.idle_calls_fired  = set()
     _call_times = [
         datetime.datetime.fromtimestamp(SharedState.idle_hour_start + offset).strftime("%H:%M:%S")
@@ -117,11 +122,12 @@ def run():
         return result
 
     if ring_on:
-        elapsed = time.time() - SharedState.idle_hour_start
-        print(f"[debug] elapsed={elapsed:.1f} offsets={SharedState.idle_call_offsets} fired={SharedState.idle_calls_fired}")
-        for i, offset in enumerate(SharedState.idle_call_offsets):
-            if i not in SharedState.idle_calls_fired and elapsed >= offset:
+        now = time.time()
+        for i, call_time in enumerate(SharedState.idle_call_times):
+            if i not in SharedState.idle_calls_fired and now >= call_time:
+                print(f"\n📞 triggering call {i} at {datetime.datetime.now()}")
                 SharedState.idle_calls_fired.add(i)
+
                 result = _play_call()
                 if result:
                     return result
