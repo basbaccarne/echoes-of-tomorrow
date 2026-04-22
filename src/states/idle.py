@@ -118,6 +118,7 @@ def run():
 
     if ring_on:
         elapsed = time.time() - SharedState.idle_hour_start
+        print(f"[debug] elapsed={elapsed:.1f} offsets={SharedState.idle_call_offsets} fired={SharedState.idle_calls_fired}")
         for i, offset in enumerate(SharedState.idle_call_offsets):
             if i not in SharedState.idle_calls_fired and elapsed >= offset:
                 SharedState.idle_calls_fired.add(i)
