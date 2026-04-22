@@ -115,6 +115,10 @@ def _play_call():
 
 # ── Main entry point ─────────────────────────────────────────────────────
 def run():
+    
+    print(f"[DEBUG] call_times exists: {hasattr(SharedState, 'idle_call_times')}")
+    print(f"[DEBUG] call_times value: {getattr(SharedState, 'idle_call_times', None)}")
+    print(f"[DEBUG] fired: {getattr(SharedState, 'idle_calls_fired', None)}")
 
     # ensure scheduler exists
     if not hasattr(SharedState, "idle_call_times") or not SharedState.idle_call_times:
