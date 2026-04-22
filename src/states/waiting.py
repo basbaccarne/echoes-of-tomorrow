@@ -28,6 +28,11 @@ _random_queue   = []
 
 
 def run():
+    
+    print(f"[DEBUG] trigger_time = {SharedState.idle_trigger_time}")
+    print(f"[DEBUG] now = {time.time()}")
+    print(f"[DEBUG] diff = {time.time() - SharedState.idle_trigger_time if SharedState.idle_trigger_time else None}")
+    
     global _response_path, _server, _ready
     global _audio_process, _played_welcome, _random_queue
 
