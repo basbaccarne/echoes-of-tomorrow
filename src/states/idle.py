@@ -19,7 +19,7 @@ rings_per_call = 4
 ring_interval = 2
 
 # 🔧 TEST MODE SWITCH
-testing = False  # True = trigger in 30s, False = random within hour
+testing = True  # True = trigger in 30s, False = random within hour
 
 
 # ── Scheduler ─────────────────────────────────────────────────────────────
@@ -60,13 +60,9 @@ def _play_ring(path: str):
 
 # ── Input ────────────────────────────────────────────────────────────────
 def _check_horn():
-    if button_horn.is_pressed:
-        while button_horn.is_pressed:
-            time.sleep(0.01)
-
+    if not button_horn.is_pressed:
         print("\n📞 Horn picked up")
         time.sleep(debounce)
-
         _schedule_new_hour()
         return "play_welcome"
 
