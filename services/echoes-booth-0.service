@@ -1,0 +1,14 @@
+[Unit]
+Description=Echoes of Tomorrow - Booth 0
+After=network.target
+
+[Service]
+Type=simple
+User=io
+WorkingDirectory=/home/io/echoes-of-tomorrow/src_server
+ExecStart=python3 /home/io/echoes-of-tomorrow/src_server/main.py --booth-id=0
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
