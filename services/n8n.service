@@ -2,10 +2,11 @@
 Type=simple
 User=io
 Environment=HOME=/home/io
+Environment=PATH=/home/io/.nvm/versions/node/v22.22.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 Environment=N8N_SECURE_COOKIE=false
 Environment=N8N_HOST=0.0.0.0
 Environment=N8N_PORT=5678
 Environment=N8N_PROTOCOL=http
-ExecStart=/usr/bin/env n8n
+ExecStart=/home/io/.nvm/versions/node/v22.22.0/bin/n8n
 Restart=always
 RestartSec=5
