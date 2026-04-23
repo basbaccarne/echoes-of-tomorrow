@@ -1,14 +1,11 @@
-[Unit]
-Description=n8n workflow automation
-After=network.target
-
 [Service]
 Type=simple
 User=io
+Environment=HOME=/home/io
 Environment=N8N_SECURE_COOKIE=false
+Environment=N8N_HOST=0.0.0.0
+Environment=N8N_PORT=5678
+Environment=N8N_PROTOCOL=http
 ExecStart=/usr/bin/env n8n
 Restart=always
 RestartSec=5
-
-[Install]
-WantedBy=multi-user.target
