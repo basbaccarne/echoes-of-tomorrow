@@ -19,7 +19,7 @@ rings_per_call = 4
 ring_interval = 2
 
 # 🔧 TEST MODE SWITCH
-testing = True  # True = trigger in 30s, False = random within hour
+testing = False  # True = trigger in 30s, False = random within hour
 
 
 # ── Scheduler ─────────────────────────────────────────────────────────────
@@ -29,7 +29,7 @@ def _schedule_new_hour():
     SharedState.idle_hour_start = now
 
     if testing:
-        SharedState.idle_trigger_time = now + 30
+        SharedState.idle_trigger_time = now + 10
         print("\n🧪 TEST MODE ENABLED")
     else:
         SharedState.idle_trigger_time = now + random.uniform(0, 3600)
