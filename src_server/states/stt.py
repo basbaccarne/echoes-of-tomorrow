@@ -61,7 +61,7 @@ def process_audio(path_in, model):
 def log_question(booth_id, question):
     log_filename = f"{booth_id}_LOGS.txt"
     log_path = os.path.join(SAVE_DIR, log_filename)
-    date_str = datetime.datetime.now().strftime("%Y-%m-%d")
+    date_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     log_entry = f"[{date_str}] [{booth_id}] [{question}]\n"
 

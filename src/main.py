@@ -73,7 +73,7 @@ try:
     while True:
         # --- Scheduled shutdown check ---
         now = datetime.datetime.now()
-        if now.hour == SHUTDOWN_HOUR and now.minute == SHUTDOWN_MINUTE:
+        if now.hour * 60 + now.minute >= SHUTDOWN_HOUR * 60 + SHUTDOWN_MINUTE:
             print(f"\n🕐  Scheduled shutdown time reached ({SHUTDOWN_HOUR:02d}:{SHUTDOWN_MINUTE:02d})")
             shutdown_requested = True
             break
