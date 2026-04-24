@@ -84,7 +84,7 @@ def run():
 
     log_question(SharedState.booth_id, response)
 
-    print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
+    print(f"\n⏱️  [{datetime.datetime.now().strftime('%d/%m %H:%M:%S')}]")
     print(f"📜  Transcript: {response}")
 
     return "n8n"

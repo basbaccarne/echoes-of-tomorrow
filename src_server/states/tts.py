@@ -67,7 +67,7 @@ def run():
     # print(f"in directory: {SAVE_DIR}")
     tts_time = time.time() - tts_start
     print(f"✓ WAV file generated in {tts_time:.2f} seconds!")
-    print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
+    print(f"\n⏱️  [{datetime.datetime.now().strftime('%d/%m %H:%M:%S')}]")
     print("🔊 Audio file ready. Sending this back to the pi...")
     
     # general timer:

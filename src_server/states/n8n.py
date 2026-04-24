@@ -80,7 +80,7 @@ def run():
     # print(f"in directory: {SAVE_DIR}")
     n8n_time = time.time() - n8n_start
     print(f"✓ Agent response ready in {n8n_time:.2f} seconds!")
-    print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
+    print(f"\n⏱️  [{datetime.datetime.now().strftime('%d/%m %H:%M:%S')}]")
     print(f"🤖 Agent response:{response}")
     # print("\nSending this text to the text to speech module...")
 

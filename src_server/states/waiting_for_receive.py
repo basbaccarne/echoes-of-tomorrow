@@ -64,7 +64,7 @@ class UploadHandler(BaseHTTPRequestHandler):
         with open(filepath, "wb") as f:
             f.write(data)
 
-        print(f"\n⏱️  [{datetime.datetime.now().strftime('%H:%M:%S')}]")
+        print(f"\n⏱️  [{datetime.datetime.now().strftime('%d/%m %H:%M:%S')}]")
         print(f"📩 Whoop, I received: {filepath}")
 
         self.send_response(200)

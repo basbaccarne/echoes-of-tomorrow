@@ -36,7 +36,7 @@ def _schedule_new_hour():
 
     SharedState.triggered_this_hour = False
 
-    print(f"\n⏱️ [{datetime.datetime.now().strftime('%H:%M:%S')}]")
+    print(f"\n⏱️ [{datetime.datetime.now().strftime('%d/%m %H:%M:%S')}]")
     print(
         "[idle] next trigger at:",
         datetime.datetime.fromtimestamp(SharedState.idle_trigger_time).strftime("%H:%M:%S")

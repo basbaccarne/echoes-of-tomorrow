@@ -155,7 +155,7 @@ def main():
 
     # 4. Summary
     total = time.time() - start
-    timestamp = datetime.datetime.now().strftime("%H:%M:%S")
+    timestamp = datetime.datetime.now().strftime("%d/%m %H:%M:%S")
     print(f"✅ Done! WAV file saved to:  {Path(OUTPUT_FILE).resolve()}")
     print(f"   Synthesis time : {elapsed:.2f}s")
     print(f"   Total time     : {total:.2f}s")
