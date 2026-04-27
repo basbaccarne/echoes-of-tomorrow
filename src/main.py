@@ -45,6 +45,8 @@ led.set_state("idle")  # set initial animation
 state = "idle"
 loaded_state = None
 shutdown_requested = False
+startup_time = datetime.datetime.now()
+startup_minutes = startup_time.hour * 60 + startup_time.minute
 
 # function to get the ip address
 def get_ip():
@@ -73,7 +75,8 @@ try:
     while True:
         # --- Scheduled shutdown check ---
         now = datetime.datetime.now()
-        if now.hour * 60 + now.minute >= SHUTDOWN_HOUR * 60 + SHUTDOWN_MINUTE:
+        shutdown_threshold = SHUTDOWN_HOUR * 60 + SHUTDOWN_MINUTE
+        if startup_minutes < shutdown_threshold and now.hour * 60 + now.minute >= shutdown_threshold:
             print(f"\n🕐  Scheduled shutdown time reached ({SHUTDOWN_HOUR:02d}:{SHUTDOWN_MINUTE:02d})")
             shutdown_requested = True
             break
