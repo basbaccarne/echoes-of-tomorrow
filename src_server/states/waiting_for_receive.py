@@ -85,12 +85,12 @@ def run():
     print(f"🎯 I'm the python handler for booth {SharedState.booth_id}, listening on port {port}...")
     print("👂 Is there anybody out there?")
 
-    # Wait until file is received
-    while not file_received:
-        server.handle_request()
-
-    # Clean up and move to next state
-    file_received = False
-    server.server_close()
+    try:
+        while not file_received:
+            server.handle_request()
+    finally:
+        # Always release the port, even if an exception occurs mid-loop
+        file_received = False
+        server.server_close()
 
     return "stt"
