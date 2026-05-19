@@ -7,7 +7,7 @@ from elevenlabs.types import VoiceSettings
 
 load_dotenv()
 
-DEFAULT_VOICE_ID = "Otc3wCRPKNSpn8EDImmM"  # https://elevenlabs.io/app/default-voices
+DEFAULT_VOICE_ID = "ANHrhmaFeVN0QJaa0PhL"  # https://elevenlabs.io/app/default-voices
 DEFAULT_MODEL_ID = "eleven_multilingual_v2"
 DEFAULT_OUTPUT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output.wav")
 
@@ -62,13 +62,7 @@ def text_to_speech(
 
 if __name__ == "__main__":
     TEXT = (
-        "De jeugd wordt dommer en dommer omdat de maatschappij sterk gericht is op prestaties en competentie, "
-        "waardoor afwijkende denkwijzen en creativiteit niet worden gewaardeerd.\n\n"
-        "Een voorbeeld is dat mijn zoon, Max, 12 jaar oud, elke dag op school bijna 6 uur op een digitaal "
-        "leerplatform zit om zijn leerdoelen te halen, waardoor hij weinig tijd heeft om zijn eigen interesses "
-        "te volgen. Het leerplatform, dat door de school wordt gekozen en wordt aangeboden door een groot "
-        "platformbedrijf, geeft zijn prestaties continu door aan zijn ouders en leraren, waardoor hij "
-        "voortdurend wordt gemotiveerd om beter te doen."
+        "Wacht even, jouw vraag zet hier wat in beweging. Ik ga zoeken terwijl het archief zich herschikt."
     )
     path = text_to_speech(TEXT)
     print(f"WAV file: {path}")

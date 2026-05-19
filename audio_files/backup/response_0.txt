@@ -1,0 +1,7 @@
+{
+  "output": Hoe zit het met gezeem gebruik bij de jongeren?
+
+De maatschappij is georganiseerd rondom prestatie, efficiëntie en technologische vooruitgang en de jongeren worden continu gemonitord en beoordeeld op hun prestaties en competenties, wat ertoe leidt dat ze zich vaak meer op hun prestaties dan op hun welzijn richten. In deze cultuur wordt afwijking van normgedrag actief gecorrigeerd en individuele competitiviteit en prestatie staan centraal.
+
+Een voorbeeld: Lenna, een 12-jarige leerling, wordt continu gevolgd door haar leerkracht door middel van een wearable device dat haar hartslag, bloeddruk en andere fysiologische parameters meet. Als haar prestaties in de klas afnemen, ontvangt ze direct feedback van de leerkracht en wordt haar onderwijsaanbod geoptimaliseerd om haar prestaties te verbeteren. Hierdoor voelt Lenna zich gedwongen om zich op haar studie te concentreren en neemt ze hierdoor geen tijd voor sociale activiteiten of ontspanning.
+}
